@@ -1,23 +1,4 @@
-/***************************************************************************** 
-Copyright 2022 CloudPremise LLC
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
-// to do: upodate the default to be https://assets-main.mogli.technology/js/react/mogli-m2-landing-react/build if no params are passed into the page
-
-
-global with sharing class rfPrototypeLtgCtrl {
+public with sharing class rfPrototypeCtrl {
     public SObject sObj {get;set;}
     public Id sObjId {get;set;}
 
@@ -32,12 +13,13 @@ global with sharing class rfPrototypeLtgCtrl {
         return UserInfo.getSessionId();
     }
 
-    public rfPrototypeLtgCtrl(ApexPages.StandardController stdController){
-        System.debug('rfPrototypeLtgCtrl(ApexPages.StandardController)');
+    public rfPrototypeCtrl(ApexPages.StandardController stdController){
+        System.debug('rfPrototypeCtrl(ApexPages.StandardController)');
         this.sobj = stdController.getRecord();
         this.sObjId = stdController.getId();
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
-        // bundleDomain = 'https://05db-2400-adc5-10c-ac00-d180-8785-b1e9-383f.ngrok.io';
+        // bundleDomain = 'https://37ba-2400-adc5-10c-ac00-58d9-25f6-9d6d-aa90.ngrok.io';
+
         // if(Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration() && Mogli_ApplicationSettings.getInstance().isUserInterfacePreview()){
 
         //     BundleConfiguration m2Config = (BundleConfiguration) JSON.deserialize(Mogli_ApplicationSettings.getInstance().bundleConfiguration(), BundleConfiguration.class);
@@ -53,27 +35,25 @@ global with sharing class rfPrototypeLtgCtrl {
         //         bundleDomain = m2Config.M2_Landing.domain;
         //         bundleName = m2Config.M2_Landing.entryPoint;
         //     }
-            advancedConfiguration = Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration();
-            userInterfacePreview = Mogli_ApplicationSettings.getInstance().isUserInterfacePreview();
-            // developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
-            
-            System.debug('bundleDomain:'+bundleDomain);
-            sessionId = rfPrototypeLtgCtrl.getSessionId();
-            // System.debug('bundleName:'+bundleName);
+        //     System.debug('bundleDomain:'+bundleDomain);
+        //     System.debug('bundleName:'+bundleName);
 
         //     System.debug('what?:'+m2Config);
-        //     sessionId = rfPrototypeLtgCtrl.getSessionId();
+        //     sessionId = rfPrototypeCtrl.getSessionId();
         //     if(developmentMode){
         //         logControllerInfo();
         //         System.debug('this:'+this);
         //     }
         // }
     }
-    public rfPrototypeLtgCtrl(){
-        System.debug('rfPrototypeLtgCtrl()');
+    public rfPrototypeCtrl(){
+        System.debug('rfPrototypeCtrl()');
+        // developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
-        // bundleDomain = 'https://05db-2400-adc5-10c-ac00-d180-8785-b1e9-383f.ngrok.io';
-        if(Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration() && Mogli_ApplicationSettings.getInstance().isUserInterfacePreview()){
+        sessionId = rfPrototypeCtrl.getSessionId();
+        // bundleDomain = 'https://37ba-2400-adc5-10c-ac00-58d9-25f6-9d6d-aa90.ngrok.io';
+        
+        // if(Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration() && Mogli_ApplicationSettings.getInstance().isUserInterfacePreview()){
 
 
             // if(String.isNotBlank(Mogli_ApplicationSettings.getInstance().bundleConfiguration())){
@@ -87,13 +67,11 @@ global with sharing class rfPrototypeLtgCtrl {
             //     System.debug('settings for bundleDomain:'+bundleDomain);
             //     System.debug('settings for entryPoint:'+entryPoint);
             // }
-            advancedConfiguration = Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration();
-            userInterfacePreview = Mogli_ApplicationSettings.getInstance().isUserInterfacePreview();
-            // developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
-            
+            // advancedConfiguration = Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration();
+            // userInterfacePreview = Mogli_ApplicationSettings.getInstance().isUserInterfacePreview();
             //entryPoint = String.isNotBlank(ApexPages.currentPage().getParameters().get('entryPoint')) ? ApexPages.currentPage().getParameters().get('entryPoint') : entryPoint;
             // System.debug('param for developmentMode:'+developmentMode);
-            System.debug('param for bundleDomain:'+bundleDomain);
+            // System.debug('param for bundleDomain:'+bundleDomain);
             //System.debug('param for entryPoint:'+entryPoint);
 
 
@@ -108,12 +86,12 @@ global with sharing class rfPrototypeLtgCtrl {
             // System.debug('bundleDomain:'+bundleDomain);
             // System.debug('bundleConfiguration:'+bundleConfiguration);
             //System.debug('entryPoint:'+entryPoint);
-            sessionId = rfPrototypeLtgCtrl.getSessionId();
+            
             // if(developmentMode){
             //     logControllerInfo();
             //     System.debug('this:'+this);
             // }            
-        }
+        // }
     }
 
     public PageReference rerenderPage() {
@@ -126,14 +104,14 @@ global with sharing class rfPrototypeLtgCtrl {
         System.debug('ApexPages.currentPage():'+Apexpages.currentPage());
         //return null;
 
-        Pagereference newLink = new PageReference('/apex/rfPrototypeLtg');
+        Pagereference newLink = new PageReference('/apex/rfPrototypeVf');
         newLink.setRedirect(true);
         return newLink;
         //return new PageReference('/apex/');
     }
 
     public static void logControllerInfo(){
-        System.debug('rfPrototypeLtgCtrl()');
+        System.debug('rfPrototypeCtrl()');
         System.debug('M2_PackageUtil.isRunningInNamespace():'+M2_PackageUtil.isRunningInNamespace());
         System.debug('M2_PackageUtil.isRunningInManagedPackage():'+M2_PackageUtil.isRunningInManagedPackage());
         System.debug('M2_PackageUtil.getPackageNamespace():'+M2_PackageUtil.getPackageNamespace());
@@ -142,7 +120,6 @@ global with sharing class rfPrototypeLtgCtrl {
     }
 
     @RemoteAction
-    @AuraEnabled
     public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
         System.debug('rfPrototypeCtrl.callInternalApi()');
         System.debug('method:'+method);

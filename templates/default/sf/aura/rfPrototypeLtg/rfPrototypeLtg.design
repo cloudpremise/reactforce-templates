@@ -1,0 +1,7 @@
+<design:component label="M2 Landing (Aura)" >
+    <design:attribute name="hidePageHeader" label="Hide Lightning Page Header" />
+    <design:attribute name="hideComponentHeader" label="Hide Component Header" />
+    <design:attribute name="hideNavigationTabs" label="Hide Navigation Tabs" />
+    <design:attribute name="page" label="Page Name" />
+    <design:attribute name="bundleDomain" label="Bundle Domain" />
+</design:component>
