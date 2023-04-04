@@ -2,7 +2,7 @@
     doInit : function(component, event, helper) {
         var containerSrc = $A.get('$Resource.rfPrototypeLtg')+'/index.html';
         var data = {
-            'resources': $A.get('$Resource.M2_SharedAssets'),
+            'resources': $A.get('$Resource.ReactforceAssets'),
             'landingResources': $A.get('$Resource.rfPrototypeLtg'),
             'bundleDomain': component.get("v.bundleDomain"),
             'advancedConfiguration': component.get("v.advancedConfiguration"),
