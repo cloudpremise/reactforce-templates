@@ -14,8 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// to do: upodate the default to be https://assets-main.mogli.technology/js/react/mogli-m2-landing-react/build if no params are passed into the page
-
 
 global with sharing class rfPrototypeLtgCtrl {
     public SObject sObj {get;set;}
@@ -37,83 +35,16 @@ global with sharing class rfPrototypeLtgCtrl {
         this.sobj = stdController.getRecord();
         this.sObjId = stdController.getId();
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
-        // bundleDomain = 'https://05db-2400-adc5-10c-ac00-d180-8785-b1e9-383f.ngrok.io';
-        // if(Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration() && Mogli_ApplicationSettings.getInstance().isUserInterfacePreview()){
 
-        //     BundleConfiguration m2Config = (BundleConfiguration) JSON.deserialize(Mogli_ApplicationSettings.getInstance().bundleConfiguration(), BundleConfiguration.class);
-        //     System.debug('m2Config:'+m2Config);
             
-        //     developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
-        //     bundleDomain = ApexPages.currentPage().getParameters().get('bundleDomain');
-        //     bundleName = ApexPages.currentPage().getParameters().get('bundleName');
+        System.debug('bundleDomain:'+bundleDomain);
+        sessionId = rfPrototypeLtgCtrl.getSessionId();
 
-        //     if(String.isBlank(bundleDomain)){
-        //         bundleDomain = 'https://assets-main.mogli.technology/js/react/mogli-m2-landing-react/build';
-        //     } else {
-        //         bundleDomain = m2Config.M2_Landing.domain;
-        //         bundleName = m2Config.M2_Landing.entryPoint;
-        //     }
-            advancedConfiguration = Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration();
-            userInterfacePreview = Mogli_ApplicationSettings.getInstance().isUserInterfacePreview();
-            // developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
-            
-            System.debug('bundleDomain:'+bundleDomain);
-            sessionId = rfPrototypeLtgCtrl.getSessionId();
-            // System.debug('bundleName:'+bundleName);
-
-        //     System.debug('what?:'+m2Config);
-        //     sessionId = rfPrototypeLtgCtrl.getSessionId();
-        //     if(developmentMode){
-        //         logControllerInfo();
-        //         System.debug('this:'+this);
-        //     }
-        // }
     }
     public rfPrototypeLtgCtrl(){
         System.debug('rfPrototypeLtgCtrl()');
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
-        // bundleDomain = 'https://05db-2400-adc5-10c-ac00-d180-8785-b1e9-383f.ngrok.io';
-        if(Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration() && Mogli_ApplicationSettings.getInstance().isUserInterfacePreview()){
 
-
-            // if(String.isNotBlank(Mogli_ApplicationSettings.getInstance().bundleConfiguration())){
-            //     bundleConfig = Mogli_ApplicationSettings.getInstance().bundleConfiguration();
-            //     BundleConfiguration m2Config = (BundleConfiguration) JSON.deserialize(bundleConfig, BundleConfiguration.class);
-            //     System.debug('m2Config:'+m2Config);
-            //     bundleConfiguration = String.valueOf(m2Config.M2_Landing);
-            //     System.debug('bundleConfiguration from settings:'+bundleConfiguration);
-            //     bundleDomain = m2Config.M2_Landing.domain;
-            //     entryPoint = m2Config.M2_Landing.entryPoint;
-            //     System.debug('settings for bundleDomain:'+bundleDomain);
-            //     System.debug('settings for entryPoint:'+entryPoint);
-            // }
-            advancedConfiguration = Mogli_ApplicationSettings.getInstance().isAdvancedConfiguration();
-            userInterfacePreview = Mogli_ApplicationSettings.getInstance().isUserInterfacePreview();
-            // developmentMode = ApexPages.currentPage().getParameters().get('devMode') == '1' ? true : false;
-            
-            //entryPoint = String.isNotBlank(ApexPages.currentPage().getParameters().get('entryPoint')) ? ApexPages.currentPage().getParameters().get('entryPoint') : entryPoint;
-            // System.debug('param for developmentMode:'+developmentMode);
-            System.debug('param for bundleDomain:'+bundleDomain);
-            //System.debug('param for entryPoint:'+entryPoint);
-
-
-            //if(String.isBlank(bundleDomain)){
-              //  bundleDomain = 'https://assets-main.mogli.technology/js/react/mogli-m2-landing-react/buildHARDCODE';
-            //} //else {
-                //bundleDomain = m2Config.M2_Landing.domain;
-                //bundleName = m2Config.M2_Landing.domain;
-
-                //bundleName = '123';//m2Config.M2_Landing.domain;  ?why is this returning null to the vf page!!!
-            //}
-            // System.debug('bundleDomain:'+bundleDomain);
-            // System.debug('bundleConfiguration:'+bundleConfiguration);
-            //System.debug('entryPoint:'+entryPoint);
-            sessionId = rfPrototypeLtgCtrl.getSessionId();
-            // if(developmentMode){
-            //     logControllerInfo();
-            //     System.debug('this:'+this);
-            // }            
-        }
     }
 
     public PageReference rerenderPage() {
@@ -134,9 +65,9 @@ global with sharing class rfPrototypeLtgCtrl {
 
     public static void logControllerInfo(){
         System.debug('rfPrototypeLtgCtrl()');
-        System.debug('M2_PackageUtil.isRunningInNamespace():'+M2_PackageUtil.isRunningInNamespace());
-        System.debug('M2_PackageUtil.isRunningInManagedPackage():'+M2_PackageUtil.isRunningInManagedPackage());
-        System.debug('M2_PackageUtil.getPackageNamespace():'+M2_PackageUtil.getPackageNamespace());
+        // System.debug('M2_PackageUtil.isRunningInNamespace():'+M2_PackageUtil.isRunningInNamespace());
+        // System.debug('M2_PackageUtil.isRunningInManagedPackage():'+M2_PackageUtil.isRunningInManagedPackage());
+        // System.debug('M2_PackageUtil.getPackageNamespace():'+M2_PackageUtil.getPackageNamespace());
         System.debug('UserInfo.getUserId:'+UserInfo.getUserId());
         System.debug('UserInfo.getProfileId:'+UserInfo.getProfileId());
     }

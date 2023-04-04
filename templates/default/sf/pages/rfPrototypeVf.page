@@ -37,7 +37,7 @@
 
         <div class="slds-spinner_container" id="main-application-loader">
             <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
-                <span class="slds-assistive-text">One moment while we update your Mogli Experience…</span>
+                <span class="slds-assistive-text">One moment while we update your Reactforce Experience…</span>
                 <div class="slds-spinner__dot-a"></div>
                 <div class="slds-spinner__dot-b"></div>
             </div>
