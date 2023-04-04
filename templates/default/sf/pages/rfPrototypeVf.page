@@ -1,4 +1,4 @@
-<apex:page controller="rfPrototypeLtgCtrl" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" showQuickActionVfHeader="false">
+<apex:page controller="rfPrototypeCtrl" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" showQuickActionVfHeader="false">
     <head>
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
@@ -17,7 +17,7 @@
             //This object will be available from within the reactforce apps via the global.inlineApexAdaptor object
             var inlineApexAdaptor = {
                 'Visualforce': Visualforce,
-                'callInternalApi': '{!$RemoteAction.rfPrototypeLtgCtrl.callInternalApi}',
+                'callInternalApi': '{!$RemoteAction.rfPrototypeCtrl.callInternalApi}',
                 'sessionId': '{!sessionId}',
                 'resources': '{!$Resource.ReactforceAssets}',
                 'landingResources': '{!$Resource.CustomerPortal}',
