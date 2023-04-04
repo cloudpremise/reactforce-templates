@@ -1,4 +1,4 @@
-<design:component label="M2 Landing (Aura)" >
+<design:component label="rfPrototypeLtg (Aura)" >
     <design:attribute name="hidePageHeader" label="Hide Lightning Page Header" />
     <design:attribute name="hideComponentHeader" label="Hide Component Header" />
     <design:attribute name="hideNavigationTabs" label="Hide Navigation Tabs" />
