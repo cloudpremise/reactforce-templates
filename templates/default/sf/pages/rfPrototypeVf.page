@@ -33,7 +33,7 @@
             };
 
         </script>
-        <div style="min-height: 100vh;" id="appRoot"></div>
+        <div style="min-height: 100vh;" id="root"></div>
 
         <div class="slds-spinner_container" id="main-application-loader">
             <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
