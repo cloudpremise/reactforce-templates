@@ -28,7 +28,7 @@
     </flexiPageRegions>
     <masterLabel>rfPrototypeLtg</masterLabel>
     <template>
-        <name>runtime_commerce_oci:homeTemplateOneRegion</name>
+        <name>flexipage:defaultAppHomeTemplate</name>
     </template>
-    <type>HomePage</type>
+    <type>AppPage</type>
 </FlexiPage>
