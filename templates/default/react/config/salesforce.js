@@ -8,8 +8,8 @@ try{
 }
 
 function copySFResources(){
-    const staticResourceName = process.env.REACT_APP_STATIC_RESOURCE_PATH;
-    const salesforceDefault = process.env.REACT_APP_SF_REPO_PATH+"force-app/main/default";
+    const staticResourceName = "CustomerPortal";
+    const salesforceDefault = "../../force-app/main/default";
     const salesforcePath = path.relative(process.cwd(), path.join(salesforceDefault+"/staticresources/"+staticResourceName));
     // const salesforcePagePath = path.relative(process.cwd(), path.join(salesforceDefault+"/pages/"+paths.sfPublicName));
 

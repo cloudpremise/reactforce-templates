@@ -59,7 +59,7 @@ public with sharing class rfPrototypeCtrl {
         System.debug('params:'+params);
         System.debug('headers:'+headers);
 
-        String response = '{"response": "Test Message"}';
+        String response = '{"response": "Learn about Reactforce here."}';
         system.debug('callInternalApi response:'+response);
         return response;
     }
