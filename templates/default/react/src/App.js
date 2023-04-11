@@ -12,10 +12,10 @@ function App() {
     }
     return (
         <div className="App">
-            <header className="App-header">
-                <img style={{maxWidth: "200px"}} src={getBaseUrl()+logo} className="App-logo" alt="logo" />
+            <header className="App-header" style={{paddingTop: "100px"}}>
+                <img style={{maxWidth: "400px"}} src={getBaseUrl()+logo} className="App-logo" alt="logo" />
                 <p>
-                    Edit <code>src/App.jsx</code> and save to reload.
+                    Edit <code>src/App.js</code> and save to reload.
                 </p>
                 <a
                     className="App-link"
