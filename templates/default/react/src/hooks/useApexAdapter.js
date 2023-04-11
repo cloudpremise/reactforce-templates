@@ -7,7 +7,8 @@ const useApexAdapter = (params, justData = false, callBack = null) => {
         loading: false,
         callApi: true,
     });
-    let [data, setData] = React.useState({
+    // eslint-disable-next-line
+    let [data, setData] = React.useState<Object>({
         response: null
     });
     function getData(){
