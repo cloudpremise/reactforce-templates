@@ -26,26 +26,15 @@ public with sharing class rfPrototypeCtrl {
     }
 
     public PageReference rerenderPage() {
-        //This can be called from reactforce - but doesn't seem to trigger the rerender
-        //However if needing to call server side logic, this is a good use case
-        //check the code in PRIV_SCRUOverride to see the implementation
-        //it is based upon having an action function on the hosting vfpage
-
         System.debug('hello from controllerMethod');
         System.debug('ApexPages.currentPage():'+Apexpages.currentPage());
-        //return null;
 
         Pagereference newLink = new PageReference('/apex/rfPrototypeVf');
         newLink.setRedirect(true);
         return newLink;
-        //return new PageReference('/apex/');
     }
 
     public static void logControllerInfo(){
-        //System.debug('rfPrototypeCtrl()');
-        // System.debug('M2_PackageUtil.isRunningInNamespace():'+M2_PackageUtil.isRunningInNamespace());
-        // System.debug('M2_PackageUtil.isRunningInManagedPackage():'+M2_PackageUtil.isRunningInManagedPackage());
-        // System.debug('M2_PackageUtil.getPackageNamespace():'+M2_PackageUtil.getPackageNamespace());
         System.debug('UserInfo.getUserId:'+UserInfo.getUserId());
         System.debug('UserInfo.getProfileId:'+UserInfo.getProfileId());
     }

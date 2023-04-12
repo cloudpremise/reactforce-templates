@@ -2,11 +2,10 @@ import React from "react";
 import apexAdapter from "../ApexAdapter";
 
 const namespace: any = process.env.REACT_APP_SFDC_NAMESPACE;
-const useApexAdapter = (params: any, justData = false, callBack: Function = () => {}) => {
+const useApexAdapter = (params: any, justData = false) => {
     const [state, setState] = React.useState({
         loading: false,
         callApi: true,
-        response: null
     });
     let [data, setData] = React.useState<any>({
         response: null
@@ -28,9 +27,6 @@ const useApexAdapter = (params: any, justData = false, callBack: Function = () =
             };
             setAdapterState(newState);
             setData(data);
-            if(callBack !== null){
-                callBack(data);
-            }
         });
     }
 
@@ -50,9 +46,6 @@ const useApexAdapter = (params: any, justData = false, callBack: Function = () =
             ...newState
         };
         setState(newState);
-    }
-    if(callBack !== null){
-        return [ state.loading, state, setAdapterState ];
     }
     return [ state.loading, data, state, setAdapterState ];
 }

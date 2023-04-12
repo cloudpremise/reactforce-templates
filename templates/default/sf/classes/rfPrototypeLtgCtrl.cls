@@ -48,26 +48,17 @@ global with sharing class rfPrototypeLtgCtrl {
     }
 
     public PageReference rerenderPage() {
-        //This can be called from reactforce - but doesn't seem to trigger the rerender
-        //However if needing to call server side logic, this is a good use case
-        //check the code in PRIV_SCRUOverride to see the implementation
-        //it is based upon having an action function on the hosting vfpage
 
         System.debug('hello from controllerMethod');
         System.debug('ApexPages.currentPage():'+Apexpages.currentPage());
-        //return null;
 
         Pagereference newLink = new PageReference('/apex/rfPrototypeLtg');
         newLink.setRedirect(true);
         return newLink;
-        //return new PageReference('/apex/');
     }
 
     public static void logControllerInfo(){
         System.debug('rfPrototypeLtgCtrl()');
-        // System.debug('M2_PackageUtil.isRunningInNamespace():'+M2_PackageUtil.isRunningInNamespace());
-        // System.debug('M2_PackageUtil.isRunningInManagedPackage():'+M2_PackageUtil.isRunningInManagedPackage());
-        // System.debug('M2_PackageUtil.getPackageNamespace():'+M2_PackageUtil.getPackageNamespace());
         System.debug('UserInfo.getUserId:'+UserInfo.getUserId());
         System.debug('UserInfo.getProfileId:'+UserInfo.getProfileId());
     }
@@ -82,7 +73,7 @@ global with sharing class rfPrototypeLtgCtrl {
         System.debug('params:'+params);
         System.debug('headers:'+headers);
 
-        String response = '{"response": "Test Message"}';
+        String response = '{"response": "Learn about Reactforce here."}';
         system.debug('callInternalApi response:'+response);
         return response;
     }
