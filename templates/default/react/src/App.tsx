@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import useApexAdapter from "./hooks/useApexAdapter";
+import { prepareInlineAdapter } from "./ApexAdapter";
+prepareInlineAdapter();
 
 declare const window: Window & typeof globalThis & {
     inlineApexAdaptor: any
