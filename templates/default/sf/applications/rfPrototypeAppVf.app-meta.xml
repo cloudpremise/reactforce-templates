@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>rfPrototypeVf</defaultLandingTab>
+    <description>Visual force app to preview react component rendering in classic experience.</description>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>rfPrototypeAppVf</label>
+    <tabs>rfPrototypeVf</tabs>
+</CustomApplication>
