@@ -6,7 +6,7 @@ prepareInlineAdapter();
 
 function App() {
     const [loading, state] = useApexAdapter({});
-    function getBaseUrl(){
+    function getSFResourcesPath(){
         if(process.env.NODE_ENV === "development"){
             return "";
         }
@@ -15,7 +15,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header" style={{paddingTop: "100px"}}>
-                <img style={{maxWidth: "400px"}} src={getBaseUrl()+logo} className="App-logo" alt="logo" />
+                <img style={{maxWidth: "400px"}} src={getSFResourcesPath()+logo} className="App-logo" alt="logo" />
                 <p>
                     Edit <code>src/App.js</code> and save to reload.
                 </p>

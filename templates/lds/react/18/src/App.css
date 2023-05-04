@@ -1,0 +1,10 @@
+.App {
+  text-align: left;
+}
+.api-response {
+    color: #000;
+    text-align: left;
+}
+.slds-scope .datepicker .slds-dropdown-trigger {
+    display: block;
+}
