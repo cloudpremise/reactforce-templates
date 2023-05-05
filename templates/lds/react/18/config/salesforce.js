@@ -11,7 +11,7 @@ function copySFResources(){
     const bundleId = process.env.REACT_APP_VERSION_NUMBER;
     const staticResourceName = "CustomerPortal";
     const salesforceDefault = "../../force-app/main/default";
-    const vfPageName = "rfPrototypeStandardVf.page";
+    const vfPageName = "rfPrototypeVf.page";
     const salesforcePath = path.relative(process.cwd(), path.join(salesforceDefault+"/staticresources/"+staticResourceName));
     const salesforcePagePath = path.relative(process.cwd(), path.join(salesforceDefault+"/pages/"+vfPageName));
     const salesforcePageSamplePath = path.relative(process.cwd(), path.join("./public/visualForce.page"));
