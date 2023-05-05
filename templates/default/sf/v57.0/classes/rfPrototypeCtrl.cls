@@ -4,6 +4,7 @@ public with sharing class rfPrototypeCtrl {
 
     public Boolean developmentMode {get;set;}
     public String bundleDomain {get;set;}
+    public String bundleId {get;set;}
     public String sessionId {get;set;}
     public Boolean userInterfacePreview {get;set;}
     public Boolean advancedConfiguration {get;set;}
@@ -18,11 +19,19 @@ public with sharing class rfPrototypeCtrl {
         this.sobj = stdController.getRecord();
         this.sObjId = stdController.getId();
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
+        this.checkBundleId();
     }
     public rfPrototypeCtrl(){
         System.debug('rfPrototypeCtrl()');
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
         sessionId = rfPrototypeCtrl.getSessionId();
+        this.checkBundleId();
+    }
+
+    private void checkBundleId(){
+        bundleId = '.reactforce1';
+        bundleId = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleId')) ? ApexPages.currentPage().getParameters().get('bundleId') : bundleId;
+        System.debug('bundleId:'+bundleId);
     }
 
     public PageReference rerenderPage() {

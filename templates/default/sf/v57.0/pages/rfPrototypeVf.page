@@ -20,6 +20,7 @@
                 'resources': '{!$Resource.ReactforceAssets}',
                 'landingResources': '{!$Resource.CustomerPortal}',
                 'bundleDomain': '{!bundleDomain}',
+                'bundleId': '{!bundleId}',
             };
 
         </script>
