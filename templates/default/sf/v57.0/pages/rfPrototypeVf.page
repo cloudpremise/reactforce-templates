@@ -37,12 +37,12 @@
 
         <!-- Load the app from the bundle domain -->
         <apex:outputPanel rendered="{!NOT(ISBLANK(bundleDomain))}">
-            <script type="text/javascript" src="{!bundleDomain + '/assets/js/app.main.js'}"></script>
+            <script type="text/javascript" src="{!bundleDomain + '/assets/js/app.main.REACT_APP_VERSION_NUMBER.js'}"></script>
         </apex:outputPanel>
 
         <!-- Load the app from the static resource -->
         <apex:outputPanel rendered="{!(ISBLANK(bundleDomain))}">
-            <script type="text/javascript" src="{!URLFOR($Resource.CustomerPortal, 'assets/js/app.main.js')}"></script>
+            <script type="text/javascript" src="{!URLFOR($Resource.CustomerPortal, 'assets/js/app.main.REACT_APP_VERSION_NUMBER.js')}"></script>
         </apex:outputPanel>
 
     </body>
