@@ -11,16 +11,16 @@ function copySFResources(){
     const bundleId = process.env.REACT_APP_VERSION_NUMBER;
     const staticResourceName = "CustomerPortal";
     const salesforceDefault = "../../force-app/main/default";
-    const vfPageName = "rfPrototypeVf.page";
+    // const vfPageName = "rfPrototypeVf.page";
     const salesforcePath = path.relative(process.cwd(), path.join(salesforceDefault+"/staticresources/"+staticResourceName));
-    const salesforcePagePath = path.relative(process.cwd(), path.join(salesforceDefault+"/pages/"+vfPageName));
-    const salesforcePageSamplePath = path.relative(process.cwd(), path.join("./public/visualForce.page"));
+    // const salesforcePagePath = path.relative(process.cwd(), path.join(salesforceDefault+"/pages/"+vfPageName));
+    // const salesforcePageSamplePath = path.relative(process.cwd(), path.join("./public/visualForce.page"));
     
-    if (fs.existsSync(salesforcePagePath) && fs.existsSync(salesforcePageSamplePath)){
-        let sfPageContents = fs.readFileSync(salesforcePageSamplePath, "utf8");
-        sfPageContents = sfPageContents.replace(/REACT_APP_VERSION_NUMBER/g, () => {return process.env.REACT_APP_VERSION_NUMBER;});
-        fs.writeFileSync(salesforcePagePath, sfPageContents);
-    }
+    // if (fs.existsSync(salesforcePagePath) && fs.existsSync(salesforcePageSamplePath)){
+    //     let sfPageContents = fs.readFileSync(salesforcePageSamplePath, "utf8");
+    //     sfPageContents = sfPageContents.replace(/REACT_APP_VERSION_NUMBER/g, () => {return process.env.REACT_APP_VERSION_NUMBER;});
+    //     fs.writeFileSync(salesforcePagePath, sfPageContents);
+    // }
 
     
     const appMainJs = path.relative(process.cwd(), path.join("./public/assets/js/app.main."+bundleId+".js"));;
