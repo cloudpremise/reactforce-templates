@@ -7,12 +7,19 @@ import InlineIcon from "./components/Icons/InlineIcon";
 import comboboxFilterAndLimit from '@salesforce/design-system-react/components/combobox/filter';
 import Combobox from '@salesforce/design-system-react/components/combobox';
 import Datepicker from '@salesforce/design-system-react/components/date-picker';
+import Timepicker from '@salesforce/design-system-react/components/time-picker'; 
 import Button from '@salesforce/design-system-react/components/button';
+import Radio from '@salesforce/design-system-react/components/radio'; 
+import Checkbox from '@salesforce/design-system-react/components/checkbox';
+import Tooltip from '@salesforce/design-system-react/components/tooltip';
+import Textarea from '@salesforce/design-system-react/components/textarea'; 
 
 import GlobalNavigationBar from '@salesforce/design-system-react/components/global-navigation-bar'; 
 import GlobalNavigationBarRegion from '@salesforce/design-system-react/components/global-navigation-bar/region';
 import GlobalNavigationBarLink from '@salesforce/design-system-react/components/global-navigation-bar/link';
 import AppLauncher from '@salesforce/design-system-react/components/app-launcher';
+import Table from "./components/Table";
+import Details from "./components/Details";
 
 import useApexAdapter from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
@@ -62,11 +69,11 @@ function App() {
         },
     }));
     const [loading, apexState] = useApexAdapter({});
-    const selection: any = [accountsWithIcon[0], accountsWithIcon[1]];
     const [state, setState] = React.useState({
         inputValue: '',
-		selection: selection,
+		selection: [accountsWithIcon[0], accountsWithIcon[1]],
         value: '',
+        singleSelection: []
     });
     function getSFResourcesPath(){
         return (window.hasOwnProperty('inlineApexAdaptor') ? window.inlineApexAdaptor.resources+'/': '');
@@ -121,18 +128,26 @@ function App() {
                                             iconPosition="left"
                                         />
                                     }
-                                    label="Input Label"
+                                    label="Input with Tooltip and Left Icon"
+                                    fieldLevelHelpTooltip={
+                                        <Tooltip
+                                            id="field-level-help-tooltip"
+                                            align="top left"
+                                            content="Some helpful information"
+                                        />
+                                    }
                                 />
                             </div>
                             <div className="slds-col slds-size_1-of-4">
                                 <Input
-                                    label="Input Label"
+                                    label="Input with Error Message"
                                     required
                                     errorText="Error Message"
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4">
-                                <br />
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Radio id="radioId1" name="sampleRadio" labels={{ label: 'Radio Label' }} />
+                                <Radio id="radioId2" name="sampleRadio" labels={{ label: 'Radio Label2' }} />
                             </div>
                         </div>
                         <div className="slds-grid slds-gutters">
@@ -219,6 +234,55 @@ function App() {
                                     value={state.value}
                                 />
                             </div>
+                            <div className="slds-col slds-size_1-of-4 datepicker">
+                                <Timepicker
+                                    label="Time"
+                                    stepInMinutes={30}
+                                    onDateChange={(date: any) => {
+                                        console.log('onDateChange ', date);
+                                    }}
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Checkbox
+                                    assistiveText={{
+                                        label: 'Default',
+                                    }}
+                                    id="checkbox-example"
+                                    labels={{
+                                        label: 'Default',
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className="slds-grid slds-gutters">
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Textarea id="unique-id-1" label="Textarea Label" />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Input id="counter-input-1" label="Counter" variant="counter" />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                            <Combobox
+                                id="combobox-readonly-single"
+                                events={{
+                                    onSelect: (event: any, data: any) => {
+                                        setState({
+                                            ...state,
+                                            inputValue: '',
+                                            singleSelection: data.selection,
+                                        });
+                                    },
+                                }}
+                                labels={{
+                                    label: 'Single Select',
+                                }}
+                                options={accounts}
+                                selection={state.singleSelection}
+                                value={state.inputValue}
+                                variant="readonly"
+                            />
+                            </div>
                         </div>
                         <h1 className="slds-text-title_caps slds-p-vertical_large">
                             Icons
@@ -296,6 +360,9 @@ function App() {
                                 null
                         }
                     </p>
+                    <br />
+                    <Table />
+                    <Details />
                 </div>
             </div>
         </IconSettings>

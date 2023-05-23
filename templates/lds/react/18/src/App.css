@@ -8,3 +8,134 @@
 .slds-scope .datepicker .slds-dropdown-trigger {
     display: block;
 }
+.object-card-details li {
+    display: inline-block;
+    padding: 0px 2rem;
+}
+.object-card-details li:first-child {
+    padding-left: 0px;
+}
+.slds-scope div .card-border {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    border: 1px solid rgb(201, 201, 201) !important;
+    border-radius: 0.25rem;
+}
+.slds-scope div .dropdown-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    top: 2px;
+    border-left: 0px;
+}
+.slds-scope .dropdown-more-button button {
+    border-left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #fff;
+}
+.slds-scope button.dropdown-more-button-adjacent {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;    
+}
+.slds-card-details-header .slds-card__header {
+    background-color: #f3f3f3;
+    margin-bottom: 0px;
+    padding-bottom: 0.75rem;
+    border-radius: 0.25rem 0.25rem 0px 0px;
+}
+.slds-camaign-history-card .slds-card__body {
+    margin-top: 0px;
+}
+
+.slds-scope .readonly_mode .slds-input__icon_right {
+    pointer-events: all !important;
+}
+.slds-scope .readonly_mode .slds-input-has-icon_right.slds-input-has-icon:hover {
+    cursor: pointer;
+}
+.slds-scope .readonly_mode .slds-input-has-icon_right.slds-input-has-icon:hover .slds-input__icon_right path {
+    fill: #706e6b;
+}
+.slds-scope .readonly_mode .slds-form-element {
+    border-bottom: 1px solid #e5e5e5;
+}
+.slds-scope .readonly_mode .slds-form-element:hover {
+    cursor: pointer;
+}
+.slds-scope .readonly_mode .slds-form-element:hover .slds-input__icon_right path {
+    fill: #706e6b;    
+}
+.slds-scope .readonly_mode .slds-form-element input:focus, .slds-scope .readonly_mode .slds-form-element input, 
+.slds-scope .readonly_mode .slds-form-element .slds-textarea, .slds-scope .readonly_mode .slds-form-element .slds-input {
+    border: none !important;
+    box-shadow: none !important;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-input__icon_right:hover {
+    fill: #b4b2b0;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container {
+    border: none;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container input {
+    padding-left: 0px !important;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container .slds-input__icon_right,
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container .slds-combobox__input-entity-icon {
+    display: none;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-textarea {
+    padding: 5px 0px 0px 0px;
+    resize: none;
+    line-height: 0.6;    
+}
+.slds-scope .readonly_mode .slds-form-element .slds-checkbox_faux {
+    box-shadow: none !important;
+}
+.slds-scope .readonly_mode .slds-required {
+    display: none;
+}
+.slds-scope .slds-form-card .slds-card__footer {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    bottom: 0px;
+    background: rgba(236, 235, 234, 0.9);
+    right: 0;
+    width: initial;
+    z-index: 4;
+}
+.slds-scope .slds-form-card.slds-card {
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+}
+.slds-scope .slds-form-card.slds-card .slds-card__body {
+    margin-bottom: 0px;    
+}
+.slds-scope .slds-form-card.slds-card .slds-card__header{
+    padding-top: 0px;
+}
+.slds-scope .slds-form-card-no-header .slds-card__header {
+    display: none;
+}
+.slds-scope .slds-button.card-hierarchy-icon {
+    background-color: #fff;
+    margin-top: -10px;
+}
+.slds-display_flex {
+    display: flex;
+}
+.slds-display_inline-flex {
+    display: inline-flex;
+}
+.slds-justify_content-center {
+    justify-content: center;
+}
+.slds-justify_content-space-between {
+    justify-content: space-between;
+}
+.slds-align_items-center {
+    align-items: center;
+}
