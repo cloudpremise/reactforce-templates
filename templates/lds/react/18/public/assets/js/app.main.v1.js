@@ -1,13 +1,13 @@
 (function(){
     var reactBundleId = ".reactforce1";
-    if(window.inlineApexAdaptor.hasOwnProperty("bundleId") && window.inlineApexAdaptor.bundleId.length > 0){
-        var bundleId = window.inlineApexAdaptor.bundleId;
-        var bundleNumber = bundleId.replace(/^\D+/g, '');
-        var reactBundleNumber = reactBundleId.replace(/^\D+/g, '');
-        if(bundleNumber > reactBundleNumber){
-            reactBundleId = bundleId;
-        }
-    }
+    // if(window.inlineApexAdaptor.hasOwnProperty("bundleId") && window.inlineApexAdaptor.bundleId.length > 0){
+    //     var bundleId = window.inlineApexAdaptor.bundleId;
+    //     var bundleNumber = bundleId.replace(/^\D+/g, '');
+    //     var reactBundleNumber = reactBundleId.replace(/^\D+/g, '');
+    //     if(bundleNumber > reactBundleNumber){
+    //         reactBundleId = bundleId;
+    //     }
+    // }
     var bundleConfig = {
         domain: window.inlineApexAdaptor.landingResources,
         entryPoint: reactBundleId
