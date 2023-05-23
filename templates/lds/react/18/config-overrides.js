@@ -5,6 +5,9 @@ const { processMainAppJs } = require("./config/salesforce");
 module.exports = function override(config, env) {
     const isEnvDevelopment = env === 'development';
     const isEnvProduction = env === 'production';
+    const string = "abcdefghijklmnopqrstuvwxyz";
+    const shortCode = Array(8).join().split(',').map(function() { return string.charAt(Math.floor(Math.random() * string.length)); }).join('');
+    process.env.REACT_APP_BUNDLE_ID = "."+shortCode;
     processMainAppJs();
 
     //Custom work for salesforce
