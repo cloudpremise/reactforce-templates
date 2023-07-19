@@ -66,7 +66,7 @@ global with sharing class rfPrototypeLtgCtrl {
     @RemoteAction
     @AuraEnabled
     public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
-        System.debug('rfPrototypeCtrl.callInternalApi()');
+        System.debug('rfPrototypeLtgCtrl.callInternalApi()');
         System.debug('method:'+method);
         System.debug('requestURI:'+requestURI);
         System.debug('requestEntityStr:'+requestEntityStr);
