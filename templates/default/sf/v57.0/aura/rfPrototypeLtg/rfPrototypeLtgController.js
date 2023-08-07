@@ -64,6 +64,12 @@
             });
         });
         $A.enqueueAction(action);
+        // Force the queue to execute the actions immediately
+        window.setTimeout(
+            $A.getCallback(function() {
+                component.set("v.visible", true);
+            }), 10
+        );
     },
     
     handleError: function(component, error, helper) {
