@@ -58,8 +58,20 @@
         var action = component.get("c.callInternalApi");
         action.setParams(payload.params);
         action.setCallback(this, function(response){
+            var state = response.getState();
+            var data = response.getReturnValue();
+            if (state === "ERROR") {
+                var errors = response.getError();
+                var error = "Unknown error";
+                if (errors) {
+                    if (errors[0] && errors[0].message) {
+                        error = errors[0].message;
+                    }
+                }
+                data = error;
+            }
             container.message({ //Send message to react app with data and callback id so that actual callback function is triggered.
-                data: response.getReturnValue(),
+                data: data,
                 callbackId: callbackId
             });
         });
