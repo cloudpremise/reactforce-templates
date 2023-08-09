@@ -139,3 +139,6 @@
 .slds-align_items-center {
     align-items: center;
 }
+.customize-combobox .slds-is-selected .slds-media__figure {
+    display: none;
+}

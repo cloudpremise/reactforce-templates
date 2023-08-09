@@ -3,12 +3,12 @@ import './App.css';
 
 import Input from '@salesforce/design-system-react/components/input';
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-import InlineIcon from "../components/Icons/InlineIcon";
+import InlineIcon from "./components/Icons/InlineIcon";
 import comboboxFilterAndLimit from '@salesforce/design-system-react/components/combobox/filter';
 import Combobox from '@salesforce/design-system-react/components/combobox';
 import Datepicker from '@salesforce/design-system-react/components/date-picker';
 import Timepicker from '@salesforce/design-system-react/components/time-picker'; 
-import Button from '../components/Button';
+import Button from './components/Button';
 import Radio from '@salesforce/design-system-react/components/radio'; 
 import Checkbox from '@salesforce/design-system-react/components/checkbox';
 import Tooltip from '@salesforce/design-system-react/components/tooltip';
