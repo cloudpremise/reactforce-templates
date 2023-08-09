@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Button from '@salesforce/design-system-react/components/button';
+import Button from './Button';
 import ButtonGroup from '@salesforce/design-system-react/components/button-group';
-import DataTable from '@salesforce/design-system-react/components/data-table';
+import DataTable from './DataTable';
 import DataTableColumn from '@salesforce/design-system-react/components/data-table/column';
-import DataTableCell from '@salesforce/design-system-react/components/data-table/cell';
-import DataTableRowActions from '@salesforce/design-system-react/components/data-table/row-actions';
-import Dropdown from '@salesforce/design-system-react/components/menu-dropdown';
-import DropdownTrigger from '@salesforce/design-system-react/components/menu-dropdown/button-trigger';
-import Icon from '@salesforce/design-system-react/components/icon';
+import DataTableCell from './DataTable/Cell';
+import DataTableRowActions from './DataTable/RowActions';
+import Dropdown from '../components/MenuDropdown';
+import DropdownTrigger from '../components/MenuDropdown/ButtonTrigger';
+import InlineIcon from "./Icons/InlineIcon";
 import PageHeader from '@salesforce/design-system-react/components/page-header';
 import PageHeaderControl from '@salesforce/design-system-react/components/page-header/control';
 import DataTableInteractiveLink from '@salesforce/design-system-react/components/data-table/interactive-link';
@@ -258,6 +258,7 @@ const Table = (props) => {
                             iconCategory="utility"
                             iconName="settings"
                             iconVariant="more"
+                            dropdownTriggerIcon={true}
                         />
                     </DropdownTrigger>
                 </Dropdown>
@@ -319,7 +320,7 @@ const Table = (props) => {
                     <Button
                         assistiveText={{ icon: 'Filters' }}
                         iconCategory="utility"
-                        iconName="filterList"
+                        iconName="filterlist"
                         iconVariant="border-filled"
                         variant="icon"
                     />
@@ -340,10 +341,11 @@ const Table = (props) => {
             <PageHeader
                 onRenderActions={actions}
                 icon={
-                    <Icon
+                    <InlineIcon
                         assistiveText={{ label: 'User' }}
                         category="standard"
                         name="lead"
+                        size="medium"
                     />
                 }
                 info="10 items • sorted by name"

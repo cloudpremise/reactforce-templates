@@ -3,12 +3,12 @@ import Tabs from '@salesforce/design-system-react/components/tabs';
 import TabsPanel from '@salesforce/design-system-react/components/tabs/panel';
 import Card from '@salesforce/design-system-react/components/card';
 import Icon from '@salesforce/design-system-react/components/icon';
-import Button from '@salesforce/design-system-react/components/button'; 
-import Dropdown from '@salesforce/design-system-react/components/menu-dropdown';
-import DropdownTrigger from '@salesforce/design-system-react/components/menu-dropdown/button-trigger';
-import DataTable from '@salesforce/design-system-react/components/data-table';
+import Button from './Button';
+import Dropdown from '../components/MenuDropdown';
+import DropdownTrigger from '../components/MenuDropdown/ButtonTrigger';
+import DataTable from './DataTable';
 import DataTableColumn from '@salesforce/design-system-react/components/data-table/column';
-import DataTableRowActions from '@salesforce/design-system-react/components/data-table/row-actions';
+import DataTableRowActions from './DataTable/RowActions';
 import Input from '@salesforce/design-system-react/components/input';
 import Combobox from '@salesforce/design-system-react/components/combobox';
 import InlineIcon from "./Icons/InlineIcon";
@@ -204,7 +204,7 @@ const Details = (props) => {
                 header={(
                     <div class="slds-media slds-media_center slds-has-flexi-truncate">
                         <div class="slds-media__figure">
-                            <Icon category="standard" name="account" size="medium" />
+                            <InlineIcon category="standard" name="account" size="medium" />
                         </div>
                         <div class="slds-media__body">
                             <h2>Contact</h2>
@@ -308,13 +308,13 @@ const Details = (props) => {
                                 <Card
                                     className="slds-card-details-header card-border"
                                     heading="Duplicates (0)"
-                                    icon={<Icon category="standard" name="merge" size="small" />}
+                                    icon={<InlineIcon category="standard" name="merge" size="small" />}
                                 >
                                 </Card>
                                 <Card
                                     className="slds-card-details-header card-border"
                                     heading="Opportunities (0)"
-                                    icon={<Icon category="standard" name="opportunity" size="small" />}
+                                    icon={<InlineIcon category="standard" name="opportunity" size="small" />}
                                     headerActions={[
                                         <Button
                                             label="New"
@@ -326,7 +326,7 @@ const Details = (props) => {
                                 <Card
                                     className="slds-card-details-header card-border"
                                     heading="Cases (0)"
-                                    icon={<Icon category="standard" name="case" size="small" />}
+                                    icon={<InlineIcon category="standard" name="case" size="small" />}
                                     headerActions={[
                                         <Button
                                             label="New"
@@ -338,7 +338,7 @@ const Details = (props) => {
                                 <Card
                                     className="slds-card-details-header slds-camaign-history-card card-border"
                                     heading="Campaign History (3)"
-                                    icon={<Icon category="standard" name="campaign" size="small" />}
+                                    icon={<InlineIcon category="standard" name="campaign" size="small" />}
                                     headerActions={[
                                         <Button
                                             label="Add to Campaign"
@@ -382,14 +382,14 @@ const Details = (props) => {
                                             ]}
                                             menuPosition="overflowBoundaryElement"
                                             onAction={handleRowAction}
-                                            dropdown={<Dropdown />}
+                                            dropdown={<Dropdown showButtonIcon />}
                                         />
                                     </DataTable>
                                 </Card>
                                 <Card
                                     className="slds-card-details-header card-border"
                                     heading="Notes & Attachments (0)"
-                                    icon={<Icon category="standard" name="file" size="small" />}
+                                    icon={<InlineIcon category="standard" name="file" size="small" />}
                                     headerActions={[
                                         <Button
                                             label="Upload Files"

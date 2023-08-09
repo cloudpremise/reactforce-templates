@@ -3,16 +3,17 @@ import './App.css';
 
 import Input from '@salesforce/design-system-react/components/input';
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-import InlineIcon from "./components/Icons/InlineIcon";
+import InlineIcon from "../components/Icons/InlineIcon";
 import comboboxFilterAndLimit from '@salesforce/design-system-react/components/combobox/filter';
 import Combobox from '@salesforce/design-system-react/components/combobox';
 import Datepicker from '@salesforce/design-system-react/components/date-picker';
 import Timepicker from '@salesforce/design-system-react/components/time-picker'; 
-import Button from '@salesforce/design-system-react/components/button';
+import Button from '../components/Button';
 import Radio from '@salesforce/design-system-react/components/radio'; 
 import Checkbox from '@salesforce/design-system-react/components/checkbox';
 import Tooltip from '@salesforce/design-system-react/components/tooltip';
 import Textarea from '@salesforce/design-system-react/components/textarea'; 
+import Icon from '@salesforce/design-system-react/components/icon';
 
 import GlobalNavigationBar from '@salesforce/design-system-react/components/global-navigation-bar'; 
 import GlobalNavigationBarRegion from '@salesforce/design-system-react/components/global-navigation-bar/region';
@@ -103,7 +104,40 @@ function App() {
             ...state,
             value: data.date
         });
-	};
+	}
+    function onRenderMenuItem(props){
+        const {assistiveText, selected, option} = props;
+        return (
+            <span
+                className={'slds-truncate '+ option.disabled ? '' : 'slds-disabled-text'}
+                title={option.label}
+            >
+                {
+                    selected ?
+                        <Icon
+                            assistiveText={{ label: option.label }}
+                            category="utility"
+                            icon={require("@salesforce/design-system-react/icons/utility/check").default}
+                            name='check'
+                            size="x-small"
+                            className={"slds-listbox__icon-selected slds-listbox__icon-selected-custom slds-m-right_xx-small"}
+                        />
+                    :
+                    null
+                }
+                {selected ? (
+                    <span className="slds-assistive-text">
+                        {assistiveText.optionSelectedInMenu}
+                    </span>
+                ) : null}{' '}
+                {option.type === 'deselect' ? (
+                    <em>{option.label}</em>
+                ) : (
+                    option.label
+                )}
+            </span>
+        )
+    }
     return (
         <IconSettings iconPath={getSFResourcesPath()+"assets/icons"}>
             <GlobalNavigationBar>
@@ -131,7 +165,7 @@ function App() {
             </GlobalNavigationBar>
             <div className="App">
                 <div className="slds-p-around_medium slds-size_1-of-1">
-                    <h1 className="slds-text-title_caps slds-p-vertical_large">
+                    <h1 className="slds-text-title_caps slds-p-vertical_large slds-p-top_none">
                         Inputs
                     </h1>
                     <div className="slds-grid slds-gutters">
@@ -304,8 +338,25 @@ function App() {
                             }}
                             options={accounts}
                             selection={state.singleSelection}
+                            onRenderMenuItem={onRenderMenuItem}
+                            classNameContainer={"customize-combobox"}
                             value={state.inputValue}
                             variant="readonly"
+                            input={{
+                                props: {
+                                    iconRight: (
+                                        <InlineIcon
+                                            category="utility"
+                                            name="down"
+                                            iconPosition="right"
+                                            size="x-small"
+                                            color="grey"
+                                            inputIcon
+                                            combobox
+                                        />
+                                    )
+                                }
+                            }}
                         />
                         </div>
                     </div>
@@ -379,8 +430,10 @@ function App() {
                 </div>
                 <p className='slds-p-horizontal_medium api-response'>
                     {
-                        loading === false && apexState.response !== null ?
-                            apexState.response
+                        loading === false && apexState.message !== null ?
+                            <a href="https://cloudpremise.gitbook.io/reactforce/" rel="noreferrer" target="_blank" className="slds-text-heading_small slds-text-color_destructive">
+                                {apexState.message}
+                            </a>
                         :
                             null
                     }
