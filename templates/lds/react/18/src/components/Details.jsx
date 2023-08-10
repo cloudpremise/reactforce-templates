@@ -12,7 +12,7 @@ import DataTableRowActions from './DataTable/RowActions';
 import Input from '@salesforce/design-system-react/components/input';
 import Combobox from '@salesforce/design-system-react/components/combobox';
 import InlineIcon from "./Icons/InlineIcon";
-import ExpandableSection from '@salesforce/design-system-react/components/expandable-section';
+import ExpandableSection from './ExpandableSection';
 import RichTextEditor from "./RichTextEditor";
 import Textarea from '@salesforce/design-system-react/components/textarea';
 
@@ -405,7 +405,7 @@ const Details = (props) => {
                                                 <input ref={fileUploadRef} type="file" className="slds-file-selector__input slds-assistive-text" accept="image/png" id="file-upload-attachments" aria-labelledby="file-selector-primary-label-105 file-selector-secondary-label106" />
                                                 <label className="slds-file-selector__body" htmlFor="file-upload-attachments">
                                                     <span className="slds-file-selector__button slds-button slds-button_neutral">
-                                                        <Icon
+                                                        <InlineIcon
                                                             className="slds-button__icon slds-button__icon_left"
                                                             category="utility"
                                                             name="upload"
