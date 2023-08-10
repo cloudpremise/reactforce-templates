@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import shortid from 'shortid';
 
 import Dialog from '@salesforce/design-system-react/components/utilities/dialog';
-import CalendarWrapper from '@salesforce/design-system-react/components/date-picker/private/calendar-wrapper';
+import CalendarWrapper from './CalendarWrapper';
 import InputIcon from '../Icons/InlineIcon';
 import Input from '../Input';
 
