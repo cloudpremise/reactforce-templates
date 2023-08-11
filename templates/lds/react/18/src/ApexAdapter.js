@@ -81,6 +81,29 @@ const getSessionId = () => {
     return sessionId;
 };
 
-export { ApexAdapter, prepareInlineAdapter, getSessionId };
+let SampleApexAdapter = (method, route, data, params, headers, callback) => {
+    let config = { 
+        buffer: true, 
+        escape: false, 
+        timeout: 30000
+    }
+    try{
+
+        inlineApexAdaptor.Visualforce.remoting.Manager.invokeAction(inlineApexAdaptor.callSampleInternalApi,
+                                                                    method,
+                                                                    route,
+                                                                    JSON.stringify(data),
+                                                                    JSON.stringify(params) || "",
+                                                                    JSON.stringify(headers) || "",
+                                                                    (result, event) =>{
+                                                                        callback(result, event);
+                                                                    },
+                                                                    config);        
+    } catch (e) {
+        console.log('e:',e);
+    }
+};
+
+export { ApexAdapter, prepareInlineAdapter, getSessionId, SampleApexAdapter };
 
 export default ApexAdapter;

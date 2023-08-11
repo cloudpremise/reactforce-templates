@@ -22,7 +22,7 @@ import AppLauncher from '@salesforce/design-system-react/components/app-launcher
 import Table from "./components/Table";
 import Details from "./components/Details";
 
-import useApexAdapter from "./hooks/useApexAdapter";
+import { useSampleAdapter } from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
 prepareInlineAdapter();
 
@@ -69,7 +69,7 @@ function App() {
             ),
         },
     }));
-    const [loading, apexState] = useApexAdapter({});
+    const [loading, apexState] = useSampleAdapter({});
     const [state, setState] = React.useState({
         inputValue: '',
 		selection: [accountsWithIcon[0], accountsWithIcon[1]],
@@ -139,67 +139,184 @@ function App() {
                     </GlobalNavigationBarRegion>
                 </GlobalNavigationBar>
                 <div className="App">
-                <div className="slds-p-around_medium slds-size_1-of-1">
-                    <h1 className="slds-text-title_caps slds-p-vertical_large slds-p-top_none">
-                        Inputs
-                    </h1>
-                    <div className="slds-grid slds-gutters">
-                        <div className="slds-col slds-size_1-of-4">
-                            <Input
-                                label="Input Label"
-                            />
+                    <div className="slds-p-around_medium slds-size_1-of-1">
+                        <h1 className="slds-text-title_caps slds-p-vertical_large">
+                            Inputs
+                        </h1>
+                        <div className="slds-grid slds-gutters">
+                            <div className="slds-col slds-size_1-of-4">
+                                <Input
+                                    label="Input Label"
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4">
+                                <Input
+                                    iconLeft={
+                                        <InlineIcon
+                                            assistiveText={{
+                                                icon: 'Search',
+                                            }}
+                                            name="search"
+                                            category="utility"
+                                            inputIcon
+                                            iconPosition="left"
+                                        />
+                                    }
+                                    label="Input with Tooltip and Left Icon"
+                                    fieldLevelHelpTooltip={
+                                        <Tooltip
+                                            id="field-level-help-tooltip"
+                                            align="top left"
+                                            content="Some helpful information"
+                                        />
+                                    }
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4">
+                                <Input
+                                    label="Input with Error Message"
+                                    required
+                                    errorText="Error Message"
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Radio id="radioId1" name="sampleRadio" labels={{ label: 'Radio Label' }} />
+                                <Radio id="radioId2" name="sampleRadio" labels={{ label: 'Radio Label2' }} />
+                            </div>
                         </div>
-                        <div className="slds-col slds-size_1-of-4">
-                            <Input
-                                iconLeft={
-                                    <InlineIcon
-                                        assistiveText={{
-                                            icon: 'Search',
-                                        }}
-                                        name="search"
-                                        category="utility"
-                                        inputIcon
-                                        iconPosition="left"
-                                    />
-                                }
-                                label="Input with Tooltip and Left Icon"
-                                fieldLevelHelpTooltip={
-                                    <Tooltip
-                                        id="field-level-help-tooltip"
-                                        align="top left"
-                                        content="Some helpful information"
-                                    />
-                                }
-                            />
+                        <div className="slds-grid slds-gutters">
+                            <div className="slds-col slds-size_1-of-4">
+                                <Combobox
+                                    labels={{
+                                        label: 'Search',
+                                        placeholder: 'Search Salesforce',
+                                    }}
+                                    multiple
+                                    options={comboboxFilterAndLimit({
+                                        inputValue: state.inputValue,
+                                        limit: 10,
+                                        options: accountsWithIcon,
+                                        selection: state.selection
+                                    })}
+                                    selection={state.selection}
+                                    value={state.inputValue}
+                                    input={{
+                                        props: {
+                                            iconRight: (
+                                                <InlineIcon
+                                                    category="utility"
+                                                    name="down"
+                                                    iconPosition="right"
+                                                    size="x-small"
+                                                    color="grey"
+                                                    inputIcon
+                                                    combobox
+                                                />
+                                            )
+                                        }
+                                    }}
+                                    events={{
+                                        onChange: (event: any, { value }: any) => {
+                                            setState({
+                                                ...state,
+                                                inputValue: value
+                                            });
+                                        },
+                                        onRequestRemoveSelectedOption: (event: any, data: any) => {
+                                            setState({
+                                                ...state,
+                                                inputValue: '',
+                                                selection: data.selection,
+                                            });
+                                        },
+                                        onSubmit: (event: any, { value }: any) => {
+                                            const selection: any = state.selection;
+                                            selection.push({
+                                                label: value,
+                                                icon: (
+                                                    <InlineIcon
+                                                        assistiveText={{ label: 'Account' }}
+                                                        category="standard"
+                                                        name="account"
+                                                    />
+                                                ),
+                                            });
+                                            setState({
+                                                ...state,
+                                                inputValue: '',
+                                                selection: selection,
+                                            });
+                                        },
+                                        onSelect: (event: any, data: any) => {
+                                            setState({
+                                                ...state,
+                                                inputValue: '',
+                                                selection: data.selection,
+                                            });
+                                        },
+                                    }}
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 datepicker">
+                                <Datepicker
+                                    labels={{
+                                        label: 'Date',
+                                    }}
+                                    onChange={(event: any, data: any) => {
+                                        handleChange(event, data);
+                                    }}
+                                    value={state.value}
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 datepicker">
+                                <Timepicker
+                                    label="Time"
+                                    stepInMinutes={30}
+                                    onDateChange={(date: any) => {
+                                        console.log('onDateChange ', date);
+                                    }}
+                                />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Checkbox
+                                    assistiveText={{
+                                        label: 'Default',
+                                    }}
+                                    id="checkbox-example"
+                                    labels={{
+                                        label: 'Default',
+                                    }}
+                                />
+                            </div>
                         </div>
-                        <div className="slds-col slds-size_1-of-4">
-                            <Input
-                                label="Input with Error Message"
-                                required
-                                errorText="Error Message"
-                            />
-                        </div>
-                        <div className="slds-col slds-size_1-of-4 slds-m-top_large">
-                            <Radio id="radioId1" name="sampleRadio" labels={{ label: 'Radio Label' }} />
-                            <Radio id="radioId2" name="sampleRadio" labels={{ label: 'Radio Label2' }} />
-                        </div>
-                    </div>
-                    <div className="slds-grid slds-gutters">
-                        <div className="slds-col slds-size_1-of-4">
+                        <div className="slds-grid slds-gutters">
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Textarea id="unique-id-1" label="Textarea Label" />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                                <Input id="counter-input-1" label="Counter" variant="counter" />
+                            </div>
+                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
                             <Combobox
-                                labels={{
-                                    label: 'Multiple Select',
-                                    placeholder: 'Select',
+                                id="combobox-readonly-single"
+                                events={{
+                                    onSelect: (event: any, data: any) => {
+                                        setState({
+                                            ...state,
+                                            inputValue: '',
+                                            singleSelection: data.selection,
+                                        });
+                                    },
                                 }}
-                                multiple
-                                options={comboboxFilterAndLimit({
-                                    inputValue: state.inputValue,
-                                    limit: 10,
-                                    options: accountsWithIcon,
-                                    selection: state.selection
-                                })}
-                                selection={state.selection}
+                                labels={{
+                                    label: 'Single Select',
+                                }}
+                                options={accounts}
+                                selection={state.singleSelection}
+                                onRenderMenuItem={onRenderMenuItem}
+                                classNameContainer={"customize-combobox"}
                                 value={state.inputValue}
+                                variant="readonly"
                                 input={{
                                     props: {
                                         iconRight: (
@@ -215,208 +332,89 @@ function App() {
                                         )
                                     }
                                 }}
-                                events={{
-                                    onChange: (event, { value }) => {
-                                        setState({
-                                            ...state,
-                                            inputValue: value
-                                        });
-                                    },
-                                    onRequestRemoveSelectedOption: (event, data) => {
-                                        setState({
-                                            ...state,
-                                            inputValue: '',
-                                            selection: data.selection,
-                                        });
-                                    },
-                                    onSubmit: (event, { value }) => {
-                                        setState({
-                                            inputValue: '',
-                                            selection: [
-                                                ...state.selection,
-                                                {
-                                                    label: value,
-                                                    icon: (
-                                                        <InlineIcon
-                                                            assistiveText={{ label: 'Account' }}
-                                                            category="standard"
-                                                            name="account"
-                                                        />
-                                                    ),
-                                                },
-                                            ],
-                                        });
-                                    },
-                                    onSelect: (event, data) => {
-                                        setState({
-                                            ...state,
-                                            inputValue: '',
-                                            selection: data.selection,
-                                        });
-                                    },
-                                }}
                             />
+                            </div>
                         </div>
-                        <div className="slds-col slds-size_1-of-4 datepicker">
-                            <Datepicker
-                                labels={{
-                                    label: 'Date',
+                        <h1 className="slds-text-title_caps slds-p-vertical_large">
+                            Icons
+                        </h1>
+                        <div className="slds-grid slds-gutters">
+                            <div className="slds-col_padded">
+                                <InlineIcon
+                                    assistiveText={{ label: 'Account' }}
+                                    category="standard"
+                                    name="account"
+                                    size="small"
+                                />
+                            </div>
+                            <div className="slds-col_padded">
+                                <InlineIcon
+                                    assistiveText={{ label: 'Account' }}
+                                    category="utility"
+                                    name="announcement"
+                                    size="small"
+                                />
+                            </div>
+                            <div className="slds-col_padded">
+                                <InlineIcon
+                                    assistiveText={{ label: 'Account' }}
+                                    category="action"
+                                    name="description"
+                                    size="small"
+                                />
+                            </div>
+                            <div className="slds-col_padded">
+                                <InlineIcon
+                                    assistiveText={{ label: 'Account' }}
+                                    category="doctype"
+                                    name="xml"
+                                    size="small"
+                                />
+                            </div>
+                            <div className="slds-col_padded">
+                                <InlineIcon
+                                    assistiveText={{ label: 'Account' }}
+                                    category="custom"
+                                    name="custom5"
+                                    size="small"
+                                />
+                            </div>
+                        </div>
+                        <h1 className="slds-text-title_caps slds-p-vertical_large">
+                            Buttons
+                        </h1>
+                        <div className="slds-x-small-buttons_horizontal">
+                            <Button label="Brand" variant="brand" />
+                            <Button
+                                disabled
+                                label="Disabled"
+                                onClick={() => {
+                                    console.log('Disabled Button Clicked');
                                 }}
-                                onChange={(event, data) => {
-                                    handleChange(event, data);
-                                }}
-                                value={state.value}
+                                variant="brand"
                             />
-                        </div>
-                        <div className="slds-col slds-size_1-of-4 datepicker">
-                            <Timepicker
-                                label="Time"
-                                stepInMinutes={30}
-                                onDateChange={(date, inputStr) => {
-                                    console.log('onDateChange ', date, ' inputStr: ', inputStr);
-                                }}
-                            />
-                        </div>
-                        <div className="slds-col slds-size_1-of-4 slds-m-top_large">
-                            <Checkbox
-                                assistiveText={{
-                                    label: 'Default',
-                                }}
-                                id="checkbox-example"
-                                labels={{
-                                    label: 'Default',
-                                }}
+                            <Button label="Destructive" variant="destructive" />
+                            <Button label="Outline Brand" variant="outline-brand" />
+                            <Button
+                                iconCategory="utility"
+                                iconName="download"
+                                iconPosition="left"
+                                label="Neutral Icon"
                             />
                         </div>
                     </div>
-                    <div className="slds-grid slds-gutters">
-                        <div className="slds-col slds-size_1-of-4 slds-m-top_large">
-                            <Textarea id="unique-id-1" label="Textarea Label" />
-                        </div>
-                        <div className="slds-col slds-size_1-of-4 slds-m-top_large">
-                            <Input id="counter-input-1" label="Counter" variant="counter" />
-                        </div>
-                        <div className="slds-col slds-size_1-of-4 slds-m-top_large">
-                        <Combobox
-                            id="combobox-readonly-single"
-                            events={{
-                                onSelect: (event, data) => {
-                                    setState({
-                                        ...state,
-                                        inputValue: '',
-                                        singleSelection: data.selection,
-                                    });
-                                },
-                            }}
-                            labels={{
-                                label: 'Single Select',
-                            }}
-                            options={accounts}
-                            selection={state.singleSelection}
-                            onRenderMenuItem={onRenderMenuItem}
-                            classNameContainer={"customize-combobox"}
-                            value={state.inputValue}
-                            variant="readonly"
-                            input={{
-                                props: {
-                                    iconRight: (
-                                        <InlineIcon
-                                            category="utility"
-                                            name="down"
-                                            iconPosition="right"
-                                            size="x-small"
-                                            color="grey"
-                                            inputIcon
-                                            combobox
-                                        />
-                                    )
-                                }
-                            }}
-                        />
-                        </div>
-                    </div>
-                    <h1 className="slds-text-title_caps slds-p-vertical_large">
-                        Icons
-                    </h1>
-                    <div className="slds-grid slds-gutters">
-                        <div className="slds-col_padded">
-                            <InlineIcon
-                                assistiveText={{ label: 'Account' }}
-                                category="standard"
-                                name="account"
-                                size="small"
-                            />
-                        </div>
-                        <div className="slds-col_padded">
-                            <InlineIcon
-                                assistiveText={{ label: 'Account' }}
-                                category="utility"
-                                name="announcement"
-                                size="small"
-                            />
-                        </div>
-                        <div className="slds-col_padded">
-                            <InlineIcon
-                                assistiveText={{ label: 'Account' }}
-                                category="action"
-                                name="description"
-                                size="small"
-                            />
-                        </div>
-                        <div className="slds-col_padded">
-                            <InlineIcon
-                                assistiveText={{ label: 'Account' }}
-                                category="doctype"
-                                name="xml"
-                                size="small"
-                            />
-                        </div>
-                        <div className="slds-col_padded">
-                            <InlineIcon
-                                assistiveText={{ label: 'Account' }}
-                                category="custom"
-                                name="custom5"
-                                size="small"
-                            />
-                        </div>
-                    </div>
-                    <h1 className="slds-text-title_caps slds-p-vertical_large">
-                        Buttons
-                    </h1>
-                    <div className="slds-x-small-buttons_horizontal">
-                        <Button label="Brand" variant="brand" />
-                        <Button
-                            disabled
-                            label="Disabled"
-                            onClick={() => {
-                                console.log('Disabled Button Clicked');
-                            }}
-                            variant="brand"
-                        />
-                        <Button label="Destructive" variant="destructive" />
-                        <Button label="Outline Brand" variant="outline-brand" />
-                        <Button
-                            iconCategory="utility"
-                            iconName="download"
-                            iconPosition="left"
-                            label="Neutral Icon"
-                        />
-                    </div>
+                    <p className='slds-p-horizontal_medium api-response'>
+                        {
+                            loading === false && apexState.response !== null ?
+                                apexState.response
+                            :
+                                null
+                        }
+                    </p>
+                    <br />
+                    <Table />
+                    <Details />
                 </div>
-                <p className='slds-p-horizontal_medium api-response'>
-                    {
-                        loading === false && apexState.message !== null ?
-                            <a href="https://cloudpremise.gitbook.io/reactforce/" rel="noreferrer" target="_blank" className="slds-text-heading_small slds-text-color_destructive">
-                                {apexState.message}
-                            </a>
-                        :
-                            null
-                    }
-                </p>
-                <br />
-                <Table />
-                <Details />
-            </div>
             </div>
         </IconSettings>
     );
