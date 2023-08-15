@@ -23,7 +23,7 @@ import AppLauncher from '@salesforce/design-system-react/components/app-launcher
 import Table from "./components/Table";
 import Details from "./components/Details";
 
-import useApexAdapter from "./hooks/useApexAdapter";
+import { useSampleAdapter } from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
 prepareInlineAdapter();
 
@@ -89,7 +89,7 @@ function App() {
             ),
         },
     }));
-    const [loading, apexState] = useApexAdapter({});
+    const [loading, apexState] = useSampleAdapter({});
     const [state, setState] = React.useState({
         inputValue: '',
 		selection: [accountsWithIcon[0], accountsWithIcon[1]],

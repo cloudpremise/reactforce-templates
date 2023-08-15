@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import useApexAdapter from "./hooks/useApexAdapter";
+import { useSampleAdapter } from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
 prepareInlineAdapter();
 
@@ -10,7 +10,7 @@ declare const window: Window & typeof globalThis & {
 }
 
 function App() {
-    const [loading, data] = useApexAdapter({});
+    const [loading, data] = useSampleAdapter({});
     function getBaseUrl(){
         if(process.env.NODE_ENV === "development"){
             return "";

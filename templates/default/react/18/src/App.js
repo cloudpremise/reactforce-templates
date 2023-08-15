@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import useApexAdapter from "./hooks/useApexAdapter";
+import { useSampleAdapter } from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
 prepareInlineAdapter();
 
 function App() {
-    const [loading, state] = useApexAdapter({});
+    const [loading, state] = useSampleAdapter({});
     function getSFResourcesPath(){
         if(process.env.NODE_ENV === "development"){
             return "";

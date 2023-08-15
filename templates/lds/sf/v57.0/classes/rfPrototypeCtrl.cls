@@ -50,14 +50,50 @@ public with sharing class rfPrototypeCtrl {
 
     @RemoteAction
     public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
-        System.debug('rfPrototypeCtrl.callInternalApi()');
+        System.debug('ApiInternalEntryCtrl.callInternalApi(method, requestURI, requestEntityStr, params, headers)');
+        
+        Map<String,String> paramMap = new Map<String,String>();
+        paramMap = (Map<String,String>) JSON.deserialize(params, Map<String,String>.Class);
+        System.debug('paramMap:'+paramMap);
+
+        Map<String,String> headerMap = new Map<String,String>();
+        headerMap = (Map<String,String>) JSON.deserialize(headers, Map<String,String>.Class);
+        System.debug('headerMap:'+headerMap);
+
+        /* This code may not exist in the backend.  It needs to be dynamically constructed*/
+
+        Callable handlerClass = null;
+        try{
+            Type internalHandlerType = Type.forName('ApiInternalEntry.CallableEntryPoint');
+            System.debug('internalHandlerType:'+internalHandlerType);
+
+            handlerClass = (Callable) internalHandlerType.newInstance();
+            System.debug('handlerClass:'+handlerClass);
+
+        } catch (Exception e){
+            throw new CustomException(CustomException.ERROR_TYPE.SERVER_ERROR, String.valueOf(PackageUtil.getPackageNamespace() + ' API is not installed').removeStart(' '));
+        }
+
+        Map<String, Object> args = new Map<String, Object>();
+        args.put('httpMethod', method);
+        args.put('requestUri', requestURI);
+        args.put('requestEntityStr', requestEntityStr);
+        args.put('params',paramMap);
+        args.put('headers',headerMap);
+
+        return JSON.serialize(handlerClass.call('invoke', args));
+    }
+
+    @RemoteAction
+    public static String callSampleInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
+        System.debug('sfPrototypeAllCtrl.callInternalApi()');
         System.debug('method:'+method);
         System.debug('requestURI:'+requestURI);
         System.debug('requestEntityStr:'+requestEntityStr);
         System.debug('params:'+params);
         System.debug('headers:'+headers);
 
-        String response = '{"response": "Learn about Reactforce here."}';
+        String response = '{"message": "Learn about Reactforce here.", "result": []}';
         system.debug('callInternalApi response:'+response);
         return response;
     }
