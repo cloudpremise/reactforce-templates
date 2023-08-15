@@ -36,7 +36,7 @@ import DataTableCell from './DataTable/Cell';
 import DataTableColumn from '@salesforce/design-system-react/components/data-table/column';
 import DataTableHead from './DataTable/Head';
 import DataTableRow from './DataTable/Row';
-import DataTableRowActions from '@salesforce/design-system-react/components/data-table/row-actions';
+import DataTableRowActions from './DataTable/RowActions';
 import TableContext from '@salesforce/design-system-react/components/data-table/private/table-context';
 import Mode from '@salesforce/design-system-react/components/data-table/private/mode';
 import Spinner from '@salesforce/design-system-react/components/spinner';
