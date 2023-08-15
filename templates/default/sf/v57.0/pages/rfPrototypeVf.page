@@ -16,6 +16,7 @@
             var inlineApexAdaptor = {
                 'Visualforce': Visualforce,
                 'callInternalApi': '{!$RemoteAction.rfPrototypeCtrl.callInternalApi}',
+                'callSampleInternalApi': '{!$RemoteAction.rfPrototypeCtrl.callSampleInternalApi}',
                 'sessionId': '{!sessionId}',
                 'resources': '{!$Resource.ReactforceAssets}',
                 'landingResources': '{!$Resource.CustomerPortal}',

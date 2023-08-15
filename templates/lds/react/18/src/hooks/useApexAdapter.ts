@@ -1,6 +1,6 @@
 import React from "react";
 import apexAdapter from "../ApexAdapter";
-import SampleApexAdapter from "../ApexAdapter";
+import { SampleApexAdapter } from "../ApexAdapter";
 
 const namespace: any = process.env.REACT_APP_SFDC_NAMESPACE;
 const useApexAdapter = (params: any, justData = false) => {
