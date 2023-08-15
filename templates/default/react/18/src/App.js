@@ -27,10 +27,12 @@ function App() {
                 >
                     Learn React
                 </a>
-                <p>
+                <p className="slds-m-top_medium">
                     {
                         loading === false && state.response !== null ?
-                            state.response
+                            <a href="https://cloudpremise.gitbook.io/reactforce/" rel="noreferrer" target="_blank" className="slds-text-heading_small slds-text-color_destructive">
+                                {state.response}
+                            </a>
                         :
                             null
                     }
