@@ -42,7 +42,13 @@ const prepareInlineAdapter = () => {
                     'invokeAction': function(remoteAction, method, route, data, params, headers, callback){
                         const callbackId = Math.random().toString(36).substr(2, 9); //Generate random identity for callback function avoid any conflict with multiple calls.
                         callbacks[callbackId] = callback; //Register callback with callback id so that we know which callback function to call when we receive response from controller.
+                        let remoteActionArray = remoteAction.split(".");
+                        let action = remoteAction;
+                        if(remoteActionArray.length > 1){
+                            action = remoteActionArray[1];
+                        }
                         LCC.sendMessage({ //Send message to controller to call action.
+                            action: action,
                             params: {
                                 method: method,
                                 requestURI: route,
@@ -56,6 +62,8 @@ const prepareInlineAdapter = () => {
                 }
             }
         },
+        'callInternalApi': 'c.callInternalApi',
+        'callSampleInternalApi': 'c.callSampleInternalApi',
         'resources': decodeURIComponent(getParam("resources")), //For app icons hosted in static resources.
         'landingResources': decodeURIComponent(getParam("landingResources")), //For app assets other than icons.
         'page': getParam("page"), //Page received through lightning container url.
