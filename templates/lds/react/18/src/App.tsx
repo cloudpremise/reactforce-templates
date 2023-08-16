@@ -17,6 +17,7 @@ import Icon from '@salesforce/design-system-react/components/icon';
 
 import GlobalNavigationBar from '@salesforce/design-system-react/components/global-navigation-bar'; 
 import GlobalNavigationBarRegion from '@salesforce/design-system-react/components/global-navigation-bar/region';
+import GlobalNavigationBarDropdown from './components/GlobalNavigationBar/Dropdown';
 import GlobalNavigationBarLink from '@salesforce/design-system-react/components/global-navigation-bar/link';
 import AppLauncher from '@salesforce/design-system-react/components/app-launcher';
 import Table from "./components/Table";
@@ -31,6 +32,29 @@ declare const window: Window & typeof globalThis & {
 }
 
 function App() {
+    const dropdownCollection = [
+        {
+            label: 'Menu Item One',
+            value: '1',
+            iconCategory: 'utility',
+            iconName: 'table',
+            href: 'http://www.google.com',
+        },
+        {
+            label: 'Menu Item Two',
+            value: '2',
+            iconCategory: 'utility',
+            iconName: 'kanban',
+            href: 'http://www.google.com',
+        },
+        {
+            label: 'Menu Item Three',
+            value: '3',
+            iconCategory: 'utility',
+            iconName: 'side_list',
+            href: 'http://www.google.com',
+        },
+    ];
     const accounts = [
         {
             id: '1',
@@ -121,23 +145,29 @@ function App() {
     return (
         <IconSettings iconPath={getSFResourcesPath()+"assets/icons"}>
             <div>
-                <GlobalNavigationBar>
-                    <GlobalNavigationBarRegion region="primary">
-                        <AppLauncher
-                            id="app-launcher-trigger"
-                            triggerName="App Name"
-                            modalHeaderButton={<Button label="App Exchange" />}
-                        >
-                            App Launcer Items
-                        </AppLauncher>
-                    </GlobalNavigationBarRegion>
-                    <GlobalNavigationBarRegion region="secondary" navigation>
-                        <GlobalNavigationBarLink label="Home" id="home-link" />
-                        <GlobalNavigationBarLink label="Menu Item" />
-                        <GlobalNavigationBarLink label="Menu Item" />
-                        <GlobalNavigationBarLink label="Menu Item" />
-                    </GlobalNavigationBarRegion>
-                </GlobalNavigationBar>
+            <GlobalNavigationBar>
+                <GlobalNavigationBarRegion region="primary">
+                    <AppLauncher
+                        id="app-launcher-trigger"
+                        triggerName="App Name"
+                        modalHeaderButton={<Button label="App Exchange" />}
+                    >
+                        App Launcer Items
+                    </AppLauncher>
+                </GlobalNavigationBarRegion>
+                <GlobalNavigationBarRegion region="secondary" navigation>
+                    <GlobalNavigationBarLink label="Home" id="home-link" />
+                    <GlobalNavigationBarDropdown
+                        assistiveText={{ icon: 'Open menu item submenu' }}
+                        id="primaryDropdown"
+                        label="Menu Item"
+                        options={dropdownCollection}
+                    />
+                    <GlobalNavigationBarLink label="Menu Item" />
+                    <GlobalNavigationBarLink label="Menu Item" />
+                    <GlobalNavigationBarLink label="Menu Item" />
+                </GlobalNavigationBarRegion>
+            </GlobalNavigationBar>
                 <div className="App">
                     <div className="slds-p-around_medium slds-size_1-of-1">
                         <h1 className="slds-text-title_caps slds-p-vertical_large">

@@ -117,6 +117,8 @@ GlobalNavigationBarDropdown.propTypes = {
 	 * An array of menu item.
 	 */
 	options: PropTypes.array.isRequired,
+
+    label: PropTypes.string,
 };
 
 // ### Default Props
