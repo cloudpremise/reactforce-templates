@@ -17,7 +17,7 @@ import Icon from '@salesforce/design-system-react/components/icon';
 
 import GlobalNavigationBar from '@salesforce/design-system-react/components/global-navigation-bar'; 
 import GlobalNavigationBarRegion from '@salesforce/design-system-react/components/global-navigation-bar/region';
-import GlobalNavigationBarDropdown from '@salesforce/design-system-react/components/global-navigation-bar/dropdown';
+import GlobalNavigationBarDropdown from './components/GlobalNavigationBar/Dropdown';
 import GlobalNavigationBarLink from '@salesforce/design-system-react/components/global-navigation-bar/link';
 import AppLauncher from '@salesforce/design-system-react/components/app-launcher';
 import Table from "./components/Table";
