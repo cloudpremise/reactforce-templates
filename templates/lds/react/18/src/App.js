@@ -1,17 +1,17 @@
 import React from "react";
 import './App.css';
 
-import Input from '../components/Input';
+import Input from './components/Input';
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
-import InlineIcon from "../components/Icons/InlineIcon";
+import InlineIcon from "./components/Icons/InlineIcon";
 import comboboxFilterAndLimit from '@salesforce/design-system-react/components/combobox/filter';
 import Combobox from '@salesforce/design-system-react/components/combobox';
-import Datepicker from '../components/DatePicker.jsx';
-import Timepicker from '../components/TimePicker';
-import Button from '../components/Button';
+import Datepicker from './components/DatePicker.jsx';
+import Timepicker from './components/TimePicker';
+import Button from './components/Button';
 import Radio from '@salesforce/design-system-react/components/radio'; 
 import Checkbox from '@salesforce/design-system-react/components/checkbox';
-import Tooltip from '../components/Tooltip';
+import Tooltip from './components/Tooltip';
 import Textarea from '@salesforce/design-system-react/components/textarea'; 
 import Icon from '@salesforce/design-system-react/components/icon';
 
