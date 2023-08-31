@@ -1,6 +1,8 @@
 .THIS{
     border-radius: .25rem;
     overflow:hidden;
+    background-color: #fff;
+    padding: 15px;
 }
 .THIS .lightningContainer {
     border-radius: 0.25rem;

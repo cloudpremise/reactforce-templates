@@ -62,6 +62,7 @@ const prepareInlineAdapter = () => {
         'sessionId': sessionId,
         'bundleDomain': getParam("bundleDomain"),
         'recordType': getParam("recordType"),
+        'recordId': getParam("recordId"),
     };
 
     console.log("Inline Apex Adapter", window.inlineApexAdaptor);
