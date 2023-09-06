@@ -115,7 +115,7 @@ const DataTableRow = (props) => {
 								role={props.fixedLayout ? 'gridcell' : null}
 								className="slds-text-align_right"
 								data-label={props.stacked ? 'Select Row' : undefined}
-								style={{ width: '3.25rem' }}
+								style={{ width: '1.25rem' }}
 								onFocus={handleFocus}
 								onKeyDown={handleKeyDown}
 								ref={(ref) => {

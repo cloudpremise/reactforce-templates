@@ -181,7 +181,7 @@ const SelectHeader = (props) => {
 			style={{
 				height: fixedHeader ? 0 : null,
 				lineHeight: fixedHeader ? 0 : null,
-				width: '3.25rem',
+				width: '1.25rem',
 			}}
 			onFocus={handleFocus}
 			onKeyDown={handleKeyDown}
