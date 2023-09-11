@@ -1,46 +1,48 @@
 ({
     doInit : function(component, event, helper) {
-        var containerSrc = $A.get('$Resource.rfPrototypeLtg')+'/index.html';
-        var data = {
-            'resources': $A.get('$Resource.ReactforceAssets'),
-            'landingResources': $A.get('$Resource.rfPrototypeLtg'),
-            'bundleDomain': component.get("v.bundleDomain"),
-            'recordId': component.get("v.recordId"),
-            'recordType': 'Account',
-        };
-        var str = [];
-        for (var p in data){
-            if (data.hasOwnProperty(p)) {
-                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
-            }
-        }
-        containerSrc += "?"+str.join("&");
-        $A.createComponent(
-            "lightning:container",
-            {
-                "aura:id": "ReactApp",
-                "src": containerSrc,
-                "onmessage": component.getReference("c.handleMessage"),
-                "onerror": component.getReference("c.handleError"),
-                "style": "{height: "+component.get("v.containerHeight")+"px}"
-            },
-            function(newContainer, status, errorMessage){
-                //Add the new button to the body array
-                if (status === "SUCCESS") {
-                    var body = component.get("v.body");
-                    body.push(newContainer);
-                    component.set("v.body", body);
-                }
-                else if (status === "INCOMPLETE") {
-                    console.log("No response from server or client is offline.")
-                    // Show offline error
-                }
-                else if (status === "ERROR") {
-                    console.log("Error: " + errorMessage);
-                    // Show error message
+        setTimeout(function(){
+            var containerSrc = $A.get('$Resource.rfPrototypeLtg')+'/index.html';
+            var data = {
+                'resources': $A.get('$Resource.ReactforceAssets'),
+                'landingResources': $A.get('$Resource.rfPrototypeLtg'),
+                'bundleDomain': component.get("v.bundleDomain"),
+                'recordId': component.get("v.recordId"),
+                'recordType': 'Account',
+            };
+            var str = [];
+            for (var p in data){
+                if (data.hasOwnProperty(p)) {
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
                 }
             }
-        );
+            containerSrc += "?"+str.join("&");
+            $A.createComponent(
+                "lightning:container",
+                {
+                    "aura:id": "ReactApp",
+                    "src": containerSrc,
+                    "onmessage": component.getReference("c.handleMessage"),
+                    "onerror": component.getReference("c.handleError"),
+                    "style": "{height: "+component.get("v.containerHeight")+"px}"
+                },
+                function(newContainer, status, errorMessage){
+                    //Add the new button to the body array
+                    if (status === "SUCCESS") {
+                        var body = component.get("v.body");
+                        body.push(newContainer);
+                        component.set("v.body", body);
+                    }
+                    else if (status === "INCOMPLETE") {
+                        console.log("No response from server or client is offline.")
+                        // Show offline error
+                    }
+                    else if (status === "ERROR") {
+                        console.log("Error: " + errorMessage);
+                        // Show error message
+                    }
+                }
+            );
+        }, 10);
 	},
     afterScriptsLoaded: function(component, event, helper){
         console.log("Script Loaded");
