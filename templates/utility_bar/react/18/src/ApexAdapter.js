@@ -71,6 +71,9 @@ const prepareInlineAdapter = () => {
         const data = response.data;
         const callbackId = response.callbackId;
         callbacks[callbackId](data);
+        if(callbackId === "recordCallback"){
+            return;
+        }
         delete callbacks[callbackId];
     });
 };
