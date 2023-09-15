@@ -14,10 +14,6 @@
         <apexClass>rfPrototypeCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
-    <classAccesses>
-        <apexClass>rfPrototypeLtgCtrl</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
     <pageAccesses>
         <apexPage>rfPrototypeVf</apexPage>
         <enabled>true</enabled>
