@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>reactPrototypeAppLtg</application>
+        <application>rfPrototypeAppLtg</application>
         <default>false</default>
         <visible>true</visible>
     </applicationVisibilities>
     <applicationVisibilities>
-        <application>reactPrototypeAppVf</application>
+        <application>rfPrototypeAppVf</application>
         <default>false</default>
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>reactPrototypeCtrl</apexClass>
+        <apexClass>rfPrototypeCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>reactPrototypeLtgCtrl</apexClass>
+        <apexClass>rfPrototypeLtgCtrl</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <pageAccesses>
-        <apexPage>reactPrototypeVf</apexPage>
+        <apexPage>rfPrototypeVf</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
     <tabVisibilities>
-        <tab>reactPrototypeLtg</tab>
+        <tab>rfPrototypeLtg</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>reactPrototypeVf</tab>
+        <tab>rfPrototypeVf</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
 </Profile>

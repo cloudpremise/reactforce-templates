@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 
-global with sharing class rfPrototypeLtgCtrl {
+global with sharing class rfPrototypeCtrl {
     public SObject sObj {get;set;}
     public Id sObjId {get;set;}
 
@@ -30,19 +30,19 @@ global with sharing class rfPrototypeLtgCtrl {
         return UserInfo.getSessionId();
     }
 
-    public rfPrototypeLtgCtrl(ApexPages.StandardController stdController){
-        System.debug('rfPrototypeLtgCtrl(ApexPages.StandardController)');
+    public rfPrototypeCtrl(ApexPages.StandardController stdController){
+        System.debug('rfPrototypeCtrl(ApexPages.StandardController)');
         this.sobj = stdController.getRecord();
         this.sObjId = stdController.getId();
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
 
             
         System.debug('bundleDomain:'+bundleDomain);
-        sessionId = rfPrototypeLtgCtrl.getSessionId();
+        sessionId = rfPrototypeCtrl.getSessionId();
 
     }
-    public rfPrototypeLtgCtrl(){
-        System.debug('rfPrototypeLtgCtrl()');
+    public rfPrototypeCtrl(){
+        System.debug('rfPrototypeCtrl()');
         bundleDomain = String.isNotBlank(ApexPages.currentPage().getParameters().get('bundleDomain')) ? ApexPages.currentPage().getParameters().get('bundleDomain') : bundleDomain;
 
     }
@@ -58,7 +58,7 @@ global with sharing class rfPrototypeLtgCtrl {
     }
 
     public static void logControllerInfo(){
-        System.debug('rfPrototypeLtgCtrl()');
+        System.debug('rfPrototypeCtrl()');
         System.debug('UserInfo.getUserId:'+UserInfo.getUserId());
         System.debug('UserInfo.getProfileId:'+UserInfo.getProfileId());
     }

@@ -49,6 +49,7 @@ public with sharing class rfPrototypeCtrl {
     }
 
     @RemoteAction
+    @AuraEnabled
     public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
         System.debug('ApiInternalEntryCtrl.callInternalApi(method, requestURI, requestEntityStr, params, headers)');
         
@@ -85,6 +86,7 @@ public with sharing class rfPrototypeCtrl {
     }
 
     @RemoteAction
+    @AuraEnabled
     public static String callSampleInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
         System.debug('sfPrototypeAllCtrl.callInternalApi()');
         System.debug('method:'+method);
