@@ -12,7 +12,7 @@ function App() {
         recordId: window.inlineApexAdaptor.recordId
     })
     const recordCallback = React.useCallback(() => {
-        setupRecordCallback((data) => {
+        setupRecordCallback((data: any) => {
             setState({recordId: data.recordId});
         });
     }, []);
