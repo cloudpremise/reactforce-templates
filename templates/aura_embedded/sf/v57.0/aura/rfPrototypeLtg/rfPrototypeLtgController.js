@@ -31,7 +31,6 @@
                         var body = component.get("v.body");
                         body.push(newContainer);
                         component.set("v.body", body);
-                        helper.appRendered = true;
                     }
                     else if (status === "INCOMPLETE") {
                         console.log("No response from server or client is offline.")
@@ -47,22 +46,6 @@
 	},
     afterScriptsLoaded: function(component, event, helper){
         console.log("Script Loaded");
-    },
-    onObjectChange: function(component, event, helper){
-        if(!helper.appRendered){
-            return;
-        }
-        var body = component.get("v.body");
-        if(!body || body.length <= 0){
-            return;
-        }
-        var container = body[0];
-        container.message({ //Send message to react app with data and callback id so that actual callback function is triggered.
-            data: {
-                recordId: component.get("v.recordId")
-            },
-            callbackId: "recordCallback"
-        });
     },
     handleRender: function(component, event, helper){
 

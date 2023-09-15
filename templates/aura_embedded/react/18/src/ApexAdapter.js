@@ -28,8 +28,8 @@ const getParam = (name) => {
         (RegExp(name+"=(.+?)(&|$)").exec(window.location.search)||['',null])[1]
     );
 };
-let callbacks = {};
 const prepareInlineAdapter = () => {
+    let callbacks = {};
     var sessionId = LCC.getRESTAPISessionKey();
     if(typeof(window.inlineApexAdaptor) !== 'undefined' && (!sessionId || sessionId === "null" || sessionId.length <= 0)){
         return null;
@@ -75,10 +75,6 @@ const prepareInlineAdapter = () => {
     });
 };
 
-const setupRecordCallback = (callback) => {
-    callbacks["recordCallback"] = callback;
-};
-
 const getSessionId = () => {
     var sessionId = LCC.getRESTAPISessionKey();
     if(typeof(window.inlineApexAdaptor) !== 'undefined'){
@@ -87,6 +83,6 @@ const getSessionId = () => {
     return sessionId;
 };
 
-export { ApexAdapter, prepareInlineAdapter, getSessionId, setupRecordCallback };
+export { ApexAdapter, prepareInlineAdapter, getSessionId };
 
 export default ApexAdapter;

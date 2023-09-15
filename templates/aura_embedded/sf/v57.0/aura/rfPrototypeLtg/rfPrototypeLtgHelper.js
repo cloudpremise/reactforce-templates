@@ -1,5 +1,4 @@
 ({
-    appRendered: false,
     helperMethod : function() {
 
     }
