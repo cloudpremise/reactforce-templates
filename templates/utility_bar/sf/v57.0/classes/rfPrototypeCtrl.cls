@@ -87,7 +87,44 @@ global with sharing class rfPrototypeCtrl {
             System.debug('handlerClass:'+handlerClass);
 
         } catch (Exception e){
-            throw new CustomException(CustomException.ERROR_TYPE.SERVER_ERROR, String.valueOf(PackageUtil.getPackageNamespace() + ' API is not installed').removeStart(' '));
+            throw new rfPrototypeCtrlException('API is not installed');
+        }
+
+        Map<String, Object> args = new Map<String, Object>();
+        args.put('httpMethod', method);
+        args.put('requestUri', requestURI);
+        args.put('requestEntityStr', requestEntityStr);
+        args.put('params',paramMap);
+        args.put('headers',headerMap);
+
+        return JSON.serialize(handlerClass.call('invoke', args));
+    }
+
+    @RemoteAction
+    @AuraEnabled
+    public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
+        System.debug('ApiInternalEntryCtrl.callInternalApi(method, requestURI, requestEntityStr, params, headers)');
+        
+        Map<String,String> paramMap = new Map<String,String>();
+        paramMap = (Map<String,String>) JSON.deserialize(params, Map<String,String>.Class);
+        System.debug('paramMap:'+paramMap);
+
+        Map<String,String> headerMap = new Map<String,String>();
+        headerMap = (Map<String,String>) JSON.deserialize(headers, Map<String,String>.Class);
+        System.debug('headerMap:'+headerMap);
+
+        /* This code may not exist in the backend.  It needs to be dynamically constructed*/
+
+        Callable handlerClass = null;
+        try{
+            Type internalHandlerType = Type.forName('ApiInternalEntry.CallableEntryPoint');
+            System.debug('internalHandlerType:'+internalHandlerType);
+
+            handlerClass = (Callable) internalHandlerType.newInstance();
+            System.debug('handlerClass:'+handlerClass);
+
+        } catch (Exception e){
+            throw new rfPrototypeCtrlException('API is not installed');
         }
 
         Map<String, Object> args = new Map<String, Object>();
@@ -114,4 +151,6 @@ global with sharing class rfPrototypeCtrl {
         system.debug('callInternalApi response:'+response);
         return response;
     }
+
+    public class rfPrototypeCtrlException extends Exception{}
 }

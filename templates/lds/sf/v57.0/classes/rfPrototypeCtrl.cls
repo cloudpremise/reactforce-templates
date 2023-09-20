@@ -49,6 +49,7 @@ public with sharing class rfPrototypeCtrl {
     }
 
     @RemoteAction
+    @AuraEnabled
     public static String callInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
         System.debug('ApiInternalEntryCtrl.callInternalApi(method, requestURI, requestEntityStr, params, headers)');
         
@@ -71,7 +72,7 @@ public with sharing class rfPrototypeCtrl {
             System.debug('handlerClass:'+handlerClass);
 
         } catch (Exception e){
-            throw new CustomException(CustomException.ERROR_TYPE.SERVER_ERROR, String.valueOf(PackageUtil.getPackageNamespace() + ' API is not installed').removeStart(' '));
+            throw new rfPrototypeCtrlException('API is not installed');
         }
 
         Map<String, Object> args = new Map<String, Object>();
@@ -85,6 +86,7 @@ public with sharing class rfPrototypeCtrl {
     }
 
     @RemoteAction
+    @AuraEnabled
     public static String callSampleInternalApi(String method, String requestURI, String requestEntityStr, String params, String headers) {
         System.debug('sfPrototypeAllCtrl.callInternalApi()');
         System.debug('method:'+method);
@@ -97,4 +99,6 @@ public with sharing class rfPrototypeCtrl {
         system.debug('callInternalApi response:'+response);
         return response;
     }
+
+    public class rfPrototypeCtrlException extends Exception{}
 }
