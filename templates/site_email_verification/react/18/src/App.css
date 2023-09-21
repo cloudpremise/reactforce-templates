@@ -1,0 +1,1173 @@
+#global_content {
+    min-height: 300px;
+}
+
+.mini-navigation {
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.slds-global-header__item_logo {
+    display: flex;
+}
+div .slds-scope .slds-context-bar {
+    padding-left: 0px;
+    height: 50px;    
+}
+div .non-logged-in .slds-global-header__item.slds-global-header__item_logo {
+    width: 100%;
+    justify-content: space-between;    
+}
+
+#pushTopicContainer,
+#genericSubscriptionContainer,
+#replayFromContainer {
+  margin-top: 10px;
+}
+
+#pushTopicDmlContainer {
+  display: none;
+  margin-top: 10px;
+  border-color: #888;
+  border-style: solid;
+  border-width: thin;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#pushTopicDmlForm * {
+  vertical-align: middle;
+  margin: 3px;
+}
+
+#pushTopicDmlForm_Query {
+  font-family: monospace;
+}
+
+#pushTopicDmlForm_Btns {
+  margin-left: 5em;
+}
+
+#waitingIndicator {
+  display: none;
+  color: #888;
+  vertical-align: middle;
+}
+
+#streamContainer {
+  margin-top: 15px;
+  border-color: #888;
+  border-style: solid;
+  border-width: thin;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+#streamContainer h3 {
+  margin-left: 10px;
+  display: inline;
+}
+
+#streamBody div {
+  border: solid thin rgb(66, 150, 231);
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+
+#streamBody div span.heading {
+  font-weight: bold;
+}
+
+#streamBody div span.body {
+  font-family: monospace;
+}
+
+#streamBody div.error {
+  color: red;
+}
+
+#streamContainer #status,
+#streamContainer #pollIndicator {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: x-small;
+  color: rgb(66, 150, 231);
+}
+
+#toggleShowPolling,
+#clearStream {
+  float: right;
+  margin-left: 5px;
+}
+
+#streamContainer #pollIndicator {
+  margin-left: 2px;
+  display: none;
+}
+
+#selectedTopic {
+  width: 151px;
+}
+
+.slds-scope .slds-chat {
+    margin-bottom: var(--lwc-spacingSmall, 0.75rem);
+}
+.slds-scope .slds-chat-list {
+    padding: 0 var(--lwc-spacingSmall, 0.75rem);
+}
+.slds-scope .slds-chat-listitem {
+    display: flex;
+    margin-top: var(--lwc-spacingSmall, 0.75rem);
+}
+.slds-scope .slds-chat-listitem_outbound {
+    justify-content: flex-end;
+}
+.slds-scope .slds-chat-listitem_inbound + .slds-chat-listitem_inbound,
+.slds-scope .slds-chat-listitem_outbound + .slds-chat-listitem_outbound {
+    margin-top: var(--lwc-spacingXxSmall, 0.25rem);
+}
+.slds-scope .slds-chat-listitem_bookend {
+    margin: var(--lwc-spacingMedium, 1rem) 0;
+    margin-left: calc(-1 * var(--lwc-spacingSmall, 0.75rem));
+    margin-right: calc(-1 * var(--lwc-spacingSmall, 0.75rem));
+}
+.slds-scope .slds-chat-listitem_bookend + .slds-chat-listitem_bookend {
+    margin-top: var(--lwc-spacingXxLarge, 3rem);
+}
+.slds-scope .slds-chat-listitem_event {
+    margin: var(--lwc-spacingLarge, 1.5rem) 0;
+}
+.slds-scope .slds-chat-icon {
+    margin-right: var(--lwc-spacingXSmall, 0.5rem);
+}
+.slds-scope .slds-chat-message {
+    display: flex;
+}
+.slds-scope .slds-chat-message_faux-avatar {
+    padding-left: 2.5rem;
+}
+.slds-scope .slds-chat-avatar {
+    margin-right: var(--lwc-spacingXSmall, 0.5rem);
+    min-width: 2rem;
+}
+.slds-scope .slds-chat-avatar__intials {
+    background-color: var(--lwc-chatMessageColorBackgroundInbound, rgb(243, 243, 243));
+    color: var(--lwc-colorTextWeak, rgb(116, 116, 116));
+}
+.slds-scope .slds-chat-avatar__intials.slds-chat-avatar__intials:hover {
+    color: var(--lwc-colorTextWeak, rgb(116, 116, 116));
+}
+.slds-scope .slds-chat-message__body {
+    display: flex;
+    flex-direction: column;
+}
+.slds-scope .slds-chat-message__image_loading {
+    width: var(--lwc-sizeSmall, 15rem);
+    height: 11.25rem;
+}
+.slds-scope .slds-chat-message__text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    display: inline-block;
+    font-size: var(--lwc-fontSize3, 0.8125rem);
+    max-width: 26.25rem;
+    white-space: pre-line;
+}
+.slds-scope .slds-chat-message__text a {
+    color: var(--lwc-colorBrandDarker, rgb(1, 68, 134));
+    text-decoration: underline;
+}
+.slds-scope .slds-chat-message__text a:hover {
+    text-decoration: none;
+}
+.slds-scope .slds-chat-message__file {
+    width: var(--lwc-sizeSmall, 15rem);
+}
+.slds-scope .slds-chat-message__file,
+.slds-scope .slds-chat-message__image {
+    overflow: hidden;
+}
+.slds-scope .slds-chat-message__file .slds-file:hover,
+.slds-scope .slds-chat-message__image .slds-file:hover {
+    box-shadow: none;
+    transition: none;
+}
+.slds-scope .slds-chat-message__text_inbound,
+.slds-scope .slds-chat-message__file_inbound,
+.slds-scope .slds-chat-message__image_inbound,
+.slds-scope .slds-chat-message__text_outbound,
+.slds-scope .slds-chat-message__file_outbound,
+.slds-scope .slds-chat-message__image_outbound,
+.slds-scope .slds-chat-message__text_outbound-agent,
+.slds-scope .slds-chat-message__text_unsupported-type,
+.slds-scope .slds-chat-message__text_delivery-failure {
+    border-radius: var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) 0;
+    color: var(--lwc-colorTextInverse, rgb(255, 255, 255));
+    min-height: 2rem;
+}
+.slds-scope .slds-chat-message__text_inbound,
+.slds-scope .slds-chat-message__text_outbound,
+.slds-scope .slds-chat-message__text_outbound-agent,
+.slds-scope .slds-chat-message__text_unsupported-type,
+.slds-scope .slds-chat-message__text_delivery-failure {
+    padding: var(--lwc-spacingXSmall, 0.5rem);
+}
+.slds-scope .slds-chat-message__file_inbound,
+.slds-scope .slds-chat-message__image_inbound,
+.slds-scope .slds-chat-message__file_outbound,
+.slds-scope .slds-chat-message__image_outbound {
+    padding: 0;
+    border: var(--lwc-borderWidthThin, 1px) solid var(--lwc-colorBorder, rgb(201, 201, 201));
+}
+.slds-scope .slds-chat-message__file_inbound,
+.slds-scope .slds-chat-message__image_inbound,
+.slds-scope .slds-chat-message__file_outbound,
+.slds-scope .slds-chat-message__image_outbound {
+    color: var(--lwc-colorTextDefault, rgb(3, 45, 96));
+}
+.slds-scope .slds-chat-message__text_inbound {
+    margin-right: auto;
+    background-color: var(--lwc-chatMessageColorBackgroundInbound, rgb(243, 243, 243));
+    border-radius: var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) 0;
+    color: var(--lwc-colorTextDefault, rgb(3, 45, 96));
+}
+.slds-scope .slds-chat-message__image_inbound {
+    background-color: var(--lwc-chatMessageColorBackgroundInbound, rgb(243, 243, 243));
+    border-radius: var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) 0;
+}
+.slds-scope .slds-chat-message__file_inbound {
+    border-radius: var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) 0;
+    background-color: var(--lwc-colorBackgroundAlt, rgb(255, 255, 255));
+}
+.slds-scope .slds-chat-message__text_outbound {
+    margin-left: auto;
+    background-color: var(--lwc-chatMessageColorBackgroundOutbound, rgb(1, 68, 134));
+}
+.slds-scope .slds-chat-message__text_outbound-agent {
+    background-color: var(--lwc-chatMessageColorBackgroundOutboundAgent, rgb(116, 116, 116));
+    margin-left: auto;
+}
+.slds-scope .slds-chat-message__text_outbound a,
+.slds-scope .slds-chat-message__text_outbound-agent a {
+    color: var(--lwc-colorTextInverse, rgb(255, 255, 255));
+    text-decoration: underline;
+}
+.slds-scope .slds-chat-message__text_unsupported-type {
+    background-color: var(--lwc-chatMessageColorBackgroundStatus, rgb(255, 255, 255));
+    border-radius: var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) var(--lwc-borderRadiusLarge, 0.5rem) 0;
+    border: var(--lwc-colorBorderWarning, rgb(254, 147, 57)) var(--lwc-borderWidthThin, 1px) solid;
+    color: var(--lwc-colorTextDefault, rgb(3, 45, 96));
+    margin-right: auto;
+}
+.slds-scope .slds-chat-message__text_unsupported-type .slds-chat-icon.slds-icon-utility-warning .slds-icon {
+    fill: var(--lwc-colorTextWarning, rgb(254, 147, 57));
+}
+.slds-scope .slds-chat-message__text_delivery-failure {
+    background-color: var(--lwc-chatMessageColorBackgroundStatus, rgb(255, 255, 255));
+    border: var(--lwc-colorBorderDestructive, rgb(234, 0, 30)) var(--lwc-borderWidthThin, 1px) solid;
+    color: var(--lwc-colorTextDefault, rgb(3, 45, 96));
+    margin-left: auto;
+}
+.slds-scope .slds-chat-message__text_delivery-failure .slds-chat-message__text_delivery-failure-reason {
+    display: flex;
+    padding: var(--lwc-spacingXSmall, 0.5rem) var(--lwc-spacingXSmall, 0.5rem) 0;
+    margin: var(--lwc-spacingXSmall, 0.5rem) -0.5rem 0;
+    color: var(--lwc-colorTextError, rgb(234, 0, 30));
+    border-top: var(--lwc-colorBorderDestructive, rgb(234, 0, 30)) var(--lwc-borderWidthThin, 1px) solid;
+}
+.slds-scope .slds-chat-message__text_delivery-failure .slds-chat-icon.slds-icon-utility-error .slds-icon {
+    fill: var(--lwc-colorTextError, rgb(234, 0, 30));
+}
+.slds-scope .slds-chat-message__text_sneak-peak,
+.slds-scope .slds-chat-message__text_sneak-peek {
+    font-style: italic;
+}
+.slds-scope .slds-chat-message__text_sneak-peak .slds-icon-typing,
+.slds-scope .slds-chat-message__text_sneak-peek .slds-icon-typing {
+    margin-right: var(--lwc-spacingXSmall, 0.5rem);
+}
+.slds-scope .slds-chat-message__meta {
+    color: var(--lwc-colorTextWeak, rgb(116, 116, 116));
+    font-size: var(--lwc-fontSize1, 0.625rem);
+    margin: var(--lwc-spacingXxxSmall, 0.125rem) 0 0 var(--lwc-spacingXSmall, 0.5rem);
+}
+.slds-scope .slds-chat-message__action {
+    font-size: var(--lwc-fontSize2, 0.75rem);
+    margin-left: var(--lwc-spacingXSmall, 0.5rem);
+    line-height: var(--lwc-lineHeightHeading, 1.25);
+}
+.slds-scope .slds-chat-message__action .slds-chat-icon.slds-icon-utility-redo .slds-icon {
+    width: var(--lwc-squareIconSmallContent, 0.75rem);
+    height: var(--lwc-squareIconSmallContent, 0.75rem);
+    fill: var(--lwc-colorTextLink, rgb(1, 118, 211));
+}
+.slds-scope .slds-chat-event {
+    align-items: center;
+    color: var(--lwc-colorTextWeak, rgb(116, 116, 116));
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: var(--lwc-fontSize3, 0.8125rem);
+    text-align: center;
+    width: 100%;
+}
+.slds-scope .slds-chat-event.slds-has-error {
+    color: var(--lwc-colorTextError, rgb(234, 0, 30));
+}
+.slds-scope .slds-chat-event.slds-has-error svg {
+    fill: var(--lwc-colorTextError, rgb(234, 0, 30));
+}
+.slds-scope .slds-chat-event__rule {
+    border-top: var(--lwc-borderWidthThin, 1px) var(--lwc-colorBorder, rgb(201, 201, 201)) solid;
+    height: 0.0625rem;
+    flex-grow: 1;
+}
+.slds-scope .slds-chat-event__body {
+    align-items: center;
+    display: flex;
+    margin: 0 var(--lwc-spacingXSmall, 0.5rem);
+}
+.slds-scope .slds-chat-event__agent-message {
+    flex-grow: 3;
+    font-size: var(--lwc-fontSize2, 0.75rem);
+    font-style: italic;
+    margin-top: var(--lwc-spacingXSmall, 0.5rem);
+    width: 100%;
+}
+.slds-scope .slds-chat-bookend {
+    align-items: center;
+    border: var(--lwc-colorBorder, rgb(201, 201, 201)) 0 solid;
+    border-bottom-width: var(--lwc-borderWidthThin, 1px);
+    color: var(--lwc-colorTextWeak, rgb(116, 116, 116));
+    display: flex;
+    font-size: var(--lwc-fontSize3, 0.8125rem);
+    justify-content: center;
+    padding: var(--lwc-spacingXSmall, 0.5rem) var(--lwc-spacingSmall, 0.75rem);
+    width: 100%;
+}
+.slds-scope .slds-chat-bookend_stop {
+    border-width: var(--lwc-borderWidthThin, 1px) 0 0;
+}
+.slds-scope .slds-chat_past .slds-chat-listitem_event {
+    margin: var(--lwc-spacingMedium, 1rem) 0;
+}
+.slds-scope .slds-chat_past .slds-chat-message__meta {
+    margin: var(--lwc-spacingXxSmall, 0.25rem) 0 0;
+}
+.slds-scope .slds-chat_past .slds-chat-message__meta b {
+    color: var(--lwc-colorTextDefault, rgb(3, 45, 96));
+}
+.cTextMessagesNamespace .fit-content {
+    display: table;
+}
+.cTextMessagesNamespace .mogli-avatar {
+    margin-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+.cTextMessagesNamespace .mogli-avatar:hover,
+.cTextMessagesNamespace .mogli-avatar:focus {
+    text-decoration: none !important;
+}
+.cTextMessagesNamespace .mogli-avatar:hover,
+.cTextMessagesNamespace .slds-avatar__initials:hover,
+.cTextMessagesNamespace .avatar-image:hover {
+    cursor: pointer;
+}
+.cTextMessagesNamespace .tooltip .avatar-tooltip.tooltip-right {
+    top: 15px;
+    left: 27px;
+}
+.cTextMessagesNamespace .tooltip .avatar-tooltip.tooltip-left {
+    top: 15px;
+    right: 27px;
+}
+.cTextMessagesNamespace .slds-chat-listitem,
+.cTextMessagesNamespace .slds-chat-message__body,
+.cTextMessagesNamespace .slds-chat-message {
+    width: 100%;
+}
+.cTextMessagesNamespace .slds-chat-message__text {
+    position: relative;
+    max-width: calc(100% - 66px);
+    width: calc(100% - 66px);
+    border-radius: 5px;
+    padding: 10px;
+}
+.cTextMessagesNamespace .slds-chat-message__image_inbound,
+.cTextMessagesNamespace .slds-chat-message__image_outbound {
+    border-radius: 0.5rem;
+}
+.cTextMessagesNamespace .slds-chat-listitem_inbound .slds-chat-message {
+    flex-flow: row;
+}
+.cTextMessagesNamespace .slds-chat-listitem_outbound .slds-chat-message {
+    flex-flow: row-reverse;
+}
+.cTextMessagesNamespace .slds-chat-listitem_inbound .slds-chat-message__meta {
+    align-self: flex-start;
+    margin-left: 1.05rem;
+}
+.cTextMessagesNamespace .slds-chat-listitem_outbound .slds-chat-message__meta {
+    align-self: flex-end;
+    margin-right: 1.05rem;
+}
+.cTextMessagesNamespace .slds-chat-message__text_inbound {
+    background: #414141;
+    color: #ffffff;
+    margin-left: 14px;
+    margin-top: 14px;
+}
+.cTextMessagesNamespace .slds-chat-message__text_outbound {
+    background: #c62031;
+    color: #ffffff;
+    margin-right: 14px;
+    margin-top: 14px;
+}
+.cTextMessagesNamespace .slds-chat-message__text_inbound:after {
+    content: "";
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    background: transparent;
+    border-top: solid 8px;
+    border-bottom: solid transparent 10px;
+    border-left: solid 10px;
+    border-right: solid 10px;
+    left: -15px;
+    border-right-color: #414141;
+    border-left-color: transparent;
+    border-top-color: #414141;
+}
+.cTextMessagesNamespace .tail {
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 0;
+    background: transparent;
+    border-top: solid 10px;
+    border-bottom: solid transparent 10px;
+    border-left: solid 10px;
+    border-right: solid 10px;
+    right: -15px;
+    border-right-color: transparent;
+}
+.cTextMessagesNamespace .slds-avatar__initials_inverse {
+    background-color: #cccccc;
+}
+.cTextMessagesNamespace .slds-file__actions-menu a.slds-button:before {
+    background: none;
+}
+.cTextMessagesNamespace .slds-file__actions-menu a.slds-button:after {
+    top: unset;
+    left: unset;
+    width: unset;
+    height: unset;
+    background-image: none;
+    background-size: unset;
+    transform: unset;
+}
+.cTextMessagesNamespace .date-separator {
+    color: #3e3e3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.cTextMessagesNamespace .date-separator {
+    color: #999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+.cTextMessagesNamespace .date-separator-value {
+    position: relative;
+}
+.cTextMessagesNamespace .date-separator-value:before,
+.cTextMessagesNamespace .date-separator-value:after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 60px;
+    background: #bbb;
+    top: 50%;
+    bottom: 50%;
+    margin: auto;
+}
+.cTextMessagesNamespace .date-separator-value:before {
+    left: -72px;
+}
+.cTextMessagesNamespace .date-separator-value:after {
+    right: -72px;
+}
+.cTextMessagesNamespace .slds-chat-message__meta.meta-error {
+    color: #e60f25;
+}
+.cTextMessagesNamespace .slds-chat-message__meta a {
+    color: inherit;
+}
+.cTextMessagesNamespace .clock svg {
+    height: 0.65rem;
+    width: 0.65rem;
+    position: relative;
+    top: -1px;
+    margin-right: 3px;
+}
+.cTextMessagesNamespace .mogli-brand_btn {
+    border-color: #c62031;
+    background-color: #c62031;
+    color: white;
+}
+.cTextMessagesNamespace .mogli-brand_btn:hover {
+    background-color: darkred;
+}
+.cTextMessagesNamespace .slds-button + .slds-button-group .mogli-brand_btn {
+    margin-left: 0.2rem;
+}
+.cTextMessagesNamespace .attachment-body {
+    width: 140px;
+}
+.cTextMessagesNamespace .chat-message-emoji-only .sms-text-body {
+    font-size: 2rem;
+}
+.cTextMessageComponent {
+    overflow: initial !important;
+    width: 100%;
+    min-height: 614px;
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    position: relative;
+    padding: 0px 12px 0.75rem 1rem;
+}
+.cTextMessageComponent .uiInput input {
+    background-color: #fff;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    transition: border 0.1s linear, background-color 0.1s linear;
+    display: inline-block;
+    padding: 0 1rem 0 0.75rem;
+    line-height: 1.875rem;
+    width: 100%;
+}
+.cTextMessageComponent .uiInputSelect select {
+    background-color: #fff;
+    border: 1px solid #dddbda;
+    border-radius: 0.25rem;
+    width: 100%;
+    transition: border 0.1s linear, background-color 0.1s linear;
+}
+.cTextMessageComponent .uiInputSelect select[disabled],
+.cTextMessageComponent .uiInput input[disabled] {
+    background-color: #ecebea;
+    border-color: #a8b7c7;
+}
+.cTextMessageComponent .no-form-label .slds-form-element__label {
+    display: none;
+}
+.cTextMessageComponent .no-padding {
+    padding: 0 !important;
+}
+.cTextMessageComponent .tooltip {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+.cTextMessageComponent .tooltip .tooltip-right,
+.cTextMessageComponent .tooltip .tooltip-top {
+    min-width: 200px;
+    padding: 10px 20px;
+    color: #000;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 4px;
+    z-index: 9;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+.cTextMessageComponent .tooltip .tooltip-top,
+.cTextMessageComponent .tooltip .tooltip-top i:after {
+    position: absolute;
+    left: 50%;
+    background-color: #ccc;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+.cTextMessageComponent .tooltip .tooltip-top {
+    top: -7px;
+    transform: translate(-50%, -100%);
+}
+.cTextMessageComponent .tooltip:hover .tooltip-bottom,
+.cTextMessageComponent .tooltip:hover .tooltip-left,
+.cTextMessageComponent .tooltip:hover .tooltip-right,
+.cTextMessageComponent .tooltip:hover .tooltip-top {
+    visibility: visible;
+    opacity: 1;
+}
+.cTextMessageComponent .tooltip .tooltip-top i {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 24px;
+    height: 12px;
+    overflow: hidden;
+}
+.cTextMessageComponent .tooltip .tooltip-top i:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.cTextMessageComponent .tooltip .tooltip-right {
+    top: 50%;
+    left: 100%;
+    margin-left: 20px;
+    transform: translate(0, -50%);
+}
+.cTextMessageComponent .tooltip .tooltip-right i {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -12px;
+    width: 12px;
+    height: 24px;
+    overflow: hidden;
+}
+.cTextMessageComponent .tooltip .tooltip-right i:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 50%;
+    transform: translate(50%, -50%) rotate(-45deg);
+}
+.cTextMessageComponent .tooltip .tooltip-bottom,
+.cTextMessageComponent .tooltip .tooltip-bottom i:after,
+.cTextMessageComponent .tooltip .tooltip-left,
+.cTextMessageComponent .tooltip .tooltip-left i:after,
+.cTextMessageComponent .tooltip .tooltip-right,
+.cTextMessageComponent .tooltip .tooltip-right i:after {
+    position: absolute;
+    background-color: #ccc;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+}
+.cTextMessageComponent .tooltip .tooltip-bottom {
+    min-width: 200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 8px;
+    z-index: 99999999;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+    top: 40px;
+}
+.cTextMessageComponent .tooltip .tooltip-bottom i {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -12px;
+    width: 24px;
+    height: 12px;
+    overflow: hidden;
+}
+.cTextMessageComponent .tooltip .tooltip-bottom i:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+}
+.cTextMessageComponent .tooltip .tooltip-left,
+.cTextMessageComponent .tooltip .tooltip-left i:after {
+    top: 50%;
+}
+.cTextMessageComponent .tooltip .tooltip-left {
+    min-width: 200px;
+    right: 100%;
+    margin-right: 20px;
+    transform: translate(0, -50%);
+    padding: 10px 20px;
+    font-weight: 400;
+    font-size: 13px;
+    border-radius: 8px;
+    z-index: 99999999;
+    box-sizing: border-box;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+.cTextMessageComponent .tooltip .tooltip-left i {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -12px;
+    width: 12px;
+    height: 24px;
+    overflow: hidden;
+}
+.cTextMessageComponent .tooltip .tooltip-left i:after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    left: 0;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.cTextMessageComponent #convoViewSettings,
+.cTextMessageComponent .branded-header {
+    padding: 12px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #fff;
+}
+.cTextMessageComponent .branded-header {
+    box-shadow: 0 0 10px 0 #ccc;
+    top: 0;
+    height: 50px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.cTextMessageComponent .branded-header .mogli-logo {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 6px;
+    height: 36px;
+    margin: auto;
+}
+.cTextMessageComponent .conversation-view-settings {
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.4s ease-in-out;
+    top: 50px;
+    height: calc(100% - 50px);
+}
+.cTextMessageComponent .conversation-view-settings.expanded {
+    transform: scaleY(1);
+    z-index: 8;
+}
+.cTextMessageComponent .conversation-view-settings > * {
+    margin: 0 12px 18px;
+}
+.cTextMessageComponent .slds-form-element_compound .slds-form-element {
+    margin-left: 0;
+    margin-right: 0;
+}
+.cTextMessageComponent .chat-thread {
+    height: 700px;
+}
+.cTextMessageComponent .chat-thread::-webkit-scrollbar {
+    width: 10px;
+}
+.cTextMessageComponent .chat-thread::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.cTextMessageComponent .chat-thread::-webkit-scrollbar-thumb {
+    background: #888;
+}
+.cTextMessageComponent .chat-thread::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+.cTextMessageComponent .message-controls {
+    width: 100%;
+    padding: 12px 0 12px 0;
+    margin-top: 12px;
+    border-top: solid 2px #ddd;
+}
+.cTextMessageComponent .chat-message-container label,
+.cTextMessageComponent .message-gateway-container label,
+.cTextMessageComponent .message-scheduler-container label,
+.cTextMessageComponent .message-scheduler-container legend,
+.cTextMessageComponent .message-template-container label {
+    display: none !important;
+}
+.cTextMessageComponent .chat-message-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 24px;
+}
+.cTextMessageComponent .chat-message-container > div {
+    width: 100%;
+}
+.cTextMessageComponent .message-char-counter {
+    position: absolute;
+    bottom: -18px;
+    right: 40px;
+    font-size: 12px;
+    color: #000;
+}
+.cTextMessageComponent .send-button {
+    color: #bf182b;
+    margin: 0 3px;
+}
+.cTextMessageComponent .send-button[disabled] {
+    color: #bf182b;
+    opacity: 0.35;
+}
+.cTextMessageComponent .send-button .slds-button__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.cTextMessageComponent .message-gateway-container .uiInputSelect,
+.cTextMessageComponent .message-template-container .uiInputSelect {
+    display: inline-block;
+    width: calc(100% - 28px);
+}
+.cTextMessageComponent .message-scheduler-container {
+    width: 100%;
+}
+.cTextMessageComponent .message-scheduler-container lightning-datepicker {
+    width: calc(50% - 12px);
+    padding-left: 2rem !important;
+}
+.cTextMessageComponent .message-scheduler-container lightning-datepicker lightning-button-icon.slds-input__icon {
+    left: -25px;
+}
+.cTextMessageComponent .message-scheduler-container lightning-timepicker {
+    width: calc(50% + 8px);
+    padding-right: 0;
+    padding-left: 3.25rem !important;
+}
+.cTextMessageComponent .message-scheduler-container lightning-timepicker .slds-input__icon-group {
+    right: unset;
+}
+.cTextMessageComponent .message-scheduler-container lightning-timepicker .slds-input__icon-group > lightning-icon {
+    padding-right: calc(100% + 18px);
+}
+.cTextMessageComponent .message-scheduler-container lightning-timepicker lightning-icon svg,
+.cTextMessageComponent .message-scheduler-container lightning-datepicker lightning-primitive-icon svg {
+    fill: rgb(112, 110, 107) !important;
+}
+.cTextMessageComponent .dateIcon {
+    padding-left: 0;
+    padding-top: 10px;
+    padding-right: 0;
+    width: fit-content;
+}
+.cTextMessageComponent .mobile {
+    padding-left: 0;
+    padding-right: 0;
+    padding-right: 28px;
+    width: 100%;
+}
+.cTextMessageComponent .slds-file-selector,
+.cTextMessageComponent .slds-file-selector__button,
+.cTextMessageComponent .slds-file-selector__dropzone > slot,
+.cTextMessageComponent .slds-file-selector .slds-file-selector__dropzone {
+    width: 100%;
+}
+.cTextMessageComponent .slds-file-selector__dropzone .slds-file-selector__text {
+    display: none;
+}
+.cTextMessageComponent .mms-file-upload {
+    display: inline-block;
+    width: 80%;
+}
+.cTextMessageComponent .clear-files-btn {
+    float: right;
+    width: 15%;
+    height: 40px;
+}
+.cTextMessageComponent.conversation-disabled:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 2px;
+    opacity: 0.8;
+    background-color: #f3f2f2;
+    border-radius: 0.25rem;
+    z-index: 3;
+}
+.cTextMessageComponent .conversation-error {
+    color: #000;
+    border-radius: 0.25rem 0.25rem 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 85%;
+    z-index: 11;
+    min-height: 50px;
+}
+.cTextMessageComponent .conversation-error lightning-formatted-text {
+    font-weight: 600 !important;
+}
+.cTextMessageComponent .conversation-error > .slds-icon-utility-warning svg {
+    fill: #000;
+}
+.cTextMessageComponent .warning-icon {
+    margin-left: 3.5rem;
+}
+.cTextMessageComponent .conversation-view-settings-btn {
+    z-index: 12;
+}
+.cTextMessageComponent .customToast {
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.cTextMessageComponent .slds-popover {
+    position: relative;
+    border-radius: 0.25rem;
+    width: 20rem;
+    min-height: 2rem;
+    z-index: 6000;
+    background-color: #fff;
+    display: inline-block;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+    border: 1px solid #dddbda;
+}
+.cTextMessageComponent .slds-popover--tooltip,
+.cTextMessageComponent .slds-popover_tooltip {
+    width: auto;
+    max-width: 20rem;
+    background: #16325c;
+    border: 0;
+}
+.cTextMessageComponent .slds-nubbin--bottom-left:after,
+.cTextMessageComponent .slds-nubbin--bottom-left:before,
+.cTextMessageComponent .slds-nubbin_bottom-left-corner:after,
+.cTextMessageComponent .slds-nubbin_bottom-left-corner:before,
+.cTextMessageComponent .slds-nubbin_bottom-left:after,
+.cTextMessageComponent .slds-nubbin_bottom-left:before {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    bottom: -0.5rem;
+    margin-left: -0.5rem;
+}
+.cTextMessageComponent .slds-popover__body,
+.cTextMessageComponent .slds-popover__footer,
+.cTextMessageComponent .slds-popover__header {
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    word-wrap: break-word;
+}
+.cTextMessageComponent .slds-nubbin--bottom-left:after,
+.cTextMessageComponent .slds-nubbin_bottom-left-corner:after,
+.cTextMessageComponent .slds-nubbin_bottom-left:after {
+    box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.16);
+    z-index: -1;
+}
+.cTextMessageComponent .slds-nubbin--bottom-left:after,
+.cTextMessageComponent .slds-nubbin--bottom-left:before,
+.cTextMessageComponent .slds-nubbin_bottom-left-corner:after,
+.cTextMessageComponent .slds-nubbin_bottom-left-corner:before,
+.cTextMessageComponent .slds-nubbin_bottom-left:after,
+.cTextMessageComponent .slds-nubbin_bottom-left:before {
+    left: 1.5rem;
+    top: 100%;
+    margin-top: -0.5rem;
+}
+.cTextMessageComponent .slds-popover :last-child {
+    margin-bottom: 0;
+}
+.cTextMessageComponent .slds-popover--tooltip .slds-popover__body,
+.cTextMessageComponent .slds-popover_tooltip .slds-popover__body {
+    font-size: 0.75rem;
+    color: #fff;
+}
+.cTextMessageComponent .customToast2 {
+    min-width: 0;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.cTextMessageComponent .clearBtn {
+    float: left;
+    margin-top: 24px;
+    display: inline-block;
+    margin-left: 15px;
+    width: 36px;
+    height: 33px;
+}
+.uiScrollerWrapper.scrollable {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.cCustomFileUpload.cFileUploadcss {
+    float: left;
+}
+.cTextMessageComponent .clearBtn {
+    float: left;
+    margin-top: 24px;
+    display: inline-block;
+    margin-left: 15px;
+    width: 36px;
+    height: 33px;
+}
+.slds-checkbox_toggle .slds-form-element__label {
+    width: 200px;
+}
+#root .slds-scope .slds-global-header_container {
+    position: static;
+}
+.slds-textarea-response {
+    min-height: 300px;
+}
+.customize-combobox .slds-is-selected .slds-media__figure {
+    display: none;
+}
+.App {
+  text-align: left;
+}
+.api-response {
+    color: #000;
+    text-align: left;
+}
+.slds-scope .datepicker .slds-dropdown-trigger {
+    display: block;
+}
+.object-card-details li {
+    display: inline-block;
+    padding: 0px 2rem;
+}
+.object-card-details li:first-child {
+    padding-left: 0px;
+}
+.slds-scope div .card-border {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10);
+    border: 1px solid rgb(201, 201, 201) !important;
+    border-radius: 0.25rem;
+}
+.slds-scope div .dropdown-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    top: 2px;
+    border-left: 0px;
+}
+.slds-scope .dropdown-more-button button {
+    border-left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: #fff;
+}
+.slds-scope button.dropdown-more-button-adjacent {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;    
+}
+.slds-card-details-header .slds-card__header {
+    background-color: #f3f3f3;
+    margin-bottom: 0px;
+    padding-bottom: 0.75rem;
+    border-radius: 0.25rem 0.25rem 0px 0px;
+}
+.slds-camaign-history-card .slds-card__body {
+    margin-top: 0px;
+}
+
+.slds-scope .readonly_mode .slds-input__icon_right {
+    pointer-events: all !important;
+}
+.slds-scope .readonly_mode .slds-input-has-icon_right.slds-input-has-icon:hover {
+    cursor: pointer;
+}
+.slds-scope .readonly_mode .slds-input-has-icon_right.slds-input-has-icon:hover .slds-input__icon_right path {
+    fill: #706e6b;
+}
+.slds-scope .readonly_mode .slds-form-element {
+    border-bottom: 1px solid #e5e5e5;
+}
+.slds-scope .readonly_mode .slds-form-element:hover {
+    cursor: pointer;
+}
+.slds-scope .readonly_mode .slds-form-element:hover .slds-input__icon_right path {
+    fill: #706e6b;    
+}
+.slds-scope .readonly_mode .slds-form-element input:focus, .slds-scope .readonly_mode .slds-form-element input, 
+.slds-scope .readonly_mode .slds-form-element .slds-textarea, .slds-scope .readonly_mode .slds-form-element .slds-input {
+    border: none !important;
+    box-shadow: none !important;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-input__icon_right:hover {
+    fill: #b4b2b0;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container {
+    border: none;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container input {
+    padding-left: 0px !important;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container .slds-input__icon_right,
+.slds-scope .readonly_mode .slds-form-element .slds-combobox_container .slds-combobox__input-entity-icon {
+    display: none;
+}
+.slds-scope .readonly_mode .slds-form-element .slds-textarea {
+    padding: 5px 0px 0px 0px;
+    resize: none;
+    line-height: 0.6;    
+}
+.slds-scope .readonly_mode .slds-form-element .slds-checkbox_faux {
+    box-shadow: none !important;
+}
+.slds-scope .readonly_mode .slds-required {
+    display: none;
+}
+.slds-scope .slds-form-card .slds-card__footer {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+    bottom: 0px;
+    background: rgba(236, 235, 234, 0.9);
+    right: 0;
+    width: initial;
+    z-index: 4;
+}
+.slds-scope .slds-form-card.slds-card {
+    border-radius: 0px;
+    box-shadow: none;
+    border: none;
+}
+.slds-scope .slds-form-card.slds-card .slds-card__body {
+    margin-bottom: 0px;    
+}
+.slds-scope .slds-form-card.slds-card .slds-card__header{
+    padding-top: 0px;
+}
+.slds-scope .slds-form-card-no-header .slds-card__header {
+    display: none;
+}
+.slds-scope .slds-button.card-hierarchy-icon {
+    background-color: #fff;
+    margin-top: -10px;
+}
+.slds-display_flex {
+    display: flex;
+}
+.slds-display_inline-flex {
+    display: inline-flex;
+}
+.slds-justify_content-center {
+    justify-content: center;
+}
+.slds-justify_content-space-between {
+    justify-content: space-between;
+}
+.slds-align_items-center {
+    align-items: center;
+}
