@@ -1,5 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('react-scripts/config/paths');
 const { processMainAppJs } = require("./config/salesforce");
 
 module.exports = function override(config, env) {
@@ -15,10 +17,10 @@ module.exports = function override(config, env) {
             ? 'static/js/main.bundle'+process.env.REACT_APP_BUNDLE_ID+'.js'
             : isEnvDevelopment && 'static/js/main.bundle'+process.env.REACT_APP_BUNDLE_ID+'.js';
     let chunkFilename = isEnvProduction
-            ? 'static/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js'
-            : isEnvDevelopment && 'static/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
-    let cssFilename = 'static/css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
-    let cssChunkFilename = 'static/css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+            ? 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js'
+            : isEnvDevelopment && 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
+    let cssFilename = 'css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    let cssChunkFilename = 'css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
     config.module.rules = [
         // salesforce dependencies
         // this will compile salesforce lightning as src, not as package
@@ -62,6 +64,32 @@ module.exports = function override(config, env) {
                 filename: cssFilename,
                 chunkFilename: cssChunkFilename,
             });
+        }else if(plugin.hasOwnProperty("userOptions") && plugin.userOptions.hasOwnProperty("template") && plugin.userOptions.template.indexOf("index.html") !== -1) {
+            plugins[key] = new HtmlWebpackPlugin(
+                Object.assign(
+                  {},
+                  {
+                    inject: false,
+                    template: paths.appHtml,
+                  },
+                  isEnvProduction
+                    ? {
+                        minify: {
+                          removeComments: true,
+                          collapseWhitespace: true,
+                          removeRedundantAttributes: true,
+                          useShortDoctype: true,
+                          removeEmptyAttributes: true,
+                          removeStyleLinkTypeAttributes: true,
+                          keepClosingSlash: true,
+                          minifyJS: true,
+                          minifyCSS: true,
+                          minifyURLs: true,
+                        },
+                      }
+                    : undefined
+                )
+              );
         }else {
             plugins[key] = plugin;
         }
