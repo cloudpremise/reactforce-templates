@@ -1,6 +1,7 @@
 (function(){
     var reactBundleId = "process.env.REACT_APP_BUNDLE_ID";
     var splitStaticResources = 'splitStaticResourcesFlag';
+    var staticResourceName = "CustomerPortal";
     // if(window.inlineApexAdaptor.hasOwnProperty("bundleId") && window.inlineApexAdaptor.bundleId.length > 0){
     //     var bundleId = window.inlineApexAdaptor.bundleId;
     //     var bundleNumber = bundleId.replace(/^\D+/g, '');
@@ -10,50 +11,63 @@
     //     }
     // }
     var bundleConfig = {};
-    if(splitStaticResources === 'true'){
-        var urlPathName = window.location.pathname;
-        var staticResourceName = "CustomerPortal";
-        if(urlPathName.indexOf("index.html") !== -1){
-            var resourcePath = urlPathName.replace("/lcc/","");
-            var resourceId = resourcePath.replace("/"+staticResourceName+"/index.html", "");
+    var urlPathName = window.location.pathname;
+    if(typeof(window.inlineApexAdaptor) === "object"){
+        bundleConfig = {
+            domain: window.inlineApexAdaptor.landingResources,
+            chunkDomain: window.inlineApexAdaptor.chunkResources,
+            cssDomain: window.inlineApexAdaptor.cssResources,
+            assetsDomain: window.inlineApexAdaptor.resources,
+            entryPoint: reactBundleId
+        };
+    }else{
+        var resourcePath = urlPathName.replace("/lcc/","");
+        var resourceId = resourcePath.replace("/"+staticResourceName+"/index.html", "");
+        if(splitStaticResources === 'true'){
             bundleConfig = {
                 domain: "/resource/"+resourceId+"/"+staticResourceName,
                 chunkDomain: "/resource/"+resourceId+"/"+staticResourceName+"Chunk",
                 cssDomain: "/resource/"+resourceId+"/"+staticResourceName+"Css",
+                assetsDomain: "/resource/"+resourceId+"/ReactforceAssets",
                 entryPoint: reactBundleId
             };
         }else{
             bundleConfig = {
-                domain: window.inlineApexAdaptor.landingResources,
-                chunkDomain: window.inlineApexAdaptor.chunkResources,
-                cssDomain: window.inlineApexAdaptor.cssResources,
+                domain: "/resource/"+resourceId+"/"+staticResourceName,
+                chunkDomain: "/resource/"+resourceId+"/"+staticResourceName,
+                cssDomain: "/resource/"+resourceId+"/"+staticResourceName,
+                assetsDomain: "/resource/"+resourceId+"/ReactforceAssets",
                 entryPoint: reactBundleId
             };
         }
-    }else{
-        bundleConfig = {
-            domain: window.inlineApexAdaptor.landingResources,
-            chunkDomain: window.inlineApexAdaptor.landingResources,
-            cssDomain: window.inlineApexAdaptor.landingResources,
-            entryPoint: reactBundleId
-        };
     }
-    loadAssets(bundleConfig);
+    loadAssets(bundleConfig, splitStaticResources);
 
-    function loadAssets(bundleConfig){
+    function loadAssets(bundleConfig, splitStaticResources){
         var domain = bundleConfig.domain;
         var chunkDomain = bundleConfig.chunkDomain;
         var cssDomain = bundleConfig.cssDomain;
-        if(typeof(window.window.inlineApexAdaptor) !== "undefined" && window.inlineApexAdaptor.bundleDomain.length > 0){
+        var assetsDomain = bundleConfig.assetsDomain;
+        if(typeof(window.inlineApexAdaptor) !== "undefined" && window.inlineApexAdaptor.bundleDomain.length > 0){
             domain = window.inlineApexAdaptor.bundleDomain;
             chunkDomain = window.inlineApexAdaptor.bundleDomain;
             cssDomain = window.inlineApexAdaptor.bundleDomain;
         }
         var reactforceEntryPoint = localStorage.getItem("reactforce_entrypoint");
         localStorage.setItem("reactforce_entrypoint", bundleConfig.entryPoint);
-        var cssUrl = cssDomain+"/main"+bundleConfig.entryPoint+".css";
-        var chunkJs = chunkDomain+"/js/main.chunk"+bundleConfig.entryPoint+".js";
+        var ldsCssUrl = assetsDomain+"/styles/salesforce-lightning-design-system.min.css";
+        var cssUrl = cssDomain+"/static/css/main"+bundleConfig.entryPoint+".css";
+        var chunkJs = chunkDomain+"/static/js/main.chunk"+bundleConfig.entryPoint+".js";
+        if(splitStaticResources === 'true'){
+            cssUrl = cssDomain+"/main"+bundleConfig.entryPoint+".css";
+            chunkJs = chunkDomain+"/js/main.chunk"+bundleConfig.entryPoint+".js";
+        }
         var mainJs = domain+"/static/js/main.bundle"+bundleConfig.entryPoint+".js";
+
+        var ldsCssElement = document.createElement("link");
+        ldsCssElement.setAttribute("href", ldsCssUrl);
+        ldsCssElement.setAttribute("rel", "stylesheet");
+        document.head.appendChild(ldsCssElement);
 
         var cssElement = document.createElement("link");
         cssElement.setAttribute("href", cssUrl);

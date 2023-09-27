@@ -8,6 +8,7 @@ module.exports = function override(config, env) {
     const isEnvDevelopment = env === 'development';
     const isEnvProduction = env === 'production';
     const string = "abcdefghijklmnopqrstuvwxyz";
+    var splitStaticResources = 'splitStaticResourcesFlag';
     const shortCode = Array(8).join().split(',').map(function() { return string.charAt(Math.floor(Math.random() * string.length)); }).join('');
     process.env.REACT_APP_BUNDLE_ID = "."+shortCode;
     processMainAppJs();
@@ -17,10 +18,17 @@ module.exports = function override(config, env) {
             ? 'static/js/main.bundle'+process.env.REACT_APP_BUNDLE_ID+'.js'
             : isEnvDevelopment && 'static/js/main.bundle'+process.env.REACT_APP_BUNDLE_ID+'.js';
     let chunkFilename = isEnvProduction
+            ? 'static/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js'
+            : isEnvDevelopment && 'static/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
+    let cssFilename = 'static/css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    let cssChunkFilename = 'static/css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    if(splitStaticResources === 'true'){
+        chunkFilename = isEnvProduction
             ? 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js'
             : isEnvDevelopment && 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
-    let cssFilename = 'css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
-    let cssChunkFilename = 'css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+        cssFilename = 'css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
+        cssChunkFilename = 'css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    }
     config.module.rules = [
         // salesforce dependencies
         // this will compile salesforce lightning as src, not as package
