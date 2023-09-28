@@ -9,7 +9,11 @@ function App() {
     })
     const recordCallback = React.useCallback(() => {
         setupRecordCallback((data) => {
-            setState({recordId: data.recordId});
+            let recordId = data.recordId;
+            if(!recordId || recordId === "null"){
+                recordId = "";
+            }
+            setState({recordId: recordId});
         });
     }, []);
     React.useEffect(() => {

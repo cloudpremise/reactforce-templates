@@ -1,11 +1,14 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const paths = require('react-scripts/config/paths');
 const { processMainAppJs } = require("./config/salesforce");
 
 module.exports = function override(config, env) {
     const isEnvDevelopment = env === 'development';
     const isEnvProduction = env === 'production';
     const string = "abcdefghijklmnopqrstuvwxyz";
+    var splitStaticResources = 'splitStaticResourcesFlag';
     const shortCode = Array(8).join().split(',').map(function() { return string.charAt(Math.floor(Math.random() * string.length)); }).join('');
     process.env.REACT_APP_BUNDLE_ID = "."+shortCode;
     processMainAppJs();
@@ -19,6 +22,13 @@ module.exports = function override(config, env) {
             : isEnvDevelopment && 'static/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
     let cssFilename = 'static/css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
     let cssChunkFilename = 'static/css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    if(splitStaticResources === 'true'){
+        chunkFilename = isEnvProduction
+            ? 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js'
+            : isEnvDevelopment && 'chunk/js/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.js';
+        cssFilename = 'css/main'+process.env.REACT_APP_BUNDLE_ID+'.css';
+        cssChunkFilename = 'css/main.chunk'+process.env.REACT_APP_BUNDLE_ID+'.css';
+    }
     config.module.rules = [
         // salesforce dependencies
         // this will compile salesforce lightning as src, not as package
@@ -62,6 +72,32 @@ module.exports = function override(config, env) {
                 filename: cssFilename,
                 chunkFilename: cssChunkFilename,
             });
+        }else if(plugin.hasOwnProperty("userOptions") && plugin.userOptions.hasOwnProperty("template") && plugin.userOptions.template.indexOf("index.html") !== -1) {
+            plugins[key] = new HtmlWebpackPlugin(
+                Object.assign(
+                  {},
+                  {
+                    inject: false,
+                    template: paths.appHtml,
+                  },
+                  isEnvProduction
+                    ? {
+                        minify: {
+                          removeComments: true,
+                          collapseWhitespace: true,
+                          removeRedundantAttributes: true,
+                          useShortDoctype: true,
+                          removeEmptyAttributes: true,
+                          removeStyleLinkTypeAttributes: true,
+                          keepClosingSlash: true,
+                          minifyJS: true,
+                          minifyCSS: true,
+                          minifyURLs: true,
+                        },
+                      }
+                    : undefined
+                )
+              );
         }else {
             plugins[key] = plugin;
         }

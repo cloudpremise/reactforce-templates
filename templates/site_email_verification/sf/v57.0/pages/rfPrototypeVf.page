@@ -20,6 +20,8 @@
                 'sessionId': '{!sessionId}',
                 'resources': '{!$Resource.ReactforceAssets}',
                 'landingResources': '{!$Resource.CustomerPortal}',
+                'chunkResources': '{!$Resource.CustomerPortalChunk}',
+                'cssResources': '{!$Resource.CustomerPortalCss}',
                 'bundleDomain': '{!bundleDomain}',
                 'page': 'home',
                 'rte': '{!$CurrentPage.parameters.rte}',
