@@ -63,8 +63,6 @@ const prepareInlineAdapter = () => {
         'bundleDomain': getParam("bundleDomain"),
     };
 
-    console.log("Inline Apex Adapter", window.inlineApexAdaptor);
-
     LCC.addMessageHandler((response) => { //Listen for messages received from controller and call appropriate callback function registered during initial call.
         const data = response.data;
         const callbackId = response.callbackId;
