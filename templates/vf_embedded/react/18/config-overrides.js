@@ -72,7 +72,7 @@ module.exports = function override(config, env) {
                 filename: cssFilename,
                 chunkFilename: cssChunkFilename,
             });
-        }else if(plugin.hasOwnProperty("userOptions") && plugin.userOptions.hasOwnProperty("template") && plugin.userOptions.template.indexOf("index.html") !== -1) {
+        }else if(splitStaticResources === 'true' && plugin.hasOwnProperty("userOptions") && plugin.userOptions.hasOwnProperty("template") && plugin.userOptions.template.indexOf("index.html") !== -1) {
             plugins[key] = new HtmlWebpackPlugin(
                 Object.assign(
                   {},
