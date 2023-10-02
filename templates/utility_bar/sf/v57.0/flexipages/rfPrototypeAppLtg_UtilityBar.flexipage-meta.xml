@@ -44,7 +44,7 @@
         <name>backgroundComponents</name>
         <type>Background</type>
     </flexiPageRegions>
-    <masterLabel>rfPrototype UtilityBar</masterLabel>
+    <masterLabel>rfPrototypeAppLtg UtilityBar</masterLabel>
     <template>
         <name>one:utilityBarTemplateDesktop</name>
         <properties>

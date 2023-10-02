@@ -12,5 +12,5 @@
     <label>rfPrototype</label>
     <navType>Standard</navType>
     <uiType>Lightning</uiType>
-    <utilityBar>rfPrototype_UtilityBar</utilityBar>
+    <utilityBar>rfPrototypeAppLtg_UtilityBar</utilityBar>
 </CustomApplication>
