@@ -8,11 +8,19 @@ declare const window: Window & typeof globalThis & {
 }
 
 function App() {
+    let recordId = window.inlineApexAdaptor.recordId;
+    if(!recordId || recordId === "null"){
+        recordId = "";
+    }
     const [state, setState] = React.useState({
-        recordId: window.inlineApexAdaptor.recordId
+        recordId: recordId
     })
     const recordCallback = React.useCallback(() => {
         setupRecordCallback((data: any) => {
+            let recordId = data.recordId;
+            if(!recordId || recordId === "null"){
+                recordId = "";
+            }
             setState({recordId: data.recordId});
         });
     }, []);

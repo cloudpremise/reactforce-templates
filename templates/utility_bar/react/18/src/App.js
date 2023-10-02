@@ -4,8 +4,12 @@ import { prepareInlineAdapter, setupRecordCallback } from "./ApexAdapter";
 prepareInlineAdapter();
 
 function App() {
+    let recordId = window.inlineApexAdaptor.recordId;
+    if(!recordId || recordId === "null"){
+        recordId = "";
+    }
     const [state, setState] = React.useState({
-        recordId: window.inlineApexAdaptor.recordId
+        recordId: recordId
     })
     const recordCallback = React.useCallback(() => {
         setupRecordCallback((data) => {
