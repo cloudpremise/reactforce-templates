@@ -1,7 +1,6 @@
 (function(){
     var reactBundleId = ".reactforce1";
     var splitStaticResources = 'false';
-    var staticResourceName = "CustomerPortal";
     // if(window.inlineApexAdaptor.hasOwnProperty("bundleId") && window.inlineApexAdaptor.bundleId.length > 0){
     //     var bundleId = window.inlineApexAdaptor.bundleId;
     //     var bundleNumber = bundleId.replace(/^\D+/g, '');
@@ -10,8 +9,12 @@
     //         reactBundleId = bundleId;
     //     }
     // }
+    function getQueryParam(name){
+        return decodeURIComponent(
+            (RegExp(name+"=(.+?)(&|$)").exec(window.location.search)||['',null])[1]
+        );
+    }
     var bundleConfig = {};
-    var urlPathName = window.location.pathname;
     if(typeof(window.inlineApexAdaptor) === "object"){
         bundleConfig = {
             domain: window.inlineApexAdaptor.landingResources,
@@ -21,25 +24,13 @@
             entryPoint: reactBundleId
         };
     }else{
-        var resourcePath = urlPathName.replace("/lcc/","");
-        var resourceId = resourcePath.replace("/"+staticResourceName+"/index.html", "");
-        if(splitStaticResources === 'true'){
-            bundleConfig = {
-                domain: "/resource/"+resourceId+"/"+staticResourceName,
-                chunkDomain: "/resource/"+resourceId+"/"+staticResourceName+"Chunk",
-                cssDomain: "/resource/"+resourceId+"/"+staticResourceName+"Css",
-                assetsDomain: "/resource/"+resourceId+"/ReactforceAssets",
-                entryPoint: reactBundleId
-            };
-        }else{
-            bundleConfig = {
-                domain: "/resource/"+resourceId+"/"+staticResourceName,
-                chunkDomain: "/resource/"+resourceId+"/"+staticResourceName,
-                cssDomain: "/resource/"+resourceId+"/"+staticResourceName,
-                assetsDomain: "/resource/"+resourceId+"/ReactforceAssets",
-                entryPoint: reactBundleId
-            };
-        }
+        bundleConfig = {
+            domain: getQueryParam("landingResources"),
+            chunkDomain: getQueryParam("chunkResources"),
+            cssDomain: getQueryParam("cssResources"),
+            assetsDomain: getQueryParam("resources"),
+            entryPoint: reactBundleId
+        };
     }
     loadAssets(bundleConfig, splitStaticResources);
 
@@ -47,7 +38,7 @@
         var domain = bundleConfig.domain;
         var chunkDomain = bundleConfig.chunkDomain;
         var cssDomain = bundleConfig.cssDomain;
-        var assetsDomain = bundleConfig.assetsDomain;
+        // var assetsDomain = bundleConfig.assetsDomain;
         if(typeof(window.inlineApexAdaptor) !== "undefined" && window.inlineApexAdaptor.bundleDomain.length > 0){
             domain = window.inlineApexAdaptor.bundleDomain;
             chunkDomain = window.inlineApexAdaptor.bundleDomain;
@@ -55,7 +46,7 @@
         }
         var reactforceEntryPoint = localStorage.getItem("reactforce_entrypoint");
         localStorage.setItem("reactforce_entrypoint", bundleConfig.entryPoint);
-        var ldsCssUrl = assetsDomain+"/styles/salesforce-lightning-design-system.min.css";
+        // var ldsCssUrl = assetsDomain+"/styles/salesforce-lightning-design-system.min.css";
         var cssUrl = cssDomain+"/static/css/main"+bundleConfig.entryPoint+".css";
         var chunkJs = chunkDomain+"/static/js/main.chunk"+bundleConfig.entryPoint+".js";
         if(splitStaticResources === 'true'){
@@ -64,10 +55,10 @@
         }
         var mainJs = domain+"/static/js/main.bundle"+bundleConfig.entryPoint+".js";
 
-        var ldsCssElement = document.createElement("link");
-        ldsCssElement.setAttribute("href", ldsCssUrl);
-        ldsCssElement.setAttribute("rel", "stylesheet");
-        document.head.appendChild(ldsCssElement);
+        // var ldsCssElement = document.createElement("link");
+        // ldsCssElement.setAttribute("href", ldsCssUrl);
+        // ldsCssElement.setAttribute("rel", "stylesheet");
+        // document.head.appendChild(ldsCssElement);
 
         var cssElement = document.createElement("link");
         cssElement.setAttribute("href", cssUrl);

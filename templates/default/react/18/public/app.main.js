@@ -1,6 +1,6 @@
 (function(){
-    var reactBundleId = ".reactforce1";
-    var splitStaticResources = 'false';
+    var reactBundleId = "process.env.REACT_APP_BUNDLE_ID";
+    var splitStaticResources = 'splitStaticResourcesFlag';
     // if(window.inlineApexAdaptor.hasOwnProperty("bundleId") && window.inlineApexAdaptor.bundleId.length > 0){
     //     var bundleId = window.inlineApexAdaptor.bundleId;
     //     var bundleNumber = bundleId.replace(/^\D+/g, '');
