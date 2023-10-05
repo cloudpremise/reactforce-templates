@@ -5,6 +5,8 @@
             var data = {
                 'resources': $A.get('$Resource.ReactforceAssets'),
                 'landingResources': $A.get('$Resource.rfPrototypeLtg'),
+                'chunkResources': $A.get('$Resource.rfPrototypeLtgChunk'),
+                'cssResources': $A.get('$Resource.rfPrototypeLtgCss'),
                 'bundleDomain': component.get("v.bundleDomain"),
                 'recordId': component.get("v.recordId"),
                 'recordType': 'Account',

@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('react-scripts/config/paths');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const paths = require('react-scripts/config/paths');
 const { processMainAppJs } = require("./config/salesforce");
 
 module.exports = function override(config, env) {
