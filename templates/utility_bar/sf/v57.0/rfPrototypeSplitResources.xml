@@ -26,13 +26,7 @@
     </types>   
     <types>
         <members>rfPrototype</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
         <members>rfPrototypeChunk</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
         <members>rfPrototypeCss</members>
         <name>StaticResource</name>
     </types>
