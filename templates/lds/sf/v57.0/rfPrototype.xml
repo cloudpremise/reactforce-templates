@@ -6,10 +6,6 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>AppSwitcher</members>
-        <name>AppMenu</name>
-    </types>
-    <types>
         <members>rfPrototypeLtg</members>
         <name>AuraDefinitionBundle</name>
     </types>
