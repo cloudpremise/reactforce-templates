@@ -9,10 +9,6 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>Admin</members>
-        <name>Profile</name>
-    </types>
-    <types>
         <members>rfPrototype</members>
         <members>rfPrototypeChunk</members>
         <members>rfPrototypeCss</members>

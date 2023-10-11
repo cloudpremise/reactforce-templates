@@ -21,10 +21,6 @@
         <name>PermissionSet</name>
     </types>
     <types>
-        <members>Admin</members>
-        <name>Profile</name>
-    </types>   
-    <types>
         <members>rfPrototype</members>
         <name>StaticResource</name>
     </types>
