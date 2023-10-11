@@ -34,11 +34,6 @@
         <members>rfPrototypeLtg</members>
         <members>rfPrototypeVf</members>
         <name>CustomTab</name>
-    </types>
-    <types>
-        <members>rfPrototypeLtg</members>
-        <members>rfPrototypeVf</members>
-        <name>Tabs</name>
-    </types>    
+    </types>  
     <version>57.0</version>
 </Package>
