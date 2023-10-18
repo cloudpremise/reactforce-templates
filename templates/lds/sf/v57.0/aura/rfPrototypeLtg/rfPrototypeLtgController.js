@@ -1,11 +1,11 @@
 ({
     doInit : function(component, event, helper) {
-        var containerSrc = $A.get('$Resource.rfPrototypeLtg')+'/index.html';
+        var containerSrc = $A.get('$Resource.rfPrototype')+'/index.html';
         var data = {
             'resources': $A.get('$Resource.ReactforceAssets'),
-            'landingResources': $A.get('$Resource.rfPrototypeLtg'),
-            'chunkResources': $A.get('$Resource.rfPrototypeLtgChunk'),
-            'cssResources': $A.get('$Resource.rfPrototypeLtgCss'),
+            'landingResources': $A.get('$Resource.rfPrototype'),
+            'chunkResources': $A.get('$Resource.rfPrototypeChunk'),
+            'cssResources': $A.get('$Resource.rfPrototypeCss'),
             'bundleDomain': component.get("v.bundleDomain"),
         };
         var str = [];

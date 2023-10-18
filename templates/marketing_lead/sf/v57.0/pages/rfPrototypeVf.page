@@ -3,7 +3,7 @@
         <meta charset="utf-8"></meta>
         <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
         <link rel="shortcut icon" href="./favicon.ico?v=2"></link>
-        <title>CustomerPortal | Salesforce</title>
+        <title>rfPrototype | Salesforce</title>
         <apex:outputPanel>
             <!-- <link rel="stylesheet" href="{!URLFOR($Resource.xxxxx, 'styles/salesforce-lightning-design-system.min.css')}" type="text/css"/> -->
         </apex:outputPanel>
@@ -20,9 +20,9 @@
                 'createLeadApi': '{!$RemoteAction.rfPrototypeCtrl.createLead}',
                 'sessionId': '{!sessionId}',
                 'resources': '{!$Resource.ReactforceAssets}',
-                'landingResources': '{!$Resource.CustomerPortal}',
-                'chunkResources': '{!$Resource.CustomerPortalChunk}',
-                'cssResources': '{!$Resource.CustomerPortalCss}',
+                'landingResources': '{!$Resource.rfPrototype}',
+                'chunkResources': '{!$Resource.rfPrototypeChunk}',
+                'cssResources': '{!$Resource.rfPrototypeCss}',
                 'bundleDomain': '{!bundleDomain}',
                 'bundleId': '{!bundleId}',
                 'recordId': '{!sObj.Id}',
@@ -41,7 +41,7 @@
                 <div class="slds-spinner__dot-a"></div>
                 <div class="slds-spinner__dot-b"></div>
             </div>
-            <span class="slds-update-experience" id="update-application-experience" style="display:none;position: absolute;top: 50%;left: 0px;right: 0px;z-index: 9051;width: 350px;margin: 0px auto;text-align: center;margin-top: 25px;">One moment while we update your CustomerPortal Experience…</span>
+            <span class="slds-update-experience" id="update-application-experience" style="display:none;position: absolute;top: 50%;left: 0px;right: 0px;z-index: 9051;width: 350px;margin: 0px auto;text-align: center;margin-top: 25px;">One moment while we update your rfPrototype Experience…</span>
         </div>
 
         <!-- Load the app from the bundle domain -->
@@ -51,7 +51,7 @@
 
         <!-- Load the app from the static resource -->
         <apex:outputPanel rendered="{!(ISBLANK(bundleDomain))}">
-            <script type="text/javascript" src="{!URLFOR($Resource.CustomerPortal, 'assets/js/app.main.v1.js')}"></script>
+            <script type="text/javascript" src="{!URLFOR($Resource.rfPrototype, 'assets/js/app.main.v1.js')}"></script>
         </apex:outputPanel>
 
     </body>
