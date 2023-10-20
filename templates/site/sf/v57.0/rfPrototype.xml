@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>rfPrototypeCtrl</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>rfPrototypeVf</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>rfPrototype</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>rfPrototype</members>
+        <name>CustomSite</name>
+    </types>
+    <types>
+        <members>rfPrototype</members>
+        <name>StaticResource</name>
+    </types>
+    <version>57.0</version>
+</Package>
