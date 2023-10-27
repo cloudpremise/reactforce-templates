@@ -200,7 +200,7 @@ const Details = (props) => {
     return (
         <div className="slds-p-vertical_large slds-p-around_medium">
             <Card
-                className="slds-card-details-header"
+                className="slds-card-details-header slds-card-object-details-header"
                 header={(
                     <div class="slds-media slds-media_center slds-has-flexi-truncate">
                         <div class="slds-media__figure">
@@ -301,8 +301,8 @@ const Details = (props) => {
                 </div>
             </Card>
             <div className="slds-p-around_medium slds-m-top_medium">
-                <div className="slds-grid slds-gutters">
-                    <div className="slds-col slds-size_4-of-6 card-border">
+                <div className="slds-grid slds-gutters slds-wrap">
+                    <div className="slds-col slds-size_1-of-1 slds-large-size_4-of-6 card-border">
                         <Tabs id="tabs-details-default">
                             <TabsPanel label="Related">
                                 <Card
@@ -780,12 +780,12 @@ const Details = (props) => {
                                     id="twitter-expandable-section"
                                     title="Twitter"
                                 >
-                                    <div className="slds-grid slds-gutters slds-grid_align-spread">
-                                        <div className="slds-col slds-size_4-of-6">
+                                    <div className="slds-grid slds-gutters slds-grid_align-spread slds-wrap">
+                                        <div className="slds-col slds-size_1-of-1 slds-medium-size_4-of-6 slds-m-bottom_small">
                                             <p>Learn More Using Twitter</p>
                                             <p>Sign in to link a Twitter profile, find people in common, and quickly access recent tweets.</p>
                                         </div>
-                                        <div className="slds-col slds-size_2-of-6" style={{width: "auto"}}>
+                                        <div className="slds-col slds-size_1-of-1 slds-medium-size_2-of-6" style={{width: "auto"}}>
                                             <Button>
                                                 <img src="/img/social/twitter_mini_logo.png" alt="twitter" />
                                                 Sign in with Twitter
@@ -797,7 +797,7 @@ const Details = (props) => {
                             </TabsPanel>
                         </Tabs>
                     </div>
-                    <div className="slds-col slds-size_2-of-6">
+                    <div className="slds-col slds-activity-container slds-size_1-of-1 slds-large-size_2-of-6">
                         <div className="card-border slds-m-left_x-small slds-p-around_small">
                             <Tabs id="tabs-details-right">
                                 <TabsPanel label="Activity">

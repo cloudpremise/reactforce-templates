@@ -27,11 +27,36 @@ import { useSampleAdapter } from "./hooks/useApexAdapter";
 import { prepareInlineAdapter } from "./ApexAdapter";
 prepareInlineAdapter();
 
+const HeaderProfileCustomMenuButton = (props: any) => (
+	<Button {...props}
+        iconName="rows"
+        iconVariant="border"
+        className="slds-m-left_small slds-custom-menu-button"
+    />
+);
+HeaderProfileCustomMenuButton.displayName = 'SLDSGlobalNavigationBarRegion';
+
+const CustomNavigationBarRegion = (props: any) => (
+	<Button {...props}
+        iconName="close"
+        iconVariant="global-header"
+    />
+);
+CustomNavigationBarRegion.displayName = 'SLDSGlobalNavigationBarRegion';
+
+const CustomNavigationBarPopover = (props: any) => (
+	<div
+        {...props}
+        className='slds-navigation-popover'
+    ></div>
+);
+CustomNavigationBarPopover.displayName = 'SLDSGlobalNavigationBarRegion';
+
 declare const window: Window & typeof globalThis & {
     inlineApexAdaptor: any
 }
 
-function App() {
+function App(props: any) {
     const dropdownCollection = [
         {
             label: 'Menu Item One',
@@ -98,7 +123,8 @@ function App() {
         inputValue: '',
 		selection: [accountsWithIcon[0], accountsWithIcon[1]],
         value: '',
-        singleSelection: []
+        singleSelection: [],
+        openMenu: false
     });
     function getSFResourcesPath(){
         return (window.hasOwnProperty('inlineApexAdaptor') ? window.inlineApexAdaptor.resources+'/': '');
@@ -109,6 +135,12 @@ function App() {
             value: data.date
         });
 	}
+    function onMenuToggle(status = false){
+        setState({
+            ...state,
+            openMenu: status
+        });
+    }
     function onRenderMenuItem(props: any){
         const {assistiveText, selected, option} = props;
         return (
@@ -145,7 +177,7 @@ function App() {
     return (
         <IconSettings iconPath={getSFResourcesPath()+"assets/icons"}>
             <div>
-            <GlobalNavigationBar>
+            <GlobalNavigationBar className={(state.openMenu ? 'slds-open-menu' : '')}>
                 <GlobalNavigationBarRegion region="primary">
                     <AppLauncher
                         id="app-launcher-trigger"
@@ -155,7 +187,7 @@ function App() {
                         App Launcer Items
                     </AppLauncher>
                 </GlobalNavigationBarRegion>
-                <GlobalNavigationBarRegion region="secondary" navigation>
+                <GlobalNavigationBarRegion region="secondary" navigation className={"slds-custom-primary-navigation "+(state.openMenu ? 'slds-open-menu' : '')}>
                     <GlobalNavigationBarLink label="Home" id="home-link" />
                     <GlobalNavigationBarDropdown
                         assistiveText={{ icon: 'Open menu item submenu' }}
@@ -166,20 +198,28 @@ function App() {
                     <GlobalNavigationBarLink label="Menu Item" />
                     <GlobalNavigationBarLink label="Menu Item" />
                     <GlobalNavigationBarLink label="Menu Item" />
+                    <CustomNavigationBarRegion
+                        region="secondary"
+                        onClick={() => onMenuToggle(false)}
+                        className="slds-custom-navigation-close"
+                    />
                 </GlobalNavigationBarRegion>
+                
+                <CustomNavigationBarPopover onClick={() => onMenuToggle(false)} region="secondary" />
+                <HeaderProfileCustomMenuButton onClick={() => onMenuToggle(true)} region="secondary" />
             </GlobalNavigationBar>
                 <div className="App">
                     <div className="slds-p-around_medium slds-size_1-of-1">
                         <h1 className="slds-text-title_caps slds-p-vertical_large">
                             Inputs
                         </h1>
-                        <div className="slds-grid slds-gutters">
-                            <div className="slds-col slds-size_1-of-4">
+                        <div className="slds-grid slds-gutters slds-wrap">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
                                 <Input
                                     label="Input Label"
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
                                 <Input
                                     iconLeft={
                                         <InlineIcon
@@ -202,20 +242,20 @@ function App() {
                                     }
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
                                 <Input
                                     label="Input with Error Message"
                                     required
                                     errorText="Error Message"
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-m-top_large">
                                 <Radio id="radioId1" name="sampleRadio" labels={{ label: 'Radio Label' }} />
                                 <Radio id="radioId2" name="sampleRadio" labels={{ label: 'Radio Label2' }} />
                             </div>
                         </div>
-                        <div className="slds-grid slds-gutters">
-                            <div className="slds-col slds-size_1-of-4">
+                        <div className="slds-grid slds-gutters slds-wrap">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4">
                                 <Combobox
                                     labels={{
                                         label: 'Search',
@@ -287,7 +327,7 @@ function App() {
                                     }}
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 datepicker">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 datepicker">
                                 <Datepicker
                                     labels={{
                                         label: 'Date',
@@ -298,7 +338,7 @@ function App() {
                                     value={state.value}
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 datepicker">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 datepicker">
                                 <Timepicker
                                     label="Time"
                                     stepInMinutes={30}
@@ -307,7 +347,7 @@ function App() {
                                     }}
                                 />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-m-top_large">
                                 <Checkbox
                                     assistiveText={{
                                         label: 'Default',
@@ -319,14 +359,14 @@ function App() {
                                 />
                             </div>
                         </div>
-                        <div className="slds-grid slds-gutters">
-                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                        <div className="slds-grid slds-gutters slds-wrap">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-m-top_large">
                                 <Textarea id="unique-id-1" label="Textarea Label" />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-m-top_large">
                                 <Input id="counter-input-1" label="Counter" variant="counter" />
                             </div>
-                            <div className="slds-col slds-size_1-of-4 slds-m-top_large">
+                            <div className="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-4 slds-m-top_large">
                             <Combobox
                                 id="combobox-readonly-single"
                                 events={{

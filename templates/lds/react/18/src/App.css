@@ -1,5 +1,5 @@
 .App {
-  text-align: left;
+    text-align: left;
 }
 .api-response {
     color: #000;
@@ -45,6 +45,7 @@
 }
 .slds-camaign-history-card .slds-card__body {
     margin-top: 0px;
+    overflow-x: auto;
 }
 
 .slds-scope .readonly_mode .slds-input__icon_right {
@@ -141,4 +142,163 @@
 }
 .customize-combobox .slds-is-selected .slds-media__figure {
     display: none;
+}
+#root .slds-scope .slds-global-header_container {
+    position: static;
+}
+.slds-custom-navigation-close {
+    display: none !important;
+}
+.slds-custom-menu-button {
+    display: none !important;
+}
+html, body {
+    overflow-x: hidden;
+}
+.slds-scope .slds-global-header__logo {
+    height: 40px;
+    align-self: center;
+}
+.slds-custom-table-container {
+    & .slds-custom-table {
+        & .slds-checkbox {
+            text-align: left;
+        }
+    }
+}
+.slds-scope .slds-th__action_form,
+.slds-scope .slds-th__action--form {
+    padding: 0px;
+}
+.slds-scope .slds-th__action_form:hover,
+.slds-scope .slds-th__action--form:hover {
+    background-color: transparent;
+}
+.slds-scope .slds-table_cell-buffer tr>th:first-child,
+.slds-scope .slds-table--cell-buffer tr>th:first-child{
+    height: auto;
+    text-align: left;
+}
+@media screen and (max-width: 1024px) {
+    .slds-scope .slds-context-bar .slds-custom-primary-navigation {
+        height: 100vh;
+        position: fixed;
+        min-width: 200px;
+        right: -220px;
+        transition: all 0.3s ease;
+        border-left: 1px solid #f5f5f5;
+        background-color: #fff;
+        box-shadow: -1px 0px 10px 1px #f5f5f5;
+        top: 0px;
+        z-index: 100;
+        border-bottom: 0px;
+        &.slds-open-menu {
+            right: 0px;
+            & .slds-navigation-popover {
+                display: block;
+            }
+        }
+        & .slds-grid {
+            flex-direction: column;
+            width: 100%;
+        }
+        & .slds-context-bar__item {
+            max-width: 100%;
+            padding: 10px 5px;
+        }
+        & .slds-custom-navigation-close {
+            display: block !important;
+            position: absolute;
+            right: 0px;
+            top: 4px;
+            background-color: transparent !important;
+            z-index: 101;
+        }
+    }
+    & .slds-navigation-popover {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: calc( 100% - 200px);
+    display: none;
+    z-index: 90;
+}
+.slds-open-menu {
+    & .slds-navigation-popover {
+        display: block;
+    }
+}
+    .slds-custom-menu-button {
+        display: block !important;
+        position: absolute !important;
+        right: 20px;
+        top: 2px;
+    }
+    .slds-activity-container {
+        padding: 0px !important;
+        margin-top: 15px;
+        & .card-border.slds-m-left_x-small {
+            margin-left: 0px;
+        }
+    }
+    .object-card-details li {
+        padding: 0px 2rem 0px 0px;
+    }
+    .slds-custom-table-container {
+        overflow: auto;
+        & .slds-table_header-fixed_scroller {
+            overflow: hidden !important;
+        }
+        & .card-details-header {
+            width: 1024px;
+        }
+        & .slds-custom-table {
+            width: 1024px;
+        }
+    }
+}
+
+@media screen and (max-width: 805px) {
+    .slds-card-object-details-header {
+        & .slds-card__header {
+            flex-direction: column;
+        }
+    }
+    /* .card-details-header {
+        & .slds-page-header__row {
+            flex-direction: column;
+        }
+        & .slds-page-header__col-meta {
+            align-self: flex-start;
+        }
+        & .slds-page-header__col-actions,
+        & .slds-page-header__col-controls {
+            align-self: flex-start;
+            margin-top: 10px;
+        }
+        & .slds-page-header__control {
+            margin-left: 0px;
+        }
+    } */
+}
+
+@media screen and (max-width: 605px) {
+    .object-card-details {
+        & li {
+            display: block;
+            padding: 0px;
+            & p {
+                display: inline-block;
+                &:first-child {
+                    width: 100px;
+                }
+            }
+            &+li {
+                margin-top: 10px;
+            }
+        }
+    }
 }

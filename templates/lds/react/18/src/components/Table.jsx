@@ -331,11 +331,9 @@ const Table = (props) => {
     return (
         <div
             style={{
-                height: '450px',
                 width: '100%',
-                marginBottom: '150px',
             }}
-            className='slds-p-vertical_large slds-p-around_medium slds-p-bottom_none'
+            className='slds-p-vertical_large slds-p-around_medium slds-p-bottom_none slds-custom-table-container'
         >
             <PageHeader
                 onRenderActions={actions}
@@ -379,10 +377,11 @@ const Table = (props) => {
                 }
                 truncate
                 variant="object-home"
+                className="card-details-header"
             />
             <DataTable
-                fixedLayout
-                resizable
+                // fixedLayout
+                // resizable
                 keyboardNavigation
                 items={state.items}
                 id="DataTableExample-JoinedWithPageHeader"
@@ -391,6 +390,7 @@ const Table = (props) => {
                 onSort={handleSort}
                 selection={state.selection}
                 selectRows="checkbox"
+                className={"slds-custom-table"}
             >
                 <DataTableColumn
                     isSorted={state.sortColumn === 'opportunityName'}
