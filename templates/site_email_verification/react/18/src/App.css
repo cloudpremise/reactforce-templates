@@ -1171,3 +1171,94 @@ div .non-logged-in .slds-global-header__item.slds-global-header__item_logo {
 .slds-align_items-center {
     align-items: center;
 }
+.slds-custom-navigation-close {
+    display: none !important;
+}
+.slds-custom-menu-button {
+    display: none !important;
+}
+html, body {
+    overflow-x: hidden;
+}
+.slds-scope .slds-th__action_form,
+.slds-scope .slds-th__action--form {
+    padding: 0px;
+}
+.slds-scope .slds-th__action_form:hover,
+.slds-scope .slds-th__action--form:hover {
+    background-color: transparent;
+}
+.slds-scope .slds-table_cell-buffer tr>th.slds-table-checkbox-container,
+.slds-scope .slds-table--cell-buffer tr>th.slds-table-checkbox-container,
+.slds-scope .slds-table_cell-buffer tr>td.slds-table-checkbox-container,
+.slds-scope .slds-table--cell-buffer tr>td.slds-table-checkbox-container{
+    height: auto;
+    text-align: left;
+    padding-left: 10px;
+    max-width: 35px;
+}
+@media screen and (max-width: 1024px) {
+    .slds-scope .slds-context-bar.slds-custom-primary-navigation {
+        height: 100vh;
+        position: fixed;
+        min-width: 200px;
+        right: -220px;
+        transition: all 0.3s ease;
+        border-left: 1px solid #f5f5f5;
+        box-shadow: -1px 0px 10px 1px #f5f5f5;
+        top: 0px;
+        z-index: 100;
+        border-bottom: 0px;
+        &.slds-open-menu {
+            right: 0px;
+            & .slds-navigation-popover {
+                display: block;
+            }
+        }
+        & .slds-grid {
+            flex-direction: column;
+            width: 100%;
+        }
+        & .slds-context-bar__item {
+            max-width: 100%;
+            padding: 10px 5px;
+        }
+        & .slds-custom-navigation-close {
+            display: block !important;
+            position: absolute;
+            right: 0px;
+            top: 4px;
+            background-color: transparent !important;
+            z-index: 101;
+        }
+        & .slds-navigation-popover {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            height: 100%;
+            width: calc( 100% - 200px);
+            display: none;
+            z-index: 90;
+        }
+    }
+    .slds-custom-menu-button {
+        display: block !important;
+    }
+    .slds-custom-table-container {
+        overflow: auto;
+        & .slds-table_header-fixed_scroller {
+            overflow: hidden !important;
+        }
+        & .card-details-header {
+            width: 1024px;
+        }
+        & .slds-custom-table {
+            width: 1024px;
+            & .slds-checkbox {
+                text-align: left;
+            }
+        }
+    }
+}

@@ -113,7 +113,7 @@ const DataTableRow = (props) => {
 							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 							<td
 								role={props.fixedLayout ? 'gridcell' : null}
-								className="slds-text-align_right"
+								className="slds-text-align_right slds-table-checkbox-container"
 								data-label={props.stacked ? 'Select Row' : undefined}
 								style={{ width: '1.25rem' }}
 								onFocus={handleFocus}

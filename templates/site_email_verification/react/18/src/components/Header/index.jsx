@@ -38,6 +38,7 @@ const defaultProps = {
 		skipToContent: 'Skip to Main Content',
 	},
 	logoSrc: '/assets/images/logo-noname.svg',
+    onLogoClick: function(){}
 };
 
 /**
@@ -88,6 +89,8 @@ class GlobalHeader extends React.Component {
 		 * Required for accessibility. Should jump the user to the primary navigation.
 		 */
 		onSkipToNav: PropTypes.func,
+
+        onLogoClick: PropTypes.func
 	};
 
 	static defaultProps = defaultProps;
@@ -113,6 +116,7 @@ class GlobalHeader extends React.Component {
 			...defaultProps.assistiveText,
 			...this.props.assistiveText,
 		};
+        const GLOBAL_HEADER_MENU_BUTTON = 'HeaderProfileCustomMenuButton';
 		let actions = {
 			[GLOBAL_HEADER_FAVORITES]: [],
 			[GLOBAL_HEADER_HELP]: [],
@@ -121,6 +125,7 @@ class GlobalHeader extends React.Component {
 			[GLOBAL_HEADER_SETUP]: [],
 			[GLOBAL_HEADER_TASK]: [],
 			[GLOBAL_HEADER_TOOL]: [], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
+            [GLOBAL_HEADER_MENU_BUTTON]: []
 		};
 		let search;
 
@@ -141,7 +146,8 @@ class GlobalHeader extends React.Component {
 			actions[GLOBAL_HEADER_SETUP],
 			actions[GLOBAL_HEADER_NOTIFICATIONS],
 			actions[GLOBAL_HEADER_TOOL], // support for deprecated GlobalHeaderButton and GlobalHeaderDropdown
-			actions[GLOBAL_HEADER_PROFILE]
+			actions[GLOBAL_HEADER_PROFILE],
+            actions[GLOBAL_HEADER_MENU_BUTTON]
 		);
 
 		/* eslint-disable max-len */
@@ -171,6 +177,7 @@ class GlobalHeader extends React.Component {
 						<div
 							className="slds-global-header__logo"
 							style={{ backgroundImage: `url(${this.props.logoSrc})` }}
+                            onClick={this.props.onLogoClick}
 						/>
                         {this.props.navigation}
 					</div>

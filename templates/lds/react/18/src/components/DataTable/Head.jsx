@@ -166,7 +166,7 @@ const SelectHeader = (props) => {
 	};
 	return (
 		<th
-			className={classNames('slds-text-align_right', {
+			className={classNames('slds-text-align_right slds-table-checkbox-container', {
 				'slds-has-focus': hasFocus,
 			})}
 			ref={(ref) => {

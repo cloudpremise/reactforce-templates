@@ -6,6 +6,7 @@ import GlobalNavigationBar from '@salesforce/design-system-react/components/glob
 import GlobalNavigationBarRegion from '@salesforce/design-system-react/components/global-navigation-bar/region';
 import GlobalHeader from './Header';
 import { getSessionId } from "../ApexAdapter";
+import Button from './Button';
 
 import Home from "../pages/Home";
 import Landing from "../pages/Landing";
@@ -32,7 +33,37 @@ const HeaderProfileCustomContent = (props) => (
 );
 HeaderProfileCustomContent.displayName = 'HeaderProfileCustomContent';
 
+const HeaderProfileCustomMenuButton = (props) => (
+	<Button {...props}
+        iconName="rows"
+        iconVariant="border"
+        className="slds-m-left_small slds-custom-menu-button"
+    />
+);
+HeaderProfileCustomMenuButton.displayName = 'HeaderProfileCustomMenuButton';
+
+const CustomNavigationBarRegion = (props) => (
+	<Button {...props}
+        iconName="close"
+        iconVariant="global-header"
+    />
+);
+CustomNavigationBarRegion.displayName = 'SLDSGlobalNavigationBarRegion';
+
+const CustomNavigationBarPopover = (props) => (
+	<div
+        {...props}
+        className='slds-navigation-popover'
+    ></div>
+);
+CustomNavigationBarPopover.displayName = 'SLDSGlobalNavigationBarRegion';
+
 const Header = (props) => {
+    const url = props.page.replace(props.basename, "");
+    const [state, setState] = React.useState({
+        openMenu: false,
+        activeUrl: url
+    });
     const { basename, page } = props;
     let cdn = "";
     if(window.inlineApexAdaptor && window.inlineApexAdaptor.landingResources){
@@ -40,16 +71,50 @@ const Header = (props) => {
     }
     const logoUrl = cdn+"/assets/img/logo.png";
     const sessionId = getSessionId();
+    function onMenuToggle(status = null){
+        setState({
+            ...state,
+            openMenu: status
+        });
+    }
+    function onLogoClick(){
+        onUrlChange(null, (sessionId.length > 0 ? '/home' : '/'));
+    }
+    const navigate = useNavigate();
+    function onUrlChange(event, url = ''){
+        if(event){
+            url = event.currentTarget.getAttribute("url");
+        }
+        url = url.replace(props.basename, "");
+        setState({
+            ...state,
+            activeUrl: url
+        });
+        navigate(url);
+        window.history.replaceState(null, document.title, props.basename+url+window.location.search);
+        onMenuToggle(false);
+    }
+
     return (
         <GlobalHeader
             logoSrc={logoUrl}
+            onLogoClick={() => onLogoClick()}
             onSkipToContent={() => {
                 console.log('>>> Skip to Content Clicked');
             }}
             onSkipToNav={() => {
                 console.log('>>> Skip to Nav Clicked');
             }}
-            navigation={<NavigationBar basename={basename} page={page} />}
+            navigation={
+                <NavigationBar
+                    basename={basename}
+                    page={page}
+                    onMenuToggle={onMenuToggle}
+                    className={state.openMenu ? 'slds-open-menu' : ''}
+                    onUrlChange={onUrlChange}
+                    activeUrl={state.activeUrl}
+                />
+            }
         >
             {
                 sessionId.length > 0 ?
@@ -65,45 +130,49 @@ const Header = (props) => {
                 :
                 null
             }
+            <HeaderProfileCustomMenuButton
+                onClick={() => onMenuToggle(true)}
+            />
         </GlobalHeader>
     )
 };
 
 const NavigationBar = (props) => {
-    const url = props.page.replace(props.basename, "");
-    const [state, setState] = React.useState({
-        activeUrl: url
-    });
     const sessionId = getSessionId();
-    const navigate = useNavigate();
-    function onUrlChange(event){
-        let url = event.currentTarget.getAttribute("url");
-        url = url.replace(props.basename, "");
-        setState({activeUrl: url});
-        navigate(url);
-        window.history.replaceState(null, document.title, props.basename+url+window.location.search);
-    }
 
     return (
-        <GlobalNavigationBar>
+        <GlobalNavigationBar
+            className={"slds-custom-primary-navigation "+props.className}
+        >
             {
                 sessionId.length > 0 ?
                     <GlobalNavigationBarRegion region="secondary" navigation>
-                        <li className={'slds-context-bar__item '+(state.activeUrl === "/home" ? "slds-is-active" : "")}>
-                            <span url="/home" onClick={(event) => onUrlChange(event)} className="slds-context-bar__label-action">
+                        <li className={'slds-context-bar__item '+(props.activeUrl === "/home" ? "slds-is-active" : "")}>
+                            <span url="/home" onClick={(event) => props.onUrlChange(event)} className="slds-context-bar__label-action">
                                 <span className='slds-truncate' title='Home'>Home</span>
+                            </span>
+                        </li>
+                        <li className={'slds-context-bar__item '+(props.activeUrl === "/cases" ? "slds-is-active" : "")}>
+                            <span url="/cases" onClick={(event) => props.onUrlChange(event)} className="slds-context-bar__label-action" title='Settings'>
+                                <span className='slds-truncate' title='Cases'>Cases</span>
                             </span>
                         </li>
                     </GlobalNavigationBarRegion>
                 :
                     <GlobalNavigationBarRegion region="secondary" navigation>
                         <li className={'slds-context-bar__item'}>
-                            <span url={props.basename+"/login-link"} onClick={(event) => onUrlChange(event)} className="slds-context-bar__label-action">
+                            <span url={props.basename+"/login-link"} onClick={(event) => props.onUrlChange(event)} className="slds-context-bar__label-action">
                                 <span className='slds-truncate' title='Login With Link'>Login With Link</span>
                             </span>
                         </li>
                     </GlobalNavigationBarRegion>
             }
+            <CustomNavigationBarRegion
+                region="secondary"
+                onClick={() => props.onMenuToggle(false)}
+                className="slds-custom-navigation-close"
+            />
+            <CustomNavigationBarPopover onClick={() => props.onMenuToggle(false)} region="secondary" />
         </GlobalNavigationBar>
     )
 };
