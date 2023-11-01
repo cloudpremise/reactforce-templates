@@ -175,7 +175,7 @@ const LoginWithLink = (props) => {
     return (
         <div className="slds-m-around_medium">
             <div className="slds-grid slds-wrap slds-grid_align-center">
-                <form className={"slds-size_4-of-"+(state.verifiedEntity !== null ? "6" : "12")}>
+                <form className={"slds-size_1-of-1 slds-small-size_9-of-12 slds-medium-size_6-of-"+(state.verifiedEntity !== null ? "8" : "12")+" slds-large-size_4-of-"+(state.verifiedEntity !== null ? "6" : "12")}>
                     <Card
                         heading={state.heading}
                         footer={(state.loadingLinkInfo ? null : state.footer)}

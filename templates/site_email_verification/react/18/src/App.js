@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Api from "./Api";
 import IconSettings from '@salesforce/design-system-react/components/icon-settings';
 import { MemoryRouter } from "react-router-dom";
 import { prepareInlineAdapter, getParam } from "./ApexAdapter";

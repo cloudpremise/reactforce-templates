@@ -152,11 +152,6 @@ const NavigationBar = (props) => {
                                 <span className='slds-truncate' title='Home'>Home</span>
                             </span>
                         </li>
-                        <li className={'slds-context-bar__item '+(props.activeUrl === "/cases" ? "slds-is-active" : "")}>
-                            <span url="/cases" onClick={(event) => props.onUrlChange(event)} className="slds-context-bar__label-action" title='Settings'>
-                                <span className='slds-truncate' title='Cases'>Cases</span>
-                            </span>
-                        </li>
                     </GlobalNavigationBarRegion>
                 :
                     <GlobalNavigationBarRegion region="secondary" navigation>

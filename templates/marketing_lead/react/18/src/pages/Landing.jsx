@@ -64,7 +64,7 @@ const Landing = (props) => {
     return (
         <div className="slds-m-around_medium">
             <div className="slds-grid slds-wrap slds-grid_align-center">
-                <form className="slds-size_1-of-3">
+                <form className="slds-size_1-of-1 slds-small-size_8-of-12 slds-medium-size_1-of-3">
                     <Card heading="Capture Lead">
                         <div className="slds-p-around_medium">
                             {

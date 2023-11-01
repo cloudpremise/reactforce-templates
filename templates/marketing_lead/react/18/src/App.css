@@ -1171,3 +1171,7 @@ div .non-logged-in .slds-global-header__item.slds-global-header__item_logo {
 .slds-align_items-center {
     align-items: center;
 }
+.slds-global-header__logo {
+    cursor: pointer;
+    align-self: center;    
+}
