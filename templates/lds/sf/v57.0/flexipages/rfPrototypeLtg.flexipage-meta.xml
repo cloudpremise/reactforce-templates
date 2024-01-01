@@ -3,9 +3,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>bundleDomain</name>
-                </componentInstanceProperties>
                 <componentName>rfPrototypeLtg</componentName>
                 <identifier>c_rfPrototypeLtg</identifier>
             </componentInstance>            
