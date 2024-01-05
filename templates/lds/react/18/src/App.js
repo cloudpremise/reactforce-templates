@@ -469,9 +469,9 @@ function App() {
                 </div>
                 <p className='slds-p-horizontal_medium api-response'>
                     {
-                        loading === false && apexState.message !== null ?
+                        loading === false && apexState.hasOwnProperty("response") && apexState.response !== null ?
                             <a href="https://cloudpremise.gitbook.io/reactforce/" rel="noreferrer" target="_blank" className="slds-text-heading_small slds-text-color_destructive">
-                                {apexState.message}
+                                {apexState.response}
                             </a>
                         :
                             null
