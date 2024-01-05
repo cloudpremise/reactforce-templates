@@ -16,6 +16,7 @@
     <types>
         <members>rfPrototypeAppLtg_UtilityBar</members>
         <members>rfPrototypeLtg</members>
+        <members>rfPrototypeLwc</members>
         <name>Flexipage</name>
     </types>
     <types>
@@ -33,7 +34,12 @@
     <types>
         <members>rfPrototypeLtg</members>
         <members>rfPrototypeVf</members>
+        <members>rfPrototypeLwc</members>
         <name>CustomTab</name>
+    </types>
+    <types>
+        <members>rfPrototypeLwc</members>
+        <name>LightningComponentBundle</name>
     </types>
     <version>57.0</version>
 </Package>

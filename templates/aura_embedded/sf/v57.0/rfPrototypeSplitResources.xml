@@ -14,5 +14,9 @@
         <members>rfPrototypeCss</members>
         <name>StaticResource</name>
     </types>
+    <types>
+        <members>rfPrototypeLwc</members>
+        <name>LightningComponentBundle</name>
+    </types>
     <version>57.0</version>
 </Package>
