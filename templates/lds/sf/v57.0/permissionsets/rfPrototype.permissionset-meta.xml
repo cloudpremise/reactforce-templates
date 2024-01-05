@@ -18,4 +18,8 @@
         <tab>rfPrototypeVf</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <tabSettings>
+        <tab>rfPrototypeLwc</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
 </PermissionSet>
