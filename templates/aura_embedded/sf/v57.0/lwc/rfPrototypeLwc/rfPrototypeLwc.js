@@ -22,7 +22,7 @@ export default class Reactforce extends LightningElement {
             if(this.page.length <= 0){
                 this.page = "home";
             }
-            var queryString = '?'+'lwc=1&chunkResources='+rfPrototype+'&cssResources='+rfPrototype+'&page='+this.page+'&domain='+domain+'&recordType='+recordType+'&recordId='+recordId;
+            var queryString = '?'+'lwc=1&chunkResources='+rfPrototype+'&cssResources='+rfPrototype+'&page='+this.page+'&domain='+domain+'&recordType='+recordType+'&recordId='+this.recordId;
             // Load the React app URL from the Static Resource
             if(typeof(this.bundleDomain) === "string" && this.bundleDomain.length > 0){
                 this.reactAppUrl = this.bundleDomain + "/" + queryString;
