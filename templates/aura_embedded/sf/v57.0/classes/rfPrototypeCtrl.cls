@@ -25,7 +25,7 @@ global with sharing class rfPrototypeCtrl {
     public Boolean userInterfacePreview {get;set;}
     public Boolean advancedConfiguration {get;set;}
 
-    //@AuraEnabled(Cacheable = true)
+    @AuraEnabled
     public static String getSessionId() {
         return UserInfo.getSessionId();
     }
