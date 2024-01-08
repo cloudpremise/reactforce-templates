@@ -36,6 +36,8 @@
                 <componentName>rfPrototypeLtg</componentName>
                 <identifier>rfPrototypeLtg</identifier>
             </componentInstance>
+        </itemInstances>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>eager</name>
