@@ -2,6 +2,7 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>rfPrototypeAppLtg</members>
+        <members>rfPrototypeAppLwc</members>
         <name>CustomApplication</name>
     </types>
     <types>
@@ -14,6 +15,7 @@
     </types>
     <types>
         <members>rfPrototypeAppLtg_UtilityBar</members>
+        <members>rfPrototypeAppLwc_UtilityBar</members>
         <name>Flexipage</name>
     </types>
     <types>
@@ -23,6 +25,10 @@
     <types>
         <members>rfPrototype</members>
         <name>StaticResource</name>
+    </types>
+    <types>
+        <members>rfPrototypeLwc</members>
+        <name>LightningComponentBundle</name>
     </types>
     <version>57.0</version>
 </Package>
