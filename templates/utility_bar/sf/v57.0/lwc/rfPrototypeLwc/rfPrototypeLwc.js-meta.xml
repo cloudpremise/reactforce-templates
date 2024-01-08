@@ -8,9 +8,10 @@
         <target>lightning__AppPage</target>
         <target>lightning__RecordPage</target>
         <target>lightning__HomePage</target>
+        <target>lightning__UtilityBar</target>
     </targets>
     <targetConfigs>
-        <targetConfig targets="lightning__AppPage, lightning__RecordPage, lightning__HomePage">
+        <targetConfig targets="lightning__AppPage, lightning__RecordPage, lightning__HomePage, lightning__UtilityBar">
             <property label="Bundle Domain" name="bundleDomain" type="String" />
             <property label="Page Name" name="page" type="String" />
         </targetConfig>

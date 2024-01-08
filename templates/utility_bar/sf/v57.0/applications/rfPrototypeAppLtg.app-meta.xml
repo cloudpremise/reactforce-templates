@@ -9,7 +9,7 @@
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
-    <label>rfPrototypeLtg</label>
+    <label>rfPrototype</label>
     <navType>Standard</navType>
     <uiType>Lightning</uiType>
     <utilityBar>rfPrototypeAppLtg_UtilityBar</utilityBar>
