@@ -1,11 +1,12 @@
-import { LightningElement, track, api } from 'lwc';
+import { LightningElement, track, api, wire } from 'lwc';
 import rfPrototype from '@salesforce/resourceUrl/rfPrototype';
-import rfPrototypeChunk from '@salesforce/resourceUrl/rfPrototypeChunk';
-import rfPrototypeCss from '@salesforce/resourceUrl/rfPrototypeCss';
+import rfPrototypeResourceChunk from '@salesforce/resourceUrl/rfPrototypeChunk';
+import rfPrototypeResourceCss from '@salesforce/resourceUrl/rfPrototypeCss';
 import resources from "@salesforce/resourceUrl/ReactforceAssets";
 import callInternalApi from '@salesforce/apex/rfPrototypeCtrl.callInternalApi';
 import callSampleInternalApi from '@salesforce/apex/rfPrototypeCtrl.callSampleInternalApi';
 import getSessionId from '@salesforce/apex/rfPrototypeCtrl.getSessionId';
+import { CurrentPageReference } from 'lightning/navigation';
 
 export default class Reactforce extends LightningElement {
     @track reactAppUrl;
@@ -49,8 +50,8 @@ export default class Reactforce extends LightningElement {
                 'lwc': '1',
                 'resources': resources,
                 'landingResources': rfPrototype,
-                'chunkResources': rfPrototypeChunk,
-                'cssResources': rfPrototypeCss,
+                'chunkResources': rfPrototypeResourceChunk,
+                'cssResources': rfPrototypeResourceCss,
                 'bundleDomain': "",
                 'recordType': 'Account',
                 'domain': domain,
