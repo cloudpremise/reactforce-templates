@@ -1,5 +1,7 @@
 import { LightningElement, track, api } from 'lwc';
 import rfPrototype from '@salesforce/resourceUrl/rfPrototype';
+import rfPrototypeChunk from '@salesforce/resourceUrl/rfPrototypeChunk';
+import rfPrototypeCss from '@salesforce/resourceUrl/rfPrototypeCss';
 import resources from "@salesforce/resourceUrl/ReactforceAssets";
 import callInternalApi from '@salesforce/apex/rfPrototypeCtrl.callInternalApi';
 import callSampleInternalApi from '@salesforce/apex/rfPrototypeCtrl.callSampleInternalApi';
@@ -12,27 +14,70 @@ export default class Reactforce extends LightningElement {
     @track sessionId;
     @api bundleDomain;
     @api page;
-    @api recordId;
+    @track recordId;
+    currentPageReference = null;
 
+    @wire(CurrentPageReference)
+    getPageReferenceParameters(currentPageReference) {
+        if (currentPageReference) {
+            try{
+                var newRecordId = currentPageReference.attributes.recordId;
+                if(typeof(this.channel) !== "undefined" && (typeof(this.recordId) === "undefined" || newRecordId !== this.recordId)){
+                    var port1 = this.channel.port1;
+                    port1.postMessage(JSON.stringify({ //Send message to react app with data and callback id so that actual callback function is triggered.
+                        action: "containerUserMessage",
+                        params: [{
+                            data: {
+                                recordId: newRecordId
+                            },
+                            callbackId: "recordCallback"
+                        }]
+                    }));
+                }
+                this.recordId = newRecordId;
+            }catch(e){ console.log(e.message); }
+        }
+    }
     async connectedCallback() {
         try{
             this.sessionId = await getSessionId();
             let domain = '';
-            var recordType = 'Account';
-            if(this.page.length <= 0){
+            if(typeof(this.page) === "undefined" || this.page.length <= 0){
                 this.page = "home";
             }
-            var queryString = '?'+'lwc=1&chunkResources='+rfPrototype+'&cssResources='+rfPrototype+'&page='+this.page+'&domain='+domain+'&recordType='+recordType+'&recordId='+this.recordId;
+            var data = {
+                'lwc': '1',
+                'resources': resources,
+                'landingResources': rfPrototype,
+                'chunkResources': rfPrototypeChunk,
+                'cssResources': rfPrototypeCss,
+                'bundleDomain': "",
+                'recordType': 'Account',
+                'domain': domain,
+                'page': this.page
+            };
+            if(typeof(this.recordId) === "string" && this.recordId.length > 0){
+                data['recordId'] = this.recordId;
+            }
+
+            var str = [];
+            for (var p in data){
+                if (data.hasOwnProperty(p)) {
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(data[p]));
+                }
+            }
+
+            var queryString = '?'+str.join("&");
             // Load the React app URL from the Static Resource
             if(typeof(this.bundleDomain) === "string" && this.bundleDomain.length > 0){
                 this.reactAppUrl = this.bundleDomain + "/" + queryString;
             }else{
-                this.reactAppUrl = rfPrototype + '/index.html' + queryString + '&landingResources='+rfPrototype + '&resources='+resources;
+                this.reactAppUrl = rfPrototype + '/index.html' + queryString;
             }
 
             this.channel = new MessageChannel();
             this.channel.port1.onmessage = this.handleMessage.bind(this);
-        }catch(e){ console.log("error", e.message); }
+        }catch(e){ console.log("error", e.message); console.log(e.stack); }
     }
     handleIframeLoad(evt){
         if(typeof(this.channel) === "undefined" || typeof(this.channel.port2) === "undefined"){
