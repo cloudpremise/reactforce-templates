@@ -1,6 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script nonce>
+        //Iframe communication script for lwc. It would get ignored for aura lightning container due to content security policy.
+        var lwc = (decodeURI((RegExp("lwc=(.+?)(&|$)").exec(window.location.search)||['',''])[1]));
+        if(lwc === '1'){
+            (function(global) {
+                
+                let CONTAINER_SYSTEM_MESSAGE = 'containerSystemMessage';
+            
+                let ESTABLISH_MESSAGE_CHANNEL = 'establishMessageChannel';
+            
+                let CONTAINER_USER_MESSAGE = 'containerUserMessage';
+                let CONTAINER_USER_SESSION = 'containerUserSession';
+            
+                let messageChannelPort = null;
+            
+                let onMessage = [];
+            
+                let onError = [];
+
+                let sessionId = 'fake_session_key';
+            
+                let sendBeaconPostMessage = function(payload) {
+                    global.parent.postMessage(JSON.stringify(payload), getSFDCIFrameOrigin());
+                };
+            
+                let receiveSystemPostMessage = function(event) {
+                    if (event.data) {
+                        try {
+                            var message = JSON.parse(event.data);
+                            sessionId = message.sessionId;
+                            if (message.action === CONTAINER_SYSTEM_MESSAGE) {
+                                var payload = message.params[0];
+                                var name = payload.name;
+                                var value = payload.value;
+                                if (name === ESTABLISH_MESSAGE_CHANNEL) {
+                                    messageChannelPort = event.ports[0];
+                                    messageChannelPort.onmessage = receiveUserPostMessage;
+                                    global.removeEventListener('message', receiveSystemPostMessage);
+                                }
+                            }
+                        }
+                        catch (e) {
+                            console.log(e);
+                            /* Wasn't json, so we don't care about it. */
+                        }
+                    }
+                };
+            
+                let receiveUserPostMessage = function(event) {
+                    if (event.data) {
+                        try {
+                            var message = JSON.parse(event.data);
+                            if (message.action === CONTAINER_USER_MESSAGE) {
+                                var payload = message.params[0];
+                                for (var i = 0; i < onMessage.length; i++) {
+                                    onMessage[i](payload);
+                                }
+                            }
+                        }
+                        catch (e) {
+                            /* Wasn't json, so we don't care about it. */
+                        }
+                    }
+                };
+            
+                let sendUserPostMessage = function(payload) {
+                    if (messageChannelPort) {
+                        messageChannelPort.postMessage(JSON.stringify(payload));
+                    }else{
+                        setTimeout(function(){
+                            sendUserPostMessage(payload);
+                        }, 10);
+                    }
+                };
+            
+                let getSFDCIFrameOrigin = function() {
+                    if(window.origin.indexOf("ngrok") !== -1){
+                        return "*";
+                    }
+                    return global.parent.origin;
+                };
+            
+                let onlineSupport = {};
+            
+                onlineSupport.getRESTAPISessionKey = function() {
+                    return sessionId;
+                },
+            
+                onlineSupport.addMessageHandler = function(handler) {
+                    onMessage.push(handler);
+                },
+            
+                onlineSupport.removeMessageHandler = function(handler) {
+                    onMessage = onMessage.filter(function (hdlr) { return hdlr !== handler; });
+                },
+            
+                onlineSupport.addErrorHandler = function(handler) {
+                    onError.push(handler);
+                },
+            
+                onlineSupport.removeErrorHandler = function(handler) {
+                    onError = onError.filter(function (hdlr) { return hdlr !== handler; });
+                },
+            
+                onlineSupport.addMessageErrorHandler = function(handler) {
+                    onlineSupport.addErrorHandler(handler);
+                },
+            
+                onlineSupport.removeMessageErrorHandler = function(handler) {
+                    onlineSupport.removeErrorHandler(handler);
+                },
+            
+                onlineSupport.sendMessage = function(event, args) {
+                    var origin = getSFDCIFrameOrigin();
+                    if (origin) {
+                        var payload = {};
+                        payload.event = event;
+                        payload.arguments = args;
+                        sendUserPostMessage(payload);
+                    }
+                },
+            
+                onlineSupport.init = function() {
+                    sendBeaconPostMessage({ isContainerOriginBeacon: true });
+                }
+                global.addEventListener('message', receiveSystemPostMessage);
+            
+                global.LCC = {};
+                global.LCC.onlineSupport = onlineSupport;
+            
+                global.LCC.onlineSupport.init();
+
+                global.LCC.onlineSupport.addMessageHandler(function(response){
+                    
+                });        
+            })(this);
+        }
+    </script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
