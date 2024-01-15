@@ -69,8 +69,8 @@
                     <type>decorator</type>
                     <value>340</value>
                 </componentInstanceProperties>
-                <componentName>rfPrototypeLwc</componentName>
-                <identifier>rfPrototypeLwc</identifier>
+                <componentName>rfPrototypeLwcCmp</componentName>
+                <identifier>c_rfPrototypeLwcCmp</identifier>
             </componentInstance>
         </itemInstances>
         <name>utilityItems</name>
