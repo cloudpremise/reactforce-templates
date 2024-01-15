@@ -38,7 +38,7 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>rfPrototypeLwc</members>
+        <members>rfPrototypeLwcCmp</members>
         <name>LightningComponentBundle</name>
     </types>  
     <version>57.0</version>
