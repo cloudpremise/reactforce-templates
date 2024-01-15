@@ -17,7 +17,7 @@ export default class Reactforce extends LightningElement {
         try{
             this.sessionId = await getSessionId();
             let domain = '';
-            if(this.page.length <= 0){
+            if(typeof(this.page) === "undefined" || this.page.length <= 0){
                 this.page = "home";
             }
             var queryString = '?'+'lwc=1&chunkResources='+rfPrototype+'&cssResources='+rfPrototype+'&page='+this.page+'&domain='+domain;
