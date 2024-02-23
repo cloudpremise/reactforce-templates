@@ -18,7 +18,7 @@ const useApi = (url, params, justData = false, callBack = null, callApi = true) 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         };
-        let route = '/services/data/v36.0'+url;
+        let route = '/services/data/v60.0'+url;
         setAdapterState({
             loading: true,
             callApi: false,
