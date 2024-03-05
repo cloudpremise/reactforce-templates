@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>rfPrototypeAppLtg</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>rfPrototypeLtg</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>rfPrototypeCtrl</members>
+        <members>rfPrototypeCtrlTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>rfPrototypeAppLtg_UtilityBar</members>
+        <name>Flexipage</name>
+    </types>
+    <types>
+        <members>rfPrototype</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>rfPrototype</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>rfPrototypeLwcCmp</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>60.0</version>
+</Package>

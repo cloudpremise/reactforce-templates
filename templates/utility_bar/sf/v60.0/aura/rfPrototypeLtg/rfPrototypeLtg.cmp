@@ -1,0 +1,11 @@
+<aura:component controller="rfPrototypeCtrl" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="containerHeight" type="String" default="300" />
+    <aura:handler name="change" value="{!v.recordId}" action="{!c.onObjectChange}" />
+
+    <div>
+        <div style="{!'height:'+v.containerHeight+'px'}">
+            {!v.body}
+        </div>
+    </div>
+</aura:component>
