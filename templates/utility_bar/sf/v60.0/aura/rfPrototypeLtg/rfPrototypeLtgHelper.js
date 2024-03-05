@@ -1,0 +1,6 @@
+({
+    appRendered: false,
+    helperMethod : function() {
+
+    }
+})

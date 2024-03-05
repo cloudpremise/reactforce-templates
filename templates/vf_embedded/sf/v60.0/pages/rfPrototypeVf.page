@@ -1,0 +1,51 @@
+<apex:page standardController="Account" extensions="rfPrototypeCtrl" showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="true" applyBodyTag="false" docType="html-5.0" showQuickActionVfHeader="false">
+    <head>
+        <meta charset="utf-8"></meta>
+        <meta name="viewport" content="width=device-width,initial-scale=1"></meta>
+        <link rel="shortcut icon" href="./favicon.ico?v=2"></link>
+        <title>rfPrototype | Salesforce</title>
+        <apex:outputPanel>
+            <!-- <link rel="stylesheet" href="{!URLFOR($Resource.xxxxx, 'styles/salesforce-lightning-design-system.min.css')}" type="text/css"/> -->
+        </apex:outputPanel>
+    </head>
+    <body class="slds-scope">
+        <apex:slds />
+        <script type="text/javascript">
+            Visualforce.remoting.timeout = 120000;
+            //This object will be available from within the reactforce apps via the global.inlineApexAdaptor object
+            var inlineApexAdaptor = {
+                'Visualforce': Visualforce,
+                'callInternalApi': '{!$RemoteAction.rfPrototypeCtrl.callInternalApi}',
+                'sessionId': '{!sessionId}',
+                'resources': '{!$Resource.ReactforceAssets}',
+                'landingResources': '{!$Resource.rfPrototype}',
+                'chunkResources': '{!$Resource.rfPrototypeChunk}',
+                'cssResources': '{!$Resource.rfPrototypeCss}',
+                'bundleDomain': '{!bundleDomain}',
+                'bundleId': '{!bundleId}',
+                'recordId': '{!sObj.Id}',
+                'recordType': 'Account',
+            };
+
+        </script>
+        <div style="min-height: 100vh;" id="root"></div>
+
+        <div class="slds-spinner_container" id="main-application-loader">
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand" style="transform: none;width: 100px;height:86px;transform-origin: inherit;left: 0px;right: 0px;top:0px;bottom:0px;margin: auto;">
+                <img src="{!URLFOR($Resource.rfPrototype, 'assets/img/reactforce_short.png')}" alt="" />
+            </div>
+            <style type="text/css">#main-application-loader .slds-spinner:before, #main-application-loader .slds-spinner:after {display:none;}</style>
+        </div>
+
+        <!-- Load the app from the bundle domain -->
+        <apex:outputPanel rendered="{!NOT(ISBLANK(bundleDomain))}">
+            <script type="text/javascript" src="{!bundleDomain + '/assets/js/app.main.v1.js'}"></script>
+        </apex:outputPanel>
+
+        <!-- Load the app from the static resource -->
+        <apex:outputPanel rendered="{!(ISBLANK(bundleDomain))}">
+            <script type="text/javascript" src="{!URLFOR($Resource.rfPrototype, 'assets/js/app.main.v1.js')}"></script>
+        </apex:outputPanel>
+
+    </body>
+</apex:page>
