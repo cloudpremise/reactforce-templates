@@ -35,13 +35,6 @@ private with sharing class rfPrototypeCtrlTest {
     }
     
     @isTest
-    private static void testLogControllerInfo() {
-        Test.StartTest();
-        rfPrototypeCtrl.logControllerInfo();
-        Test.StopTest();
-    }
-    
-    @isTest
     private static void testCallInternalApi() {
         Test.StartTest();
         List<Account> accounts = createAccount();
@@ -50,7 +43,6 @@ private with sharing class rfPrototypeCtrlTest {
         String result = rfPrototypeCtrl.callInternalApi('GET', '/v1/sobject/Account/', 'requestEntityStr', params, headers);
         Test.StopTest();
         Map<String, Object> resultMap = (Map<String, Object>)JSON.deserializeUntyped(result);
-        System.debug('resultMap = '+resultMap);
         System.assertEquals(200, resultMap.get('statusCode'), 'Result should be same.');
     }
     

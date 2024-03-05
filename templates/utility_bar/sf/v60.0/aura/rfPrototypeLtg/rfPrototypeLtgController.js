@@ -47,9 +47,7 @@
             );
         }, 10);
 	},
-    afterScriptsLoaded: function(component, event, helper){
-        console.log("Script Loaded");
-    },
+    
     onObjectChange: function(component, event, helper){
         if(!helper.appRendered){
             return;
@@ -66,9 +64,7 @@
             callbackId: "recordCallback"
         });
     },
-    handleRender: function(component, event, helper){
 
-    },
     handleMessage: function(component, message, helper) {
         var container = component.find("ReactApp");
         var payload = message.getParams().payload;

@@ -30,8 +30,11 @@ export default class Reactforce extends LightningElement {
 
             this.channel = new MessageChannel();
             this.channel.port1.onmessage = this.handleMessage.bind(this);
-        }catch(e){ console.log("error", e.message); }
+        }catch(e){
+            console.log("error", e.message); 
+        }
     }
+
     handleIframeLoad(evt){
         if(typeof(this.channel) === "undefined" || typeof(this.channel.port2) === "undefined"){
             return;
@@ -45,13 +48,10 @@ export default class Reactforce extends LightningElement {
             }]
         }
         this.iframe = evt.target;
-        // this.iframe.onmessage = this.handleMessage.bind(this);
         this.iframe.contentWindow.postMessage(JSON.stringify(payload), "*", [this.channel.port2]);        
     }
+
     handleMessage(evt){
-        // if(evt.data.source === 'react-devtools-content-script'){
-        //     return;
-        // }
         var eventData = JSON.parse(evt.data);
         var args = eventData.arguments;
         var payload = args.payload;
@@ -79,8 +79,11 @@ export default class Reactforce extends LightningElement {
             }).catch(err => {
                 console.log("Catch Error", err);
             });
-        }catch(e){ console.log("error", e.message); }
+        }catch(e){ 
+            console.log("error", e.message); 
+        }
     }
+
     findMethod(actionName){
         var method = callInternalApi;
         switch(actionName){
