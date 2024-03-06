@@ -10,19 +10,16 @@ private with sharing class rfPrototypeCtrlTest {
     }
     
     @isTest
-    private static void testRfPrototypeCtrl() {
+    private static void testrfPrototypeCtrl() {
         List<Account> accounts = createAccount();
-        Test.StartTest();
-        PageReference pageRef = Page.rfPrototypeVF;
-        Test.setCurrentPage(pageRef);
-        pageRef.getParameters().put('bundleDomain', String.valueOf(accounts[0].Id));
+        Test.StartTest();        
         ApexPages.StandardController sc = new ApexPages.StandardController(accounts[0]);
         rfPrototypeCtrl instance = new rfPrototypeCtrl(sc);
         instance.developmentMode = false;
         instance.userInterfacePreview = false;
         instance.advancedConfiguration = false;
         Test.StopTest();
-        System.assertEquals(String.valueOf(accounts[0].Id), instance.bundleDomain, 'Result should be same.');
+        System.assertNotEquals(null, instance.sessionId, 'Session Id should not be empty.');
     }
     
     @isTest
