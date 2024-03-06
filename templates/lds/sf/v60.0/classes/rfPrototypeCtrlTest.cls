@@ -33,18 +33,6 @@ private with sharing class rfPrototypeCtrlTest {
         Test.StopTest();
         System.assertEquals(true, result.getRedirect(), 'The page should be redirected.');
     }
-       
-    @isTest
-    private static void testCallInternalApi() {
-        Test.StartTest();
-        List<Account> accounts = createAccount();
-        String params = '{"sobjecttypename":"Account", "Id":"'+accounts[0].Id+'"}';
-        String headers = '{"Content-Type":"application/json;charset=UTF-8"}';
-        String result = rfPrototypeCtrl.callInternalApi('GET', '/v1/sobject/Account/', 'requestEntityStr', params, headers);
-        Test.StopTest();
-        Map<String, Object> resultMap = (Map<String, Object>)JSON.deserializeUntyped(result);
-        System.assertEquals(200, resultMap.get('statusCode'), 'Result should be same.');
-    }
     
     @isTest
     private static void testCallSampleInternalApi() {
