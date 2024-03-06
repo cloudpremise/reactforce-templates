@@ -10,7 +10,7 @@
         <name>StaticResource</name>
     </types>
     <types>
-        <members>rfPrototypeLwcCmp</members>
+        <members>rfPrototypeCmp</members>
         <name>LightningComponentBundle</name>
     </types>
     <version>60.0</version>
