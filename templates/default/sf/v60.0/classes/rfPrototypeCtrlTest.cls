@@ -10,7 +10,7 @@ private with sharing class rfPrototypeCtrlTest {
     }
     
     @isTest
-    private static void testRfPrototypeCtrl() {
+    private static void testrfPrototypeCtrl() {
         List<Account> accounts = createAccount();
         Test.StartTest();
         PageReference pageRef = Page.ReactforceAllTemplateVF;
