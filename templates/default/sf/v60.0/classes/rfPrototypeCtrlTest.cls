@@ -13,7 +13,7 @@ private with sharing class rfPrototypeCtrlTest {
     private static void testRfPrototypeCtrl() {
         List<Account> accounts = createAccount();
         Test.StartTest();
-        PageReference pageRef = Page.ReactforceAllTemplateVF;
+        PageReference pageRef = Page.rfPrototypeVF;
         Test.setCurrentPage(pageRef);
         pageRef.getParameters().put('bundleDomain', String.valueOf(accounts[0].Id));
         ApexPages.StandardController sc = new ApexPages.StandardController(accounts[0]);
